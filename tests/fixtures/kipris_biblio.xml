@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+  <header>
+    <requestMsgID></requestMsgID>
+    <responseTime>2026-10-07 12:00:00.000</responseTime>
+    <responseMsgID></responseMsgID>
+    <successYN>Y</successYN>
+    <resultCode>00</resultCode>
+    <resultMsg></resultMsg>
+  </header>
+  <body>
+    <item>
+      <biblioSummaryInfoArray>
+        <biblioSummaryInfo>
+          <applicationDate>2020.03.02</applicationDate>
+          <applicationNumber>1020200026123</applicationNumber>
+          <applicationFlag> </applicationFlag>
+          <claimCount>12</claimCount>
+          <examinerName>홍길동</examinerName>
+          <finalDisposal>등록결정(일반)</finalDisposal>
+          <inventionTitle>무선 통신 시스템에서 자원 할당 방법 및 장치</inventionTitle>
+          <inventionTitleEng>METHOD AND APPARATUS FOR RESOURCE ALLOCATION IN WIRELESS COMMUNICATION SYSTEM</inventionTitleEng>
+          <openDate>2021.09.10</openDate>
+          <openNumber>1020210110001</openNumber>
+          <originalApplicationDate> </originalApplicationDate>
+          <originalApplicationKind>국내출원/신규</originalApplicationKind>
+          <originalApplicationNumber> </originalApplicationNumber>
+          <originalExaminationRequestDate>2023.02.28</originalExaminationRequestDate>
+          <originalExaminationRequestFlag>Y</originalExaminationRequestFlag>
+          <publicationDate>2024.05.20</publicationDate>
+          <publicationNumber> </publicationNumber>
+          <registerDate>2024.05.13</registerDate>
+          <registerNumber>1026543210000</registerNumber>
+          <registerStatus>등록</registerStatus>
+          <translationSubmitDate> </translationSubmitDate>
+        </biblioSummaryInfo>
+      </biblioSummaryInfoArray>
+      <ipcInfoArray>
+        <ipcInfo><ipcDate>2020.01.01</ipcDate><ipcNumber>H04W 72/04</ipcNumber></ipcInfo>
+        <ipcInfo><ipcDate>2020.01.01</ipcDate><ipcNumber>H04L 5/00</ipcNumber></ipcInfo>
+      </ipcInfoArray>
+      <familyInfoArray>
+        <familyInfo><familyApplicationNumber>US 17/012,345</familyApplicationNumber></familyInfo>
+      </familyInfoArray>
+      <abstractInfoArray>
+        <abstractInfo><astrtCont>본 발명은 무선 통신 시스템에서 &lt;단말&gt;이 자원을 할당받는 방법에 관한 것이다.</astrtCont></abstractInfo>
+      </abstractInfoArray>
+      <internationalInfoArray>
+        <internationalInfo>
+          <internationOpenDate> </internationOpenDate>
+          <internationOpenNumber> </internationOpenNumber>
+          <internationalApplicationDate> </internationalApplicationDate>
+          <internationalApplicationNumber> </internationalApplicationNumber>
+        </internationalInfo>
+      </internationalInfoArray>
+      <claimInfoArray>
+        <claimInfo><claim>1. 단말이 수행하는 방법에 있어서, 자원 할당 정보를 수신하는 단계를 포함하는 방법.</claim></claimInfo>
+        <claimInfo><claim>2. 제1항에 있어서, 상기 자원은 주파수 자원인 방법.</claim></claimInfo>
+      </claimInfoArray>
+      <applicantInfoArray>
+        <applicantInfo>
+          <address>경기도 수원시 영통구</address>
+          <code>119981042713</code>
+          <country>대한민국</country>
+          <engName>SAMSUNG ELECTRONICS CO., LTD.</engName>
+          <name>삼성전자주식회사</name>
+        </applicantInfo>
+      </applicantInfoArray>
+      <inventorInfoArray>
+        <inventorInfo><address>서울특별시</address><code>9-0000-0000000-0</code><country>대한민국</country><engName>KIM, Chulsoo</engName><name>김철수</name></inventorInfo>
+        <inventorInfo><address>경기도</address><code>9-0000-0000000-1</code><country>대한민국</country><engName>LEE, Younghee</engName><name>이영희</name></inventorInfo>
+      </inventorInfoArray>
+      <agentInfoArray>
+        <agentInfo><address>서울특별시 강남구</address><code>9-2000-000000-0</code><country>대한민국</country><engName>PARK, Daeri</engName><name>박대리</name></agentInfo>
+      </agentInfoArray>
+      <priorityInfoArray>
+        <priorityInfo><priorityApplicationCountry>미국</priorityApplicationCountry><priorityApplicationDate>2019.03.01</priorityApplicationDate><priorityApplicationNumber>62/812,345</priorityApplicationNumber></priorityInfo>
+      </priorityInfoArray>
+      <designatedStateInfoArray/>
+      <priorArtDocumentsInfoArray>
+        <priorArtDocumentsInfo><documentsNumber>US20180123456 A1</documentsNumber><examinerQuotationFlag>Y</examinerQuotationFlag></priorArtDocumentsInfo>
+        <priorArtDocumentsInfo><documentsNumber>KR1020170012345 A</documentsNumber><examinerQuotationFlag>Y</examinerQuotationFlag></priorArtDocumentsInfo>
+      </priorArtDocumentsInfoArray>
+      <legalStatusInfoArray>
+        <legalStatusInfo><commonCodeName>수리 (Accepted)</commonCodeName><documentEngName>Patent Application</documentEngName><documentName>[특허출원]특허출원서</documentName><receiptDate>2020.03.02</receiptDate><receiptNumber>1-1-2020-0212345-12</receiptNumber></legalStatusInfo>
+        <legalStatusInfo><commonCodeName>발송처리완료 (Completion of Transmission)</commonCodeName><documentEngName>Decision to grant</documentEngName><documentName>등록결정서</documentName><receiptDate>2024.02.15</receiptDate><receiptNumber>9-5-2024-0123456-78</receiptNumber></legalStatusInfo>
+      </legalStatusInfoArray>
+      <imagePathInfo>
+        <docName>1020200026123.jpg</docName>
+        <largePath>http://example.invalid/large.jpg</largePath>
+        <path>http://example.invalid/small.jpg</path>
+      </imagePathInfo>
+      <rndInfoArray/>
+    </item>
+  </body>
+</response>

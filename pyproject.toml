@@ -1,0 +1,21 @@
+[project]
+name = "patent-api-mcp"
+version = "0.1.1"
+description = "KIPRIS Plus + EPO OPS를 하나로 감싼 로컬 MCP 서버"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=2.3,<3",
+    "httpx>=0.28,<1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

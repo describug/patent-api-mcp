@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org">
+  <ops:patent-family legal="true" family-id="54001234" total-result-count="1">
+    <ops:publication-reference>
+      <document-id document-id-type="docdb"><country>EP</country><doc-number>3100000</doc-number><kind>B1</kind></document-id>
+    </ops:publication-reference>
+    <ops:family-member family-id="54001234">
+      <publication-reference>
+        <document-id document-id-type="docdb"><country>EP</country><doc-number>3100000</doc-number><kind>B1</kind><date>20190313</date></document-id>
+      </publication-reference>
+      <ops:legal code="AK" desc="DESIGNATED CONTRACTING STATES:" infl="+">
+        <ops:pre>Ref document number: 3100000   Country of ref document: EP   Kind code of ref document: A1   Designated state(s): DE FR GB</ops:pre>
+        <ops:L001EP>EP</ops:L001EP>
+        <ops:L002EP>3100000</ops:L002EP>
+        <ops:L003EP>A1</ops:L003EP>
+        <ops:L007EP>20161207</ops:L007EP>
+        <ops:L008EP>AK</ops:L008EP>
+      </ops:legal>
+      <ops:legal code="PG25" desc="LAPSED IN A CONTRACTING STATE [ANNOUNCED VIA POSTGRANT INFORMATION FROM NATIONAL OFFICE TO EPO]" infl="-">
+        <ops:pre>Ref country code: FR   Effective date: 20200313</ops:pre>
+        <ops:L001EP>FR</ops:L001EP>
+        <ops:L007EP>20200901</ops:L007EP>
+      </ops:legal>
+    </ops:family-member>
+  </ops:patent-family>
+</ops:world-patent-data>

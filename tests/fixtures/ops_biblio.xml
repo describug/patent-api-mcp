@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <ops:meta name="elapsed-time" value="12"/>
+  <exchange-documents>
+    <exchange-document system="ops.epo.org" family-id="19768124" country="EP" doc-number="1000000" kind="A1">
+      <bibliographic-data>
+        <publication-reference>
+          <document-id document-id-type="docdb"><country>EP</country><doc-number>1000000</doc-number><kind>A1</kind><date>20000517</date></document-id>
+          <document-id document-id-type="epodoc"><doc-number>EP1000000</doc-number><date>20000517</date></document-id>
+        </publication-reference>
+        <classification-ipc><text>B28B7/00</text></classification-ipc>
+        <classifications-ipcr>
+          <classification-ipcr sequence="1"><text>B28B   7/    00            A I                    </text></classification-ipcr>
+          <classification-ipcr sequence="2"><text>B28B   7/    10            A I                    </text></classification-ipcr>
+        </classifications-ipcr>
+        <patent-classifications>
+          <patent-classification sequence="1">
+            <classification-scheme office="EP" scheme="CPCI"/>
+            <section>B</section><class>28</class><subclass>B</subclass><main-group>7</main-group><subgroup>0064</subgroup>
+            <classification-value>I</classification-value>
+          </patent-classification>
+        </patent-classifications>
+        <application-reference doc-id="17952275">
+          <document-id document-id-type="docdb"><country>EP</country><doc-number>99203729</doc-number><kind>A</kind><date>19991105</date></document-id>
+          <document-id document-id-type="epodoc"><doc-number>EP19990203729</doc-number><date>19991105</date></document-id>
+        </application-reference>
+        <priority-claims>
+          <priority-claim sequence="1" kind="national">
+            <document-id document-id-type="epodoc"><doc-number>NL19981010536</doc-number><date>19981110</date></document-id>
+            <document-id document-id-type="original"><doc-number>1010536</doc-number></document-id>
+          </priority-claim>
+        </priority-claims>
+        <parties>
+          <applicants>
+            <applicant sequence="1" data-format="epodoc"><applicant-name><name>BEHEERMAATSCHAPPIJ DE BOER NIJ [NL]</name></applicant-name></applicant>
+            <applicant sequence="1" data-format="original"><applicant-name><name>Beheermaatschappij De Boer Nijmegen B.V.</name></applicant-name></applicant>
+          </applicants>
+          <inventors>
+            <inventor sequence="1" data-format="epodoc"><inventor-name><name>BOER JOHN DE [NL]</name></inventor-name></inventor>
+            <inventor sequence="1" data-format="original"><inventor-name><name>de Boer, John</name></inventor-name></inventor>
+          </inventors>
+        </parties>
+        <invention-title lang="de">Vorrichtung zur Herstellung von Grünlingen für die Ziegelindustrie</invention-title>
+        <invention-title lang="en">Apparatus for manufacturing green bricks for the brick manufacturing industry</invention-title>
+        <invention-title lang="fr">Dispositif de fabrication de briques crues pour l'industrie briquetière</invention-title>
+        <references-cited>
+          <citation cited-phase="search" sequence="1">
+            <patcit dnum-type="publication number" num="1">
+              <document-id document-id-type="docdb"><country>DE</country><doc-number>3637377</doc-number><kind>A1</kind></document-id>
+            </patcit>
+            <category>A</category>
+          </citation>
+          <citation cited-phase="search" sequence="2">
+            <nplcit num="2"><text>PATENT ABSTRACTS OF JAPAN vol. 1998, no. 01</text></nplcit>
+            <category>X</category>
+          </citation>
+        </references-cited>
+      </bibliographic-data>
+      <abstract lang="en">
+        <p>The invention relates to an apparatus for manufacturing green bricks from clay for the brick manufacturing industry.</p>
+      </abstract>
+    </exchange-document>
+  </exchange-documents>
+</ops:world-patent-data>

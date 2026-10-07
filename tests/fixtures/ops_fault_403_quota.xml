@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fault xmlns="http://ops.epo.org">
+  <code>CLIENT.RobotDetected</code>
+  <message>Recent behaviour implies you are a robot. The server is at the moment busy to serve robots. Please try again later</message>
+</fault>

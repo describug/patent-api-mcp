@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ops:world-patent-data xmlns="http://www.epo.org/fulltext" xmlns:ops="http://ops.epo.org">
+  <ftxt:fulltext-documents xmlns="http://www.epo.org/exchange" xmlns:ftxt="http://www.epo.org/fulltext">
+    <ftxt:fulltext-document system="ops.epo.org" fulltext-format="text-only">
+      <bibliographic-data>
+        <publication-reference data-format="docdb">
+          <document-id><country>EP</country><doc-number>1000000</doc-number><kind>B1</kind></document-id>
+        </publication-reference>
+      </bibliographic-data>
+      <ftxt:claims lang="DE">
+        <ftxt:claim><ftxt:claim-text>1. Vorrichtung zur Herstellung von Grünlingen.</ftxt:claim-text></ftxt:claim>
+      </ftxt:claims>
+      <ftxt:claims lang="EN">
+        <ftxt:claim>
+          <ftxt:claim-text>1. Apparatus for manufacturing green bricks, comprising a mould.</ftxt:claim-text>
+          <ftxt:claim-text>2. Apparatus according to claim 1, wherein the mould is movable.</ftxt:claim-text>
+        </ftxt:claim>
+      </ftxt:claims>
+    </ftxt:fulltext-document>
+  </ftxt:fulltext-documents>
+</ops:world-patent-data>

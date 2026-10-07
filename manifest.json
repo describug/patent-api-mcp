@@ -1,0 +1,74 @@
+{
+  "manifest_version": "0.4",
+  "name": "patent-api",
+  "display_name": "Patent API (KIPRIS · EPO OPS)",
+  "version": "0.1.1",
+  "description": "KIPRIS Plus(한국)와 EPO OPS(유럽특허청)로 특허 서지·패밀리·법적 상태·청구항을 조회합니다. 키는 각자 무료로 발급받아 입력합니다.",
+  "long_description": "인용문헌·대응 출원의 서지, INPADOC 패밀리, 법적 상태, 청구항·명세서 원문을 Claude에서 바로 조회하는 도구 7개를 제공합니다. KIPRIS Plus Open API(월 1,000회 무료)와 EPO OPS(주 4GB 무료) 키가 필요합니다. 키 발급 방법은 함께 배포되는 안내서를 참고하세요. 출원 전 사건의 발명 내용은 검색어로 보내지 마세요.",
+  "author": {
+    "name": "describug"
+  },
+  "license": "MIT",
+  "keywords": ["patent", "kipris", "epo", "ops", "특허"],
+  "server": {
+    "type": "uv",
+    "entry_point": "server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": ["run", "--directory", "${__dirname}", "server.py"],
+      "env": {
+        "PATENT_API_RUNTIME": "mcpb",
+        "KIPRIS_SERVICE_KEY": "${user_config.kipris_service_key}",
+        "EPO_OPS_CONSUMER_KEY": "${user_config.epo_consumer_key}",
+        "EPO_OPS_CONSUMER_SECRET": "${user_config.epo_consumer_secret}",
+        "KIPRIS_MONTHLY_LIMIT": "${user_config.kipris_monthly_limit}"
+      }
+    }
+  },
+  "tools": [
+    {"name": "kr_biblio", "description": "한국 출원번호로 서지 상세 조회 (KIPRIS)"},
+    {"name": "kr_search", "description": "공개된 한국 특허·실용신안 검색 (KIPRIS) — 출원 전 사건 내용으로 검색 금지"},
+    {"name": "ep_biblio", "description": "공개·등록번호로 서지·인용문헌 조회, 국가 무관 (EPO OPS)"},
+    {"name": "ep_text", "description": "청구항·명세서·초록 원문 (EPO OPS)"},
+    {"name": "family", "description": "INPADOC 패밀리 구성원 (EPO OPS)"},
+    {"name": "legal_status", "description": "INPADOC 법적 상태 이벤트 (EPO OPS)"},
+    {"name": "quota_status", "description": "KIPRIS 이번 달 호출 수, OPS 사용량"}
+  ],
+  "user_config": {
+    "kipris_service_key": {
+      "type": "string",
+      "title": "KIPRIS Plus 인증키",
+      "description": "plus.kipris.or.kr > 마이페이지 > API KEY 관리의 REST AccessKey. Open API '특허·실용 공개·등록공보'를 무료 플랜으로 신청해야 동작합니다.",
+      "sensitive": true,
+      "required": false
+    },
+    "epo_consumer_key": {
+      "type": "string",
+      "title": "EPO OPS Consumer Key",
+      "description": "developers.epo.org > My Apps에서 만든 앱의 Consumer Key",
+      "sensitive": true,
+      "required": false
+    },
+    "epo_consumer_secret": {
+      "type": "string",
+      "title": "EPO OPS Consumer Secret",
+      "description": "같은 앱의 Consumer Secret",
+      "sensitive": true,
+      "required": false
+    },
+    "kipris_monthly_limit": {
+      "type": "number",
+      "title": "KIPRIS 월 호출 한도",
+      "description": "이 횟수에 닿으면 새 조회를 멈춥니다(캐시는 계속 응답). 무료 플랜은 1000.",
+      "default": 1000,
+      "min": 1,
+      "required": false
+    }
+  },
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "python": ">=3.11"
+    }
+  }
+}

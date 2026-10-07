@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+  <header>
+    <successYN>Y</successYN>
+    <resultCode>00</resultCode>
+    <resultMsg></resultMsg>
+  </header>
+  <body>
+    <items>
+      <item>
+        <indexNo>1</indexNo>
+        <registerStatus>공개</registerStatus>
+        <inventionTitle>배터리 관리 장치 및 방법</inventionTitle>
+        <ipcNumber>H01M 10/42|H02J 7/00</ipcNumber>
+        <registerNumber></registerNumber>
+        <registerDate></registerDate>
+        <applicationNumber>1020240012345</applicationNumber>
+        <applicationDate>20240129</applicationDate>
+        <openNumber>1020250098765</openNumber>
+        <openDate>20250801</openDate>
+        <publicationNumber></publicationNumber>
+        <publicationDate></publicationDate>
+        <astrtCont>배터리 셀의 상태를 추정하는 배터리 관리 장치가 개시된다.</astrtCont>
+        <drawing>http://example.invalid/d.jpg</drawing>
+        <bigDrawing>http://example.invalid/D.jpg</bigDrawing>
+        <applicantName>주식회사 엘지에너지솔루션</applicantName>
+      </item>
+      <item>
+        <indexNo>2</indexNo>
+        <registerStatus>등록</registerStatus>
+        <inventionTitle>배터리 팩</inventionTitle>
+        <ipcNumber>H01M 50/20</ipcNumber>
+        <registerNumber>1027000000000</registerNumber>
+        <registerDate>20250310</registerDate>
+        <applicationNumber>2020230001234</applicationNumber>
+        <applicationDate>20230105</applicationDate>
+        <openNumber></openNumber>
+        <openDate></openDate>
+        <publicationNumber></publicationNumber>
+        <publicationDate>20250317</publicationDate>
+        <astrtCont></astrtCont>
+        <applicantName>주식회사 엘지에너지솔루션</applicantName>
+      </item>
+    </items>
+  </body>
+  <count>
+    <numOfRows>2</numOfRows>
+    <pageNo>1</pageNo>
+    <totalCount>137</totalCount>
+  </count>
+</response>

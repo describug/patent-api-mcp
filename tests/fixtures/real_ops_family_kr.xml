@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../../../../style/family.xsl"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ops:patent-family legal="false" total-result-count="6">
+        <ops:publication-reference>
+            <document-id document-id-type="docdb">
+                <country>EP</country>
+                <doc-number>4210193</doc-number>
+                <kind>B1</kind>
+            </document-id>
+        </ops:publication-reference>
+        <ops:family-member family-id="81854188">
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>EP</country>
+                    <doc-number>4210193</doc-number>
+                    <kind>A1</kind>
+                    <date>20230712</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>EP4210193</doc-number>
+                    <date>20230712</date>
+                </document-id>
+            </publication-reference>
+            <application-reference doc-id="574239917" is-representative="YES">
+                <document-id document-id-type="docdb">
+                    <country>EP</country>
+                    <doc-number>21900938</doc-number>
+                    <kind>A</kind>
+                    <date>20211126</date>
+                </document-id>
+            </application-reference>
+            <priority-claim sequence="1" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>2021017662</doc-number>
+                    <kind>W</kind>
+                    <date>20211126</date>
+                </document-id>
+                <priority-active-indicator>NO</priority-active-indicator>
+                <priority-linkage-type>W</priority-linkage-type>
+            </priority-claim>
+            <priority-claim sequence="2" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20200168607</doc-number>
+                    <kind>A</kind>
+                    <date>20201204</date>
+                </document-id>
+                <priority-active-indicator>YES</priority-active-indicator>
+            </priority-claim>
+        </ops:family-member>
+        <ops:family-member family-id="81854188">
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>EP</country>
+                    <doc-number>4210193</doc-number>
+                    <kind>A4</kind>
+                    <date>20240508</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>EP4210193</doc-number>
+                    <date>20240508</date>
+                </document-id>
+            </publication-reference>
+            <application-reference doc-id="574239917" is-representative="YES">
+                <document-id document-id-type="docdb">
+                    <country>EP</country>
+                    <doc-number>21900938</doc-number>
+                    <kind>A</kind>
+                    <date>20211126</date>
+                </document-id>
+            </application-reference>
+            <priority-claim sequence="1" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>2021017662</doc-number>
+                    <kind>W</kind>
+                    <date>20211126</date>
+                </document-id>
+                <priority-active-indicator>NO</priority-active-indicator>
+                <priority-linkage-type>W</priority-linkage-type>
+            </priority-claim>
+            <priority-claim sequence="2" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20200168607</doc-number>
+                    <kind>A</kind>
+                    <date>20201204</date>
+                </document-id>
+                <priority-active-indicator>YES</priority-active-indicator>
+            </priority-claim>
+        </ops:family-member>
+        <ops:family-member family-id="81854188">
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>EP</country>
+                    <doc-number>4210193</doc-number>
+                    <kind>B1</kind>
+                    <date>20260923</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>EP4210193</doc-number>
+                    <date>20260923</date>
+                </document-id>
+            </publication-reference>
+            <application-reference doc-id="574239917" is-representative="YES">
+                <document-id document-id-type="docdb">
+                    <country>EP</country>
+                    <doc-number>21900938</doc-number>
+                    <kind>A</kind>
+                    <date>20211126</date>
+                </document-id>
+            </application-reference>
+            <priority-claim sequence="1" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>2021017662</doc-number>
+                    <kind>W</kind>
+                    <date>20211126</date>
+                </document-id>
+                <priority-active-indicator>NO</priority-active-indicator>
+                <priority-linkage-type>W</priority-linkage-type>
+            </priority-claim>
+            <priority-claim sequence="2" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20200168607</doc-number>
+                    <kind>A</kind>
+                    <date>20201204</date>
+                </document-id>
+                <priority-active-indicator>YES</priority-active-indicator>
+            </priority-claim>
+        </ops:family-member>
+        <ops:family-member family-id="81854188">
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20220079145</doc-number>
+                    <kind>A</kind>
+                    <date>20220613</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>KR20220079145</doc-number>
+                    <date>20220613</date>
+                </document-id>
+            </publication-reference>
+            <application-reference doc-id="574416434">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20200168607</doc-number>
+                    <kind>A</kind>
+                    <date>20201204</date>
+                </document-id>
+            </application-reference>
+            <priority-claim sequence="1" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20200168607</doc-number>
+                    <kind>A</kind>
+                    <date>20201204</date>
+                </document-id>
+                <priority-active-indicator>YES</priority-active-indicator>
+            </priority-claim>
+        </ops:family-member>
+        <ops:family-member family-id="81849288">
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>2022181889</doc-number>
+                    <kind>A1</kind>
+                    <date>20220609</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>US2022181889</doc-number>
+                    <date>20220609</date>
+                </document-id>
+            </publication-reference>
+            <application-reference doc-id="573865654" is-representative="YES">
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>202117539575</doc-number>
+                    <kind>A</kind>
+                    <date>20211201</date>
+                </document-id>
+            </application-reference>
+            <priority-claim sequence="1" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>2021017662</doc-number>
+                    <kind>W</kind>
+                    <date>20211126</date>
+                </document-id>
+                <priority-active-indicator>NO</priority-active-indicator>
+                <priority-linkage-type>A</priority-linkage-type>
+            </priority-claim>
+            <priority-claim sequence="2" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20200168607</doc-number>
+                    <kind>A</kind>
+                    <date>20201204</date>
+                </document-id>
+                <priority-active-indicator>YES</priority-active-indicator>
+            </priority-claim>
+        </ops:family-member>
+        <ops:family-member family-id="81854188">
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>WO</country>
+                    <doc-number>2022119250</doc-number>
+                    <kind>A1</kind>
+                    <date>20220609</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>WO2022119250</doc-number>
+                    <date>20220609</date>
+                </document-id>
+            </publication-reference>
+            <application-reference doc-id="573923947">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>2021017662</doc-number>
+                    <kind>W</kind>
+                    <date>20211126</date>
+                </document-id>
+            </application-reference>
+            <priority-claim sequence="1" kind="national">
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20200168607</doc-number>
+                    <kind>A</kind>
+                    <date>20201204</date>
+                </document-id>
+                <priority-active-indicator>YES</priority-active-indicator>
+            </priority-claim>
+        </ops:family-member>
+    </ops:patent-family>
+</ops:world-patent-data>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ops:world-patent-data xmlns="http://www.epo.org/fulltext" xmlns:ops="http://ops.epo.org">
+  <ftxt:fulltext-documents xmlns="http://www.epo.org/exchange" xmlns:ftxt="http://www.epo.org/fulltext">
+    <ftxt:fulltext-document system="ops.epo.org" fulltext-format="text-only">
+      <ftxt:description lang="EN">
+        <ftxt:p num="0001">The invention relates to brick making.</ftxt:p>
+        <ftxt:p num="0002">Known apparatuses are slow.</ftxt:p>
+        <ftxt:p num="0003">The present apparatus is fast.</ftxt:p>
+      </ftxt:description>
+    </ftxt:fulltext-document>
+  </ftxt:fulltext-documents>
+</ops:world-patent-data>

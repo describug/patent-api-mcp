@@ -1,0 +1,21 @@
+# 비밀값
+.env
+.env.*
+!.env.example
+
+# 캐시·호출 기록
+data/
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mcp-smoke/
+
+# 확장 파일 빌드 결과
+dist/
+
+# 내부 개발 문서(개인 경로 포함) — 공개하지 않음
+patent-api-mcp_*.md
