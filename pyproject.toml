@@ -1,6 +1,6 @@
 [project]
 name = "patent-api-mcp"
-version = "0.2.0"
+version = "0.2.1"
 description = "KIPRIS Plus + EPO OPS를 하나로 감싼 로컬 MCP 서버"
 readme = "README.md"
 requires-python = ">=3.11"

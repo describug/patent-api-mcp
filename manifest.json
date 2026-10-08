@@ -2,7 +2,7 @@
   "manifest_version": "0.4",
   "name": "patent-api",
   "display_name": "Patent API (KIPRIS · EPO OPS)",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "KIPRIS Plus(한국)와 EPO OPS(유럽특허청)로 특허 서지·패밀리·법적 상태·청구항, 한국 심사 서류·청구항 변동·등록사항 등을 조회합니다. 키는 각자 무료로 발급받아 입력합니다.",
   "long_description": "인용문헌·대응 출원의 서지, INPADOC 패밀리, 법적 상태, 청구항·명세서 원문을 Claude에서 바로 조회합니다. KIPRIS Plus에서 추가 상품(의견제출통지서·거절결정서·등록결정서, 통지서 마감기한, 청구항 변동 이력, 등록사항, 인용·피인용문헌, 법적 상태 이력(ST.27), 특허 패밀리)을 신청했다면 설정에서 그 상품을 켜면 OA 대응·권리 분석용 도구가 함께 나타납니다. 신청하지 않은 상품을 켜 두면 첫 조회 때 신청 안내를 돌려줍니다. KIPRIS Plus Open API(신청 상품 전체 합산 월 1,000회 무료)와 EPO OPS(주 4GB 무료) 키가 필요합니다. 키 발급 방법은 함께 배포되는 안내서를 참고하세요. 출원 전 사건의 발명 내용은 검색어로 보내지 마세요.",
   "author": {
@@ -33,7 +33,6 @@
         "EPO_OPS_CONSUMER_KEY": "${user_config.epo_consumer_key}",
         "EPO_OPS_CONSUMER_SECRET": "${user_config.epo_consumer_secret}",
         "KIPRIS_MONTHLY_LIMIT": "${user_config.kipris_monthly_limit}",
-        "KIPRIS_PRODUCT_PUBLICATION": "${user_config.kipris_product_publication}",
         "KIPRIS_PRODUCT_OPINION": "${user_config.kipris_product_opinion}",
         "KIPRIS_PRODUCT_REJECTION": "${user_config.kipris_product_rejection}",
         "KIPRIS_PRODUCT_ALLOWANCE": "${user_config.kipris_product_allowance}",
@@ -133,13 +132,6 @@
       "description": "이 횟수에 닿으면 새 조회를 멈춥니다(캐시는 계속 응답). 무료 플랜은 신청한 상품 전체 합산 1000.",
       "default": 1000,
       "min": 1,
-      "required": false
-    },
-    "kipris_product_publication": {
-      "type": "boolean",
-      "title": "KIPRIS 상품: 특허·실용 공개·등록공보",
-      "description": "kr_biblio·kr_search. 기본 상품(키 발급 후 가장 먼저 신청). KIPRIS Plus에서 이 상품을 무료 신청한 경우에만 켜세요(안 했으면 첫 조회 때 신청 안내).",
-      "default": true,
       "required": false
     },
     "kipris_product_opinion": {

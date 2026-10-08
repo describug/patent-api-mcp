@@ -22,7 +22,7 @@ API 키는 들어 있지 않다 — 쓰는 사람이 각자 무료로 발급받�
 
 KIPRIS Plus는 상품마다 따로(무료) 신청한다. 신청한 상품을 설정에서 켜면 아래 도구가 나타난다.
 켜는 방법: 확장 설정의 **KIPRIS 상품** 체크칸, 또는 `.env`의 `PATENT_API_KIPRIS_PRODUCTS=쉼표목록`(`all` 가능)·
-`KIPRIS_PRODUCT_<이름>=true/false`(목록보다 우선). 기본은 `publication`만 켜져 있다.
+`KIPRIS_PRODUCT_<이름>=true/false`(목록보다 우선). `publication`(공개·등록공보)은 기본 상품이라 **항상 켜져 있다**(끌 수 없고, 확장 설정에도 체크칸이 없다).
 
 | 설정 이름 | KIPRIS 상품 | 도구 | 하는 일 | KIPRIS 호출 |
 |---|---|---|---|---|

@@ -127,7 +127,10 @@ def test_resolve_enabled_default_and_list():
     enabled, _ = P.resolve_enabled("all", {"family": "false"})
     assert "family" not in enabled and "registration" in enabled and len(enabled) == len(P.PRODUCTS) - 1
     enabled, warn = P.resolve_enabled("none,wrongname", {"deadline": "true"})
-    assert enabled == {"deadline"} and "wrongname" in warn[0]
+    assert enabled == {"publication", "deadline"} and "wrongname" in warn[0]
+    # 기본 상품(공개·등록공보)은 목록에서 빼거나 false로 꺼도 항상 켜진다
+    enabled, _ = P.resolve_enabled("opinion", {"publication": "false"})
+    assert enabled == {"publication", "opinion"}
 
 
 def test_settings_load_products_from_env(tmp_path, monkeypatch):
@@ -161,7 +164,7 @@ def test_tools_registered_only_for_enabled_products():
 
     ops_tools = {"ep_biblio", "ep_text", "family", "legal_status", "quota_status"}
     assert tools("publication") == ops_tools | {"kr_biblio", "kr_search"}
-    assert tools("opinion,citing") == ops_tools | {"kr_exam_documents", "kr_citations"}
+    assert tools("opinion,citing") == ops_tools | {"kr_biblio", "kr_search", "kr_exam_documents", "kr_citations"}
     assert tools("all") == ops_tools | {
         "kr_biblio", "kr_search", "kr_exam_documents", "kr_claim_history", "kr_deadlines",
         "kr_registration", "kr_citations", "kr_legal_history", "kr_family",
@@ -455,9 +458,10 @@ def test_registration_by_application_number(fixture_text):
     # 서지는 kr_biblio와 캐시를 같이 쓴다
     run(svc.kr_biblio(APP))
     assert fake.ops() == ["getBibliographyDetailInfoSearch", "registrationInfo"]
+    # 공개·등록공보는 항상 켜지므로 등록사항만 켜도 출원번호→등록번호 변환이 된다
     svc2 = make_service(fake, products="registration")
     r = run(svc2.kr_registration(application_number=APP))
-    assert r["ok"] is False and "등록번호로 넣어" in r["error"]["message"]
+    assert r["ok"] is True
 
 
 def test_registration_without_register_number(fixture_text):
