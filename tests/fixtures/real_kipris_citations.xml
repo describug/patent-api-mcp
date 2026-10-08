@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			<citationInfoV3>
+				<ApplicationNumber>1020200168607</ApplicationNumber>
+				<OriginalcitationLiteraturenumber>KR1020120103937 A</OriginalcitationLiteraturenumber>
+				<OriginalcitationLiteraturenumberDate> </OriginalcitationLiteraturenumberDate>
+				<StandardCitationLiteraturenumber>1020120103937</StandardCitationLiteraturenumber>
+				<StandardCitationLiteratureCountryCode>KR</StandardCitationLiteratureCountryCode>
+				<StandardCitationLiteratureCountryCodeName>대한민국</StandardCitationLiteratureCountryCodeName>
+				<StandardCitationIdentificationCode>A</StandardCitationIdentificationCode>
+				<StandardCitationLiteraturePublicationDate>20120920</StandardCitationLiteraturePublicationDate>
+				<StandardStatusCode>20001</StandardStatusCode>
+				<StandardStatusCodeName>표준화</StandardStatusCodeName>
+				<CitationLiteratureTypeCode>E0805</CitationLiteratureTypeCode>
+				<CitationLiteratureTypeCodeName>선행기술조사문헌</CitationLiteratureTypeCodeName>
+			</citationInfoV3>
+			<citationInfoV3>
+				<ApplicationNumber>1020200168607</ApplicationNumber>
+				<OriginalcitationLiteraturenumber>KR1020180103602 A</OriginalcitationLiteraturenumber>
+				<OriginalcitationLiteraturenumberDate> </OriginalcitationLiteraturenumberDate>
+				<StandardCitationLiteraturenumber>1020180103602</StandardCitationLiteraturenumber>
+				<StandardCitationLiteratureCountryCode>KR</StandardCitationLiteratureCountryCode>
+				<StandardCitationLiteratureCountryCodeName>대한민국</StandardCitationLiteratureCountryCodeName>
+				<StandardCitationIdentificationCode>A</StandardCitationIdentificationCode>
+				<StandardCitationLiteraturePublicationDate>20180919</StandardCitationLiteraturePublicationDate>
+				<StandardStatusCode>20001</StandardStatusCode>
+				<StandardStatusCodeName>표준화</StandardStatusCodeName>
+				<CitationLiteratureTypeCode>E0805</CitationLiteratureTypeCode>
+				<CitationLiteratureTypeCodeName>선행기술조사문헌</CitationLiteratureTypeCodeName>
+			</citationInfoV3>
+			<citationInfoV3>
+				<ApplicationNumber>1020200168607</ApplicationNumber>
+				<OriginalcitationLiteraturenumber>KR1020160113426 A</OriginalcitationLiteraturenumber>
+				<OriginalcitationLiteraturenumberDate> </OriginalcitationLiteraturenumberDate>
+				<StandardCitationLiteraturenumber>1020160113426</StandardCitationLiteraturenumber>
+				<StandardCitationLiteratureCountryCode>KR</StandardCitationLiteratureCountryCode>
+				<StandardCitationLiteratureCountryCodeName>대한민국</StandardCitationLiteratureCountryCodeName>
+				<StandardCitationIdentificationCode>A</StandardCitationIdentificationCode>
+				<StandardCitationLiteraturePublicationDate>20160929</StandardCitationLiteraturePublicationDate>
+				<StandardStatusCode>20001</StandardStatusCode>
+				<StandardStatusCodeName>표준화</StandardStatusCodeName>
+				<CitationLiteratureTypeCode>E0805</CitationLiteratureTypeCode>
+				<CitationLiteratureTypeCodeName>선행기술조사문헌</CitationLiteratureTypeCodeName>
+			</citationInfoV3>
+		</items>
+	</body>
+</response>

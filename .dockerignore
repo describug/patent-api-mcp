@@ -1,0 +1,24 @@
+# 이미지에는 실행에 필요한 파일만 넣는다(허용 목록 방식). 나머지는 모두 뺀다.
+*
+!pyproject.toml
+!uv.lock
+!server.py
+!core/
+!remote/
+
+# 위 허용 목록 안에서도 다시 뺄 것
+**/__pycache__
+**/*.py[cod]
+
+# 참고: 아래는 위 '*'로 이미 빠진다. 실수로 허용 목록을 넓혀도 들어가지 않게 적어 둔다.
+.env
+.env.*
+data/
+*.sqlite3
+tests/
+docs/
+patent-api-mcp_*.md
+.git/
+.venv/
+dist/
+*.mcpb

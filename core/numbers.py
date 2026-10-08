@@ -108,6 +108,41 @@ def normalize_kr_application_number(raw: str) -> str:
     return digits
 
 
+def normalize_kr_registration_number(raw: str) -> str:
+    """한국 특허·실용 등록번호를 KIPRIS 등록사항 형식(13자리: 10 + 7자리 + 0000)으로 바꾼다.
+
+    받는 형식: '10-3028032', '1030280320000', '10-3028032-0000', 'KR 10-3028032 B1', '103028032'
+    """
+    s = _clean(raw)
+    s = re.sub(r"^KR\s*[-.]?\s*", "", s)
+    s = re.sub(rf"\s*({_KIND_RE})$", "", s) if re.search(r"[0-9]\s*[A-Z][0-9]?$", s) else s
+    if not re.fullmatch(r"[0-9\s\-./]+", s):
+        raise PatentApiError(INVALID_INPUT, f"'{raw}'는 한국 등록번호 형식이 아닙니다. 예: 10-1234567")
+    parts = [p for p in re.split(r"[\s\-./]+", s) if p]
+    if len(parts) >= 2 and len(parts[0]) == 2 and len(parts[1]) <= 7:
+        digits = parts[0] + parts[1].zfill(7) + "".join(parts[2:])
+    else:
+        digits = "".join(parts)
+    right = digits[:2]
+    if right in _KR_OTHER_RIGHT_CODES:
+        raise PatentApiError(INVALID_INPUT, f"'{raw}'는 {_KR_OTHER_RIGHT_CODES[right]} 번호입니다. 이 도구는 특허·실용신안만 조회합니다.")
+    if right not in _KR_RIGHT_CODES:
+        raise PatentApiError(INVALID_INPUT, f"'{raw}'는 한국 특허·실용 등록번호 형식이 아닙니다. 예: 10-1234567")
+    if len(digits) == 9:
+        digits += "0000"
+    if len(digits) != 13 or not digits.endswith("0000"):
+        raise PatentApiError(
+            INVALID_INPUT,
+            f"'{raw}'는 한국 등록번호 형식이 아닙니다(10-NNNNNNN). 출원번호라면 application_number에 넣어 주세요.",
+        )
+    return digits
+
+
+def format_kr_registration(digits13: str) -> str:
+    """'1030280320000' → '10-3028032'"""
+    return f"{digits13[:2]}-{digits13[2:9]}"
+
+
 # ---------------------------------------------------------------------------
 # OPS 번호 (국가 무관)
 # ---------------------------------------------------------------------------

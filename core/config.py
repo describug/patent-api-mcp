@@ -5,9 +5,12 @@ from __future__ import annotations
 import os
 import shutil
 import sys
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import unquote
+
+from . import products as P
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_ENV_PATH = PROJECT_DIR / ".env"
@@ -26,6 +29,11 @@ def user_data_dir() -> Path:
     else:
         base = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local" / "share")
     return base / APP_NAME
+
+
+def remote_cache_path() -> Path:
+    """원격 모드 기본 캐시 위치. 컨테이너에서 쓰기 가능한 임시 폴더(Cloud Run은 재시작 시 비워진다)."""
+    return Path(tempfile.gettempdir()) / APP_NAME / "cache.sqlite3"
 
 
 def default_cache_path() -> Path:
@@ -103,6 +111,11 @@ class Settings:
     kipris_monthly_limit: int = 1000
     kipris_warn_at: int = 900
     kipris_base_url: str = "https://plus.kipris.or.kr/kipo-api/kipi/patUtiModInfoSearchSevice"
+    # 공개·등록공보 밖의 상품 대부분은 이 게이트웨이(인증 파라미터 accessKey)로 제공된다.
+    kipris_rest_base_url: str = "https://plus.kipris.or.kr/openapi/rest"
+    # 켤 KIPRIS 상품(core/products.py의 key). 기본은 '특허·실용 공개·등록공보'만.
+    kipris_products: frozenset[str] = P.DEFAULT_KEYS
+    config_warnings: list[str] = field(default_factory=list)
     ops_base_url: str = "https://ops.epo.org/3.2"
     cache_path: Path = field(default_factory=lambda: user_data_dir() / "cache.sqlite3")
     http_timeout: float = 20.0
@@ -112,23 +125,38 @@ class Settings:
     ttl_family: int = 7 * DAY
     ttl_legal: int = 1 * DAY
     ttl_search: int = 1 * DAY
+    ttl_docs: int = 1 * DAY  # 심사 서류·마감기한·청구항 이력·등록사항·법적 상태(자주 바뀜)
     # 긴 응답 상한(문자 수)
     max_text_chars: int = 20000
     env_path: Path = DEFAULT_ENV_PATH
 
-    runtime: str = "local"  # "mcpb"면 Claude 데스크톱 확장으로 설치된 것
+    runtime: str = "local"  # "mcpb"면 Claude 데스크톱 확장, "remote"면 원격 서버
 
     def key_hint(self) -> str:
         """키가 없을 때 어디에 넣으라고 안내할지."""
         if self.runtime == "mcpb":
             return "Claude 데스크톱 앱의 설정 > 확장 프로그램 > Patent API에서"
+        if self.runtime == "remote":
+            return "서버 관리자가 서버 환경변수(Cloud Run이면 Secret Manager 연결)에"
         return f"{self.env_path} 파일에"
+
+    def product_enabled(self, key: str) -> bool:
+        return key in self.kipris_products
+
+    def tool_enabled(self, tool: str) -> bool:
+        return P.tool_enabled(tool, self.kipris_products)
+
+    @property
+    def kipris_kipi_root(self) -> str:
+        """kipo-api 게이트웨이 뿌리(…/kipo-api/kipi). 서비스명은 호출 때 붙인다."""
+        return self.kipris_base_url.rstrip("/").rsplit("/", 1)[0]
 
     def secrets(self) -> list[str | None]:
         return [self.kipris_service_key, self.epo_consumer_key, self.epo_consumer_secret]
 
     @classmethod
-    def load(cls, env_path: Path | None = None) -> "Settings":
+    def load(cls, env_path: Path | None = None, *, remote: bool = False) -> "Settings":
+        """remote=True(원격 HTTP 모드)면 캐시 기본 위치를 임시 폴더로, runtime 기본값을 'remote'로 둔다."""
         env_path = env_path or DEFAULT_ENV_PATH
         env = load_env_file(env_path)
         # 실제 환경변수(확장 설치 시 입력값 포함)가 .env보다 우선한다. 빈 값은 덮어쓰지 않는다.
@@ -140,6 +168,10 @@ class Settings:
             return int(_float(env, name, default_days) * DAY)
 
         cache_path = _clean_value(env.get("PATENT_API_CACHE_PATH"))
+        products, warnings = P.resolve_enabled(
+            _clean_value(env.get("PATENT_API_KIPRIS_PRODUCTS")),
+            {p.key: _clean_value(env.get(P.env_flag_name(p.key))) for p in P.PRODUCTS},
+        )
         return cls(
             kipris_service_key=normalize_service_key(env.get("KIPRIS_SERVICE_KEY")),
             epo_consumer_key=_clean_value(env.get("EPO_OPS_CONSUMER_KEY")),
@@ -147,15 +179,19 @@ class Settings:
             kipris_monthly_limit=_int(env, "KIPRIS_MONTHLY_LIMIT", 1000),
             kipris_warn_at=_int(env, "KIPRIS_WARN_AT", 900),
             kipris_base_url=(env.get("KIPRIS_BASE_URL") or cls.kipris_base_url).rstrip("/"),
+            kipris_rest_base_url=(env.get("KIPRIS_REST_BASE_URL") or cls.kipris_rest_base_url).rstrip("/"),
+            kipris_products=products,
+            config_warnings=warnings,
             ops_base_url=(env.get("EPO_OPS_BASE_URL") or cls.ops_base_url).rstrip("/"),
-            cache_path=Path(cache_path).expanduser() if cache_path else default_cache_path(),
+            cache_path=Path(cache_path).expanduser() if cache_path else (remote_cache_path() if remote else default_cache_path()),
             http_timeout=_float(env, "PATENT_API_HTTP_TIMEOUT", 20.0),
             ttl_biblio=days("CACHE_TTL_BIBLIO_DAYS", 30),
             ttl_text=days("CACHE_TTL_TEXT_DAYS", 30),
             ttl_family=days("CACHE_TTL_FAMILY_DAYS", 7),
             ttl_legal=days("CACHE_TTL_LEGAL_DAYS", 1),
             ttl_search=days("CACHE_TTL_SEARCH_DAYS", 1),
+            ttl_docs=days("CACHE_TTL_DOCS_DAYS", 1),
             max_text_chars=_int(env, "PATENT_API_MAX_TEXT_CHARS", 20000),
             env_path=env_path,
-            runtime=(_clean_value(env.get("PATENT_API_RUNTIME")) or "local").lower(),
+            runtime=(_clean_value(env.get("PATENT_API_RUNTIME")) or ("remote" if remote else "local")).lower(),
         )

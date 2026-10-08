@@ -18,3 +18,12 @@ dist/
 tests/
 docs/
 patent-api-mcp_*.md
+
+# 원격 서버(HTTP 모드) 전용 — 확장(stdio)은 쓰지 않는다
+remote/
+Dockerfile
+.dockerignore
+
+# 클로드 작업 공간(worktree)·맥 폴더 정보 — 프로젝트 사본이 통째로 들어갈 수 있다
+.claude/
+.DS_Store

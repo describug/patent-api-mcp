@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode>00</resultCode>
+		<resultMsg>success</resultMsg>
+	</header>
+	<body>
+		<items>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>1</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>A10</keyEventCode>
+					<detailLawEventCode>A12</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>0</previousStageCode>
+					<currentStageCode>1</currentStageCode>
+					<eventIndicatorCode>NAP</eventIndicatorCode>
+					<nationalEventCode>PA0109</nationalEventCode>
+					<eventDate>20201204</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>2</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>Q10</keyEventCode>
+					<detailLawEventCode>Q12</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>1</previousStageCode>
+					<currentStageCode>1</currentStageCode>
+					<eventIndicatorCode>NAP</eventIndicatorCode>
+					<nationalEventCode>PG1501</nationalEventCode>
+					<eventDate>20220613</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>3</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>D10</keyEventCode>
+					<detailLawEventCode>D11</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>1</previousStageCode>
+					<currentStageCode>2</currentStageCode>
+					<eventIndicatorCode>EXM</eventIndicatorCode>
+					<nationalEventCode>PA0201</nationalEventCode>
+					<eventDate>20231108</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>4</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>D10</keyEventCode>
+					<detailLawEventCode>D21</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>1</previousStageCode>
+					<currentStageCode>2</currentStageCode>
+					<eventIndicatorCode>EXM</eventIndicatorCode>
+					<nationalEventCode>PE0902</nationalEventCode>
+					<eventDate>20250911</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>5</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>P10</keyEventCode>
+					<detailLawEventCode>P22</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>2</previousStageCode>
+					<currentStageCode>2</currentStageCode>
+					<eventIndicatorCode>NAP</eventIndicatorCode>
+					<nationalEventCode>X000</nationalEventCode>
+					<eventDate>20260106</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>6</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>E10</keyEventCode>
+					<detailLawEventCode>E13</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>2</previousStageCode>
+					<currentStageCode>3</currentStageCode>
+					<eventIndicatorCode>LIM</eventIndicatorCode>
+					<nationalEventCode>X000</nationalEventCode>
+					<eventDate>20260108</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>7</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>P10</keyEventCode>
+					<detailLawEventCode>P11</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>2</previousStageCode>
+					<currentStageCode>2</currentStageCode>
+					<eventIndicatorCode>NAP</eventIndicatorCode>
+					<nationalEventCode>X000</nationalEventCode>
+					<eventDate>20260108</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>8</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>R10</keyEventCode>
+					<detailLawEventCode>R18</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>3</previousStageCode>
+					<currentStageCode>3</currentStageCode>
+					<eventIndicatorCode>OTH</eventIndicatorCode>
+					<nationalEventCode>X000</nationalEventCode>
+					<eventDate>20260701</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>9</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>R10</keyEventCode>
+					<detailLawEventCode>R18</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>3</previousStageCode>
+					<currentStageCode>3</currentStageCode>
+					<eventIndicatorCode>OTH</eventIndicatorCode>
+					<nationalEventCode>X000</nationalEventCode>
+					<eventDate>20260706</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>10</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>D10</keyEventCode>
+					<detailLawEventCode>D22</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>1</previousStageCode>
+					<currentStageCode>2</currentStageCode>
+					<eventIndicatorCode>EXM</eventIndicatorCode>
+					<nationalEventCode>PE0701</nationalEventCode>
+					<eventDate>20260715</eventDate>
+				</legalStatusST27Info>
+			
+				<legalStatusST27Info>
+					<applicationNumber>1020200168607</applicationNumber>
+					<supplySerialNumber>11</supplySerialNumber>
+					<rightTypeCode> </rightTypeCode>
+					<applicationDate>20201204</applicationDate>
+					<openNumber>1020220079145</openNumber>
+					<openingDate>20220613</openingDate>
+					<registrationNumber> </registrationNumber>
+					<registrationDate> </registrationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate> </publicationDate>
+					<trialNumber> </trialNumber>
+					<demurrerNumber> </demurrerNumber>
+					<keyEventCode>R10</keyEventCode>
+					<detailLawEventCode>R18</detailLawEventCode>
+					<stateCode>A</stateCode>
+					<previousStageCode>3</previousStageCode>
+					<currentStageCode>3</currentStageCode>
+					<eventIndicatorCode>OTH</eventIndicatorCode>
+					<nationalEventCode>X000</nationalEventCode>
+					<eventDate>20260723</eventDate>
+				</legalStatusST27Info>
+			
+		</items>
+	</body>
+</response>

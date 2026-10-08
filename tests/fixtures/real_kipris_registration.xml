@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			<registrationInfo>
+				<registrationRightInfo>
+					<registrationNumber>1030280320000</registrationNumber>
+					<regReferenceNumber> </regReferenceNumber>
+					<registrationDate>20260930</registrationDate>
+					<assessmentDate>20260715</assessmentDate>
+					<expirationDate>20401204</expirationDate>
+					<terminationCauseName> </terminationCauseName>
+					<terminationDate> </terminationDate>
+					<applicationNumber>1020200168607</applicationNumber>
+					<appReferenceNumber> </appReferenceNumber>
+					<applicationDate>20201204</applicationDate>
+					<publicationNumber> </publicationNumber>
+					<publicationDate>20261007</publicationDate>
+					<internationRegistrationNumber> </internationRegistrationNumber>
+					<internationRegistrationDate> </internationRegistrationDate>
+					<originalApplicationNumber> </originalApplicationNumber>
+					<originalApplicationDate> </originalApplicationDate>
+					<trademarkRegistrationPublicNumber> </trademarkRegistrationPublicNumber>
+					<trademarkRegistrationPublicDate> </trademarkRegistrationPublicDate>
+					<classCode>H02J 7/00</classCode>
+					<titleOfInvention>복수의 배터리들을 충전하는 방법 및 그 방법을 적용한 전자 장치</titleOfInvention>
+					<titleOfInventionEng>METHOD TO CHARGE A PLURALITY OF BATTERIES AND  ELECTRONIC DEVICE APPLYING THE METHOD</titleOfInventionEng>
+					<claimCount>16</claimCount>
+					<priorityCountry> </priorityCountry>
+					<priorityDate> </priorityDate>
+					<priorityCount>0</priorityCount>
+					<dsNonExaminationTarget></dsNonExaminationTarget>
+				</registrationRightInfo>
+				<registrationRightHolderInfo>
+					<registrationRightHolderInfoA>	
+						<rankNumber>1</rankNumber>
+						<rankCorrelatorSerialNumber>1</rankCorrelatorSerialNumber>
+						<rankCorrelatorType>권리자</rankCorrelatorType>
+						<rankCorrelatorName>삼성전자주식회사</rankCorrelatorName>
+						<rankCorrelatorAddress>경기도 수원시 영통구...</rankCorrelatorAddress>
+					</registrationRightHolderInfoA>	
+					<registrationRightHolderInfoB>		
+						<rankNumber>1</rankNumber>
+						<documentName>설정등록</documentName>
+						<receiptDate>20260930</receiptDate>
+						<registrationCauseName> </registrationCauseName>
+						<indicationOfEvent> </indicationOfEvent>
+					</registrationRightHolderInfoB>
+				</registrationRightHolderInfo>
+				<registrationRightRankInfo>
+					<rankNumber>1</rankNumber>
+					<pertinentPartition>권리란</pertinentPartition>
+					<documentName>설정등록</documentName>
+					<originalRegistrationNumber> </originalRegistrationNumber>
+					<registrationPurpose> </registrationPurpose>
+					<registrationDate>20260930</registrationDate>
+					<registrationCauseName> </registrationCauseName>
+					<registrationCauseDate> </registrationCauseDate>
+					<receiptNumber>212026091750588</receiptNumber>
+					<receiptDate>20260930</receiptDate>
+					<disappearanceFlag>N</disappearanceFlag>
+					<disappearanceCauseName> </disappearanceCauseName>
+					<disappearanceDate> </disappearanceDate>
+					<internationalRegRecordDateMD> </internationalRegRecordDateMD>
+					<expirationDateMD> </expirationDateMD>
+					<latestRenewalDateMD> </latestRenewalDateMD>
+					<subDesignationDateMD> </subDesignationDateMD>
+					<contactId>&#034;N/A&#034;</contactId>
+					<disappCscd> </disappCscd>
+					<documentCode>0030101</documentCode>
+					<registrationCsCode> </registrationCsCode>
+					<registrationTpCode>20802</registrationTpCode>
+				</registrationRightRankInfo>
+				<registrationRightRankInfo>
+					<rankNumber>1</rankNumber>
+					<pertinentPartition>권리자란</pertinentPartition>
+					<documentName>설정등록</documentName>
+					<originalRegistrationNumber> </originalRegistrationNumber>
+					<registrationPurpose> </registrationPurpose>
+					<registrationDate>20260930</registrationDate>
+					<registrationCauseName> </registrationCauseName>
+					<registrationCauseDate> </registrationCauseDate>
+					<receiptNumber>212026091750588</receiptNumber>
+					<receiptDate>20260930</receiptDate>
+					<disappearanceFlag>N</disappearanceFlag>
+					<disappearanceCauseName> </disappearanceCauseName>
+					<disappearanceDate> </disappearanceDate>
+					<internationalRegRecordDateMD> </internationalRegRecordDateMD>
+					<expirationDateMD> </expirationDateMD>
+					<latestRenewalDateMD> </latestRenewalDateMD>
+					<subDesignationDateMD> </subDesignationDateMD>
+					<contactId>&#034;N/A&#034;</contactId>
+					<disappCscd> </disappCscd>
+					<documentCode>0030101</documentCode>
+					<registrationCsCode> </registrationCsCode>
+					<registrationTpCode>20802</registrationTpCode>
+				</registrationRightRankInfo>
+				<registrationFeeInfo>
+					<registrationDate>20260930</registrationDate>
+					<startAnnual>1</startAnnual>
+					<lastAnnual>3</lastAnnual>
+					<paymentDegree>1</paymentDegree>
+					<paymentFee>605000</paymentFee>
+					<paymentDate>20261001</paymentDate>				
+				</registrationFeeInfo>
+				<registrationLastRightHolderInfo>
+					<lastRightHolderNumber>119981042713</lastRightHolderNumber>
+					<lastRightHolderName>삼성전자주식회사</lastRightHolderName>
+					<lastRightHolderAddress>경기도 수원시 영통구...</lastRightHolderAddress>
+					<lastRightHolderCountry>대한민국</lastRightHolderCountry>			
+				</registrationLastRightHolderInfo>
+			</registrationInfo>
+		</items>
+	</body>
+</response>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode>101</resultCode>
+		<resultMsg>AccessKey&amp;ServiceID Is Not Registerd Error</resultMsg>
+	</header>
+	<body>
+		<items>
+		</items>
+	</body>
+</response>

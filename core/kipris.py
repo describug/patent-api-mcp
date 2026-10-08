@@ -38,7 +38,12 @@ RESULT_CODES: dict[str, tuple[str, str]] = {
     "32": (E.PERMISSION_DENIED, "등록되지 않은 IP에서 호출했습니다. KIPRIS Plus에 등록한 IP를 확인하세요"),
     "33": (E.AUTH_FAILED, "서명되지 않은 호출입니다"),
     "99": (E.UPSTREAM_ERROR, "KIPRIS 기타 오류"),
+    # openapi/rest 게이트웨이: 키가 틀렸거나 그 상품을 신청하지 않았을 때 모두 101을 준다(2026-10 실측).
+    "101": (E.PERMISSION_DENIED, "이 인증키로 해당 상품을 쓸 수 없습니다. KIPRIS Plus에서 그 상품을 신청했는지, 인증키가 맞는지 확인하세요"),
 }
+# 상품을 신청하지 않았거나(이용기간 없음) 접근이 거부된 경우의 resultCode.
+# kipo-api는 미신청 상품에 31(DEADLINE_HAS_EXPIRED_ERROR), openapi/rest는 101을 준다(2026-10 실측).
+NOT_SUBSCRIBED_CODES = {"20", "30", "31", "101"}
 NO_DATA_CODES = {"03"}  # NODATA_ERROR
 _NO_DATA_MSG = re.compile(r"(결과.*없|없습니다|NO[\s_]?DATA|NOT\s?FOUND)", re.I)
 
@@ -133,7 +138,7 @@ def check_header(root: ET.Element) -> bool:
     if auth_msg:
         code = root.findtext(".//returnReasonCode") or _AUTH_MSGS.get(auth_msg.strip(), "99")
         std, desc = RESULT_CODES.get(code.strip(), (E.UPSTREAM_ERROR, "KIPRIS 오류"))
-        raise PatentApiError(std, f"{desc} (KIPRIS {code.strip()} {auth_msg.strip()})")
+        raise PatentApiError(std, f"{desc} (KIPRIS {code.strip()} {auth_msg.strip()})", upstream_code=code.strip())
 
     code = (root.findtext(".//header/resultCode") or root.findtext(".//resultCode") or "").strip()
     msg = (root.findtext(".//header/resultMsg") or root.findtext(".//resultMsg") or "").strip()
@@ -153,7 +158,7 @@ def check_header(root: ET.Element) -> bool:
         raise PatentApiError(E.UPSTREAM_ERROR, f"KIPRIS가 실패를 알렸습니다: {msg or '사유 없음'}")
     std, desc = RESULT_CODES.get(code, (E.UPSTREAM_ERROR, "KIPRIS 오류"))
     detail = f" — {msg}" if msg else ""
-    raise PatentApiError(std, f"{desc} (KIPRIS resultCode {code}{detail})")
+    raise PatentApiError(std, f"{desc} (KIPRIS resultCode {code}{detail})", upstream_code=code)
 
 
 def _items(root: ET.Element, array_tag: str, item_tag: str) -> list[ET.Element]:
@@ -342,9 +347,13 @@ class KiprisClient:
         http: httpx.AsyncClient,
         on_call: Callable[[], Any] | None = None,
         key_hint: str = ".env 파일에",
+        rest_base_url: str | None = None,
     ):
         self._key = service_key
         self._base = base_url.rstrip("/")
+        # kipo-api 게이트웨이 뿌리(…/kipo-api/kipi)와 openapi/rest 게이트웨이
+        self._kipi_root = self._base.rsplit("/", 1)[0]
+        self._rest_base = (rest_base_url or "https://plus.kipris.or.kr/openapi/rest").rstrip("/")
         self._http = http
         self._on_call = on_call
         self._key_hint = key_hint
@@ -358,12 +367,21 @@ class KiprisClient:
             )
 
     async def _get(self, operation: str, params: dict[str, Any]) -> str:
+        return await self._request(f"{self._base}/{operation}", params, "ServiceKey")
+
+    async def kipi(self, service: str, operation: str, params: dict[str, Any]) -> str:
+        """kipo-api 게이트웨이(인증 파라미터 ServiceKey)의 다른 서비스를 부른다. 응답 XML을 돌려준다."""
+        return await self._request(f"{self._kipi_root}/{service}/{operation}", params, "ServiceKey")
+
+    async def rest(self, service: str, operation: str, params: dict[str, Any]) -> str:
+        """openapi/rest 게이트웨이(인증 파라미터 accessKey)를 부른다. 응답 XML을 돌려준다."""
+        return await self._request(f"{self._rest_base}/{service}/{operation}", params, "accessKey")
+
+    async def _request(self, url: str, params: dict[str, Any], auth_param: str) -> str:
         self.require_key()
         query = {k: v for k, v in params.items() if v not in (None, "")}
-        query["ServiceKey"] = self._key
-        resp = await request_with_retry(
-            self._http, "GET", f"{self._base}/{operation}", source=SOURCE, params=query, on_send=self._on_call
-        )
+        query[auth_param] = self._key
+        resp = await request_with_retry(self._http, "GET", url, source=SOURCE, params=query, on_send=self._on_call)
         if resp.status_code in (401, 403):
             raise PatentApiError(
                 E.AUTH_FAILED,

@@ -1,0 +1,10 @@
+<response>
+<header>
+<requestMsgID/>
+<responseTime>2026-10-08 13:44:29</responseTime>
+<responseMsgID/>
+<successYN>N</successYN>
+<resultCode>31</resultCode>
+<resultMsg>DEADLINE_HAS_EXPIRED_ERROR</resultMsg>
+</header>
+</response>

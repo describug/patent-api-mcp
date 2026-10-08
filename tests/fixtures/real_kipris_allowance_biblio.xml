@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			<bibliographicInfoList>
+				<bibliographicInfo>
+					<applicationNumber>1020200168607</applicationNumber>
+					<sendNumber>952026064420527</sendNumber>
+					<serialNumber></serialNumber>
+					<documentSendNumber>952026064420527</documentSendNumber>
+					<sendDate>20260715</sendDate>
+					<documentSentence> </documentSentence>
+					<documentType> </documentType>
+					<documentPublicationInstitution>지 식 재 산 처</documentPublicationInstitution>
+					<documentName>특허결정서</documentName>
+					<documentDrawupDate>20260715</documentDrawupDate>
+					<documentApplicationNumber>1020200168607</documentApplicationNumber>
+					<inventionName>복수의 배터리들을 충전하는 방법 및 그 방법을 적용한 전자 장치</inventionName>
+					<demandItemcount>16</demandItemcount>
+					<originalRegistrationNumber> </originalRegistrationNumber>
+					<designSerialNumber> </designSerialNumber>
+				</bibliographicInfo>
+			</bibliographicInfoList>	
+		</items>
+	</body>
+</response>

@@ -9,6 +9,7 @@ from __future__ import annotations
 CONFIG_MISSING_KEY = "CONFIG_MISSING_KEY"      # .env에 키가 없음
 AUTH_FAILED = "AUTH_FAILED"                    # 키가 틀렸거나 만료
 PERMISSION_DENIED = "PERMISSION_DENIED"        # 키는 맞지만 해당 기능 권한 없음
+PRODUCT_NOT_SUBSCRIBED = "PRODUCT_NOT_SUBSCRIBED"  # KIPRIS Plus에서 그 상품을 신청하지 않음(또는 이용기간 끝)
 QUOTA_EXCEEDED = "QUOTA_EXCEEDED"              # 월/주 한도 초과
 RATE_LIMITED = "RATE_LIMITED"                  # 단시간 호출 과다
 INVALID_INPUT = "INVALID_INPUT"                # 입력 형식 오류
@@ -24,11 +25,12 @@ PARSE_ERROR = "PARSE_ERROR"                    # 응답을 해석할 수 없음
 class PatentApiError(Exception):
     """도구 응답의 ``error`` 로 그대로 옮겨지는 예외."""
 
-    def __init__(self, code: str, message: str, *, retryable: bool = False):
+    def __init__(self, code: str, message: str, *, retryable: bool = False, upstream_code: str | None = None):
         super().__init__(message)
         self.code = code
         self.message = message
         self.retryable = retryable
+        self.upstream_code = upstream_code  # 상대 서버가 준 원래 코드(KIPRIS resultCode 등)
 
     def to_dict(self) -> dict:
         return {"code": self.code, "message": self.message}

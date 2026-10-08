@@ -19,3 +19,6 @@ dist/
 
 # 내부 개발 문서(개인 경로 포함) — 공개하지 않음
 patent-api-mcp_*.md
+
+# 맥 폴더 정보 파일
+.DS_Store

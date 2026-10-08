@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			<dueDateApplicationNoticeApplnoInfoList>
+				<ApplicationNumber>1020200168607</ApplicationNumber>
+				<AppReferenceNumber> </AppReferenceNumber>
+				<Mailingnumber>952025088260221</Mailingnumber>
+				<DocNm>의견제출통지서</DocNm>
+				<ExpirationDuedateDate>20260111</ExpirationDuedateDate>
+			</dueDateApplicationNoticeApplnoInfoList>
+		</items>
+	</body>
+</response>

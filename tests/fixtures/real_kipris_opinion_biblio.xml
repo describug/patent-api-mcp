@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			<bibliographicInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<sendNumber>952025088260221</sendNumber>
+				<documentSendNumber>952025088260221</documentSendNumber>
+				<sendDate>20250911</sendDate>
+				<submitDuedate>20260111</submitDuedate>
+				<publicationInstitution>특  허  청</publicationInstitution>
+				<documentName>의견제출통지서</documentName>
+				<documentCode> </documentCode>
+				<documentKind> </documentKind>
+				<rightNumber> </rightNumber>
+				<documentApplicationNumber>1020200168607</documentApplicationNumber>
+				<inventionTitle>복수의 배터리들을 충전하는 방법 및 그 방법을 적용한 전자 장치</inventionTitle>
+				<documentSentence> </documentSentence>
+				<registrationNumber> </registrationNumber>
+				<technologyNumber> </technologyNumber>
+				<technologyDate> </technologyDate>
+				<oppositionNumber> </oppositionNumber>
+				<oppositionDate> </oppositionDate>
+				<technologyDescription> </technologyDescription>
+				<relationApplicationNumber> </relationApplicationNumber>
+				<designSerialNumber> </designSerialNumber>
+				<applicationDate>20201204</applicationDate>
+			</bibliographicInfo>
+		</items>
+	</body>
+</response>

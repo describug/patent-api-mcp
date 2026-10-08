@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode>00</resultCode>
+		<resultMsg>조회성공(Normal Service)</resultMsg>
+	</header>
+	<body>
+		<items>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>1</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>전자 장치에 있어서, &lt;br /&gt;차저(charger);&lt;br /&gt;상기 차저와 제1 경로로 연결된 제1 배터리 팩;&lt;br /&gt;상기 제1 경로보다 임피던스가 큰 제2 경로로 상기 차저와 연결된 제2 배터리 팩; 및&lt;br /&gt;상기 차저, 상기 제1 배터리 팩 및 상기 제2 배터리 팩에 전기적으로 연결된 프로세서;를 포함하며,&lt;br /&gt;상기 프로세서는:&lt;br /&gt;제1 조건을 만족함에 따라 상기 제1 배터리 팩에 포함된 제1 로드 스위치의 정전류 기능을 활성화하고,&lt;br /&gt;상기 제1 로드 스위치의 정전류 기능이 비활성화될 때까지 상기 차저의 출력 전류를 감소시키도록 상기 차저를 제어하도록 구성된, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>2</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 1에 있어서, &lt;br /&gt;상기 제1 배터리 팩은 제1 배터리 셀, 상기 제1 로드 스위치, 제3 로드 스위치, 상기 제1 배터리 셀의 양단에 걸리는 제1 배터리 셀 전압을 검측하는 제1 전압 검측 회로, 상기 제1 로드 스위치와 상기 제3 로드 스위치 사이에 위치하는 노드에 흐르는 제1 배터리 셀 전류를 검측하는 제1 전류 검측 회로를 포함하며,&lt;br /&gt;상기 제2 배터리 팩은 제2 배터리 셀, 제2 로드 스위치, 제4 로드 스위치, 상기 제2 배터리 셀의 양단에 걸리는 제2 배터리 셀 전압을 검측하는 제2 전압 검측 회로, 상기 제2 로드 스위치와 상기 제4 로드 스위치 사이에 위치하는 노드에 흐르는 제2 배터리 셀 전류를 검측하는 제2 전류 검측 회로를 포함하는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>3</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 2에 있어서, &lt;br /&gt;상기 제1 조건은 상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 이상인지 여부이고,&lt;br /&gt;상기 프로세서는 상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 상기 최대 허용 전류 이상이라고 판단함에 따라 상기 제1 배터리 팩에 포함된 상기 제1 로드 스위치의 정전류 기능을 활성화하는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>4</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 2에 있어서, &lt;br /&gt;상기 제1 배터리 팩의 상기 제1 로드 스위치의 정전류 기능이 활성화됨에 따라 상기 제1 로드 스위치는 상기 제1 배터리 셀 전류가 제1 배터리 셀의 최대 허용 전류 미만이 되도록 제어하는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>5</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 2에 있어서, 상기 프로세서는,&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 미만이 됨에 따라 상기 제1 로드 스위치의 정전류 기능을 비활성화하도록 제어하는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>6</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 2에 있어서, 상기 프로세서는,&lt;br /&gt;제2 조건을 만족함에 따라 상기 차저의 기준 전압을 상기 제1 배터리 셀 전압에서 상기 제2 배터리 셀 전압으로 변경하도록 구성된, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>7</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 6에 있어서,&lt;br /&gt;상기 제2 조건은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 간의 차이가 임계 전압 값 이상인지 여부인, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>8</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 6에 있어서, 상기 프로세서는,&lt;br /&gt;상기 제2 조건을 만족함에 따라, 상기 제1 로드 스위치의 목표 전압 값을 상기 제1 배터리 셀의 만충 전압으로 설정하고 상기 제1 로드 스위치의 정전압 기능을 활성화하도록 구성된, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>9</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 6에 있어서, 상기 프로세서는,&lt;br /&gt;상기 제2 조건을 만족하지 않음에 따라, 상기 차저의 상기 제어 기준 전압은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 중 큰 값으로 결정하도록 구성되는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>10</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 6에 있어서, &lt;br /&gt;상기 프로세서는, 상기 차저의 상기 기준 전압이 상기 차저의 목표 전압 값에 도달할 때까지 차저의 출력 전류를 정전류로 제어하며, 상기 기준 전압이 상기 차저의 목표 전압 값에 도달하면 상기 기준 전압이 상기 차저의 목표 전압 값을 유지하도록 상기 차저의 출력 전류를 정전압으로 제어하도록 구성되고,&lt;br /&gt;상기 차저의 목표 전압 값은 상기 제1 배터리 셀 또는 상기 제2 배터리 셀의 만충 전압인, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>11</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>차저와 제1 경로로 연결된 제1 배터리 팩과 상기 제1 경로보다 임피던스가 큰 제2 경로로 상기 차저와 연결된 제2 배터리 팩을 포함하는 전자 장치의 배터리 충전 방법에 있어서,&lt;br /&gt;상기 전자 장치의 프로세서는, 제1 조건을 만족함에 따라 상기 제1 배터리 팩에 포함된 제1 로드 스위치의 정전류 기능을 활성화하고,&lt;br /&gt;상기 제1 로드 스위치의 정전류 기능이 비활성화될 때까지 상기 차저의 출력 전류를 감소시키도록 상기 차저를 제어하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>12</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 11에 있어서, &lt;br /&gt;상기 제1 배터리 팩은 제1 배터리 셀, 상기 제1 로드 스위치, 제3 로드 스위치, 상기 제1 배터리 셀의 양단에 걸리는 제1 배터리 셀 전압을 검측하는 제1 전압 검측 회로, 상기 제1 로드 스위치와 상기 제3 로드 스위치 사이에 위치하는 노드에 흐르는 제1 배터리 셀 전류를 검측하는 제1 전류 검측 회로를 포함하며,&lt;br /&gt;상기 제2 배터리 팩은 제2 배터리 셀, 제2 로드 스위치, 제4 로드 스위치, 상기 제2 배터리 셀의 양단에 걸리는 제2 배터리 셀 전압을 검측하는 제2 전압 검측 회로, 상기 제2 로드 스위치와 상기 제4 로드 스위치 사이에 위치하는 노드에 흐르는 제2 배터리 셀 전류를 검측하는 제2 전류 검측 회로를 포함하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>13</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 12에 있어서, &lt;br /&gt;상기 제1 조건은 상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 이상인지 여부이고,&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 상기 최대 허용 전류 이상이라고 판단함에 따라 상기 제1 배터리 팩에 포함된 상기 제1 로드 스위치의 정전류 기능을 활성화하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>14</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 12에 있어서, &lt;br /&gt;상기 제1 배터리 팩의 상기 제1 로드 스위치의 정전류 기능이 활성화됨에 따라 상기 제1 로드 스위치는 상기 제1 배터리 셀 전류가 제1 배터리 셀의 최대 허용 전류 미만이되도록 제어하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>15</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 12에 있어서, &lt;br /&gt;상기 프로세서는, 상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 미만이 됨에 따라 상기 제1 로드 스위치의 정전류 기능을 비활성화하도록 제어하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>16</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 12에 있어서, &lt;br /&gt;상기 프로세서는, 제2 조건을 만족함에 따라 상기 차저의 기준 전압을 상기 제1 배터리 셀 전압에서 상기 제2 배터리 셀 전압으로 변경하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>17</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 16에 있어서,&lt;br /&gt;상기 제2 조건은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 간의 차이가 임계 전압 값 이상인지 여부인, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>18</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 16에 있어서, &lt;br /&gt;상기 프로세서는, 상기 제2 조건을 만족함에 따라, 상기 제1 로드 스위치의 목표 전압 값을 상기 제1 배터리 셀의 만충 전압으로 설정하고 상기 제1 로드 스위치의 정전압 기능을 활성화하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>19</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 16에 있어서, &lt;br /&gt;상기 프로세서는, 상기 제2 조건을 만족하지 않음에 따라, 상기 차저의 상기 제어 기준 전압은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 중 큰 값으로 결정하는, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<petitionclauseNumber>20</petitionclauseNumber>
+				<changeTypeCode>I</changeTypeCode>
+				<changeTypeName>신규</changeTypeName>
+				<petitionclause>청구항 16에 있어서, &lt;br /&gt;상기 프로세서는, 상기 차저의 상기 기준 전압이 상기 차저의 목표 전압 값에 도달할 때까지 차저의 출력 전류를 정전류로 제어하며, 상기 기준 전압이 상기 차저의 목표 전압 값에 도달하면 상기 기준 전압이 상기 차저의 목표 전압 값을 유지하도록 상기 차저의 출력 전류를 정전압으로 제어하고,&lt;br /&gt;상기 차저의 목표 전압 값은 상기 제1 배터리 셀 또는 상기 제2 배터리 셀의 만충 전압인, 전자 장치의 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>1</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>전자 장치에 있어서, &lt;br /&gt;차저(charger);&lt;br /&gt;상기 차저와 제1 경로로 연결된 제1 배터리 팩;&lt;br /&gt;상기 제1 경로보다 임피던스가 큰 제2 경로로 상기 차저와 연결된 제2 배터리 팩; 및&lt;br /&gt;상기 차저, 상기 제1 배터리 팩 및 상기 제2 배터리 팩에 전기적으로 연결된 프로세서;를 포함하며,&lt;br /&gt;상기 제1 배터리 팩은 제1 배터리 셀, 제1 로드 스위치, 상기 제1 배터리 셀의 양단에 걸리는 제1 배터리 셀 전압을 검측하는 제1 전압 검측 회로, 상기 제1 로드 스위치를 통해 흐르는 제1 배터리 셀 전류를 검측하는 제1 전류 검측 회로를 포함하고,&lt;br /&gt;상기 프로세서는:&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 이상인 경우, 상기 제1 로드 스위치의 정전류 기능을 활성화하고,&lt;br /&gt;상기 제1 로드 스위치의 정전류 기능이 비활성화될 때까지 상기 차저의 출력 전류를 감소시키도록 상기 차저를 제어하도록 구성된, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>전자 장치에 있어서, &lt;br /&gt;차저(charger);&lt;br /&gt;상기 차저와 제1 경로로 연결된 제1 배터리 팩;&lt;br /&gt;상기 제1 경로보다 임피던스가 큰 제2 경로로 상기 차저와 연결된 제2 배터리 팩; 및&lt;br /&gt;상기 차저, 상기 제1 배터리 팩 및 상기 제2 배터리 팩에 전기적으로 연결된 프로세서;를 포함하며,&lt;br /&gt;&lt;Ins&gt;상기 제1 배터리 팩은 제1 배터리 셀, 제1 로드 스위치, 상기 제1 배터리 셀의 양단에 걸리는 제1 배터리 셀 전압을 검측하는 제1 전압 검측 회로, 상기 제1 로드 스위치를 통해 흐르는 제1 배터리 셀 전류를 검측하는 제1 전류 검측 회로를 포함하고,&lt;br /&gt;&lt;/Ins&gt;상기 프로세서는:&lt;br /&gt;&lt;Ins&gt;상기 &lt;/Ins&gt;제1 &lt;Del&gt;조건을&lt;/Del&gt;&lt;Ins&gt;배터리&lt;/Ins&gt;&lt;Del&gt;만족함에&lt;/Del&gt;&lt;Ins&gt;셀&lt;/Ins&gt;&lt;Del&gt;따라&lt;/Del&gt;&lt;Ins&gt;전류가&lt;/Ins&gt; 상기 제1 배터리 &lt;Del&gt;팩에&lt;/Del&gt;&lt;Ins&gt;셀의 최대 허용 전류 이상인 경우,&lt;/Ins&gt;&lt;Del&gt;포함된&lt;/Del&gt;&lt;Ins&gt;상기&lt;/Ins&gt; 제1 로드 스위치의 정전류 기능을 활성화하고,&lt;br /&gt;상기 제1 로드 스위치의 정전류 기능이 비활성화될 때까지 상기 차저의 출력 전류를 감소시키도록 상기 차저를 제어하도록 구성된, 전자 장치.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>2</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 1에 있어서, &lt;br /&gt;상기 제2 배터리 팩은 제2 배터리 셀, 제2 로드 스위치, 상기 제2 배터리 셀의 양단에 걸리는 제2 배터리 셀 전압을 검측하는 제2 전압 검측 회로, 상기 제2 로드 스위치를 통해 흐르는 제2 배터리 셀 전류를 검측하는 제2 전류 검측 회로를 포함하는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 1에 있어서, &lt;Del&gt;&lt;br /&gt;상기 제1 배터리 팩은 제1 배터리 셀, 상기 제1 로드 스위치, 제3 로드 스위치, 상기 제1 배터리 셀의 양단에 걸리는 제1 배터리 셀 전압을 검측하는 제1 전압 검측 회로, 상기 제1 로드 스위치와 상기 제3 로드 스위치 사이에 위치하는 노드에 흐르는 제1 배터리 셀 전류를 검측하는 제1 전류 검측 회로를 포함하며,&lt;br /&gt;&lt;/Del&gt;&lt;Ins&gt;&lt;br /&gt;&lt;/Ins&gt;상기 제2 배터리 팩은 제2 배터리 셀, 제2&lt;Del&gt; 로드 스위치, 제4&lt;/Del&gt; 로드 스위치, 상기 제2 배터리 셀의 양단에 걸리는 제2 배터리 셀 전압을 검측하는 제2 전압 검측 회로, 상기 제2 로드 스위치&lt;Del&gt;와 상기 제4 로드 스위치 사이에 위치하는&lt;/Del&gt;&lt;Ins&gt;를&lt;/Ins&gt;&lt;Del&gt;노드에&lt;/Del&gt;&lt;Ins&gt;통해&lt;/Ins&gt; 흐르는 제2 배터리 셀 전류를 검측하는 제2 전류 검측 회로를 포함하는, 전자 장치.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>3</petitionclauseNumber>
+				<changeTypeCode>D</changeTypeCode>
+				<changeTypeName>삭제</changeTypeName>
+				<petitionclause> </petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>4</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 1에 있어서, &lt;br /&gt;상기 제1 배터리 팩의 상기 제1 로드 스위치의 정전류 기능이 활성화됨에 따라 상기 제1 로드 스위치는 상기 제1 배터리 셀 전류가 제1 배터리 셀의 최대 허용 전류 미만이 되도록 제어하는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 &lt;Del&gt;2&lt;/Del&gt;&lt;Ins&gt;1&lt;/Ins&gt;에 있어서, &lt;br /&gt;상기 제1 배터리 팩의 상기 제1 로드 스위치의 정전류 기능이 활성화됨에 따라 상기 제1 로드 스위치는 상기 제1 배터리 셀 전류가 제1 배터리 셀의 최대 허용 전류 미만이 되도록 제어하는, 전자 장치.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>5</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 1에 있어서, 상기 프로세서는,&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 미만이 됨에 따라 상기 제1 로드 스위치의 정전류 기능을 비활성화하도록 제어하는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 &lt;Del&gt;2&lt;/Del&gt;&lt;Ins&gt;1&lt;/Ins&gt;에 있어서, 상기 프로세서는,&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 미만이 됨에 따라 상기 제1 로드 스위치의 정전류 기능을 비활성화하도록 제어하는, 전자 장치.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>6</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 2에 있어서, 상기 프로세서는,&lt;br /&gt;상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 간의 차이가 임계 전압 값 이상인 조건을 만족함에 따라 상기 차저의 기준 전압을 상기 제1 배터리 셀 전압에서 상기 제2 배터리 셀 전압으로 변경하도록 구성된, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 2에 있어서, 상기 프로세서는,&lt;br /&gt;&lt;Ins&gt;상기 제1 배터리 셀 전압과 상기 &lt;/Ins&gt;제2&lt;Ins&gt; 배터리 셀 전압 간의 차이가 임계 전압 값 이상인&lt;/Ins&gt; 조건을 만족함에 따라 상기 차저의 기준 전압을 상기 제1 배터리 셀 전압에서 상기 제2 배터리 셀 전압으로 변경하도록 구성된, 전자 장치.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>7</petitionclauseNumber>
+				<changeTypeCode>D</changeTypeCode>
+				<changeTypeName>삭제</changeTypeName>
+				<petitionclause> </petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>8</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 6에 있어서, 상기 프로세서는,&lt;br /&gt;상기 조건을 만족함에 따라, 상기 제1 로드 스위치의 목표 전압 값을 상기 제1 배터리 셀의 만충 전압으로 설정하고 상기 제1 로드 스위치의 정전압 기능을 활성화하도록 구성된, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 6에 있어서, 상기 프로세서는,&lt;br /&gt;상기&lt;Del&gt; 제2&lt;/Del&gt; 조건을 만족함에 따라, 상기 제1 로드 스위치의 목표 전압 값을 상기 제1 배터리 셀의 만충 전압으로 설정하고 상기 제1 로드 스위치의 정전압 기능을 활성화하도록 구성된, 전자 장치.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>9</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 6에 있어서, 상기 프로세서는,&lt;br /&gt;상기 조건을 만족하지 않음에 따라, 상기 차저의 상기 제어 기준 전압은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 중 큰 값으로 결정하도록 구성되는, 전자 장치.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 6에 있어서, 상기 프로세서는,&lt;br /&gt;상기&lt;Del&gt; 제2&lt;/Del&gt; 조건을 만족하지 않음에 따라, 상기 차저의 상기 제어 기준 전압은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 중 큰 값으로 결정하도록 구성되는, 전자 장치.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>11</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>차저와 제1 경로로 연결된 제1 배터리 팩과 상기 제1 경로보다 임피던스가 큰 제2 경로로 상기 차저와 연결된 제2 배터리 팩을 포함하는 전자 장치의 배터리 충전 방법에 있어서,&lt;br /&gt;상기 제1 배터리 팩은 제1 배터리 셀, 제1 로드 스위치, 상기 제1 배터리 셀의 양단에 걸리는 제1 배터리 셀 전압을 검측하는 제1 전압 검측 회로, 상기 제1 로드 스위치를 통해 흐르는 제1 배터리 셀 전류를 검측하는 제1 전류 검측 회로를 포함하고,&lt;br /&gt;상기 배터리 충전 방법은,&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 이상인 경우, 상기 제1 로드 스위치의 정전류 기능을 활성화하는 동작;&lt;br /&gt;상기 제1 로드 스위치의 정전류 기능이 비활성화될 때까지 상기 차저의 출력 전류를 감소시키도록 상기 차저를 제어하는 동작을 포함하는, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>차저와 제1 경로로 연결된 제1 배터리 팩과 상기 제1 경로보다 임피던스가 큰 제2 경로로 상기 차저와 연결된 제2 배터리 팩을 포함하는 전자 장치의 배터리 충전 방법에 있어서,&lt;br /&gt;상기 &lt;Del&gt;전자&lt;/Del&gt;&lt;Ins&gt;제1&lt;/Ins&gt;&lt;Del&gt;장&lt;/Del&gt;&lt;Ins&gt;배터리 팩은 제1 배터리 셀, 제1 로드 스위&lt;/Ins&gt;치&lt;Ins&gt;, 상기 제1 배터리 셀&lt;/Ins&gt;의 &lt;Del&gt;프로세서&lt;/Del&gt;&lt;Ins&gt;양단에 걸리&lt;/Ins&gt;는&lt;Del&gt;,&lt;/Del&gt; 제1 &lt;Del&gt;조건&lt;/Del&gt;&lt;Ins&gt;배터리 셀 전압&lt;/Ins&gt;을 &lt;Del&gt;만족함에&lt;/Del&gt;&lt;Ins&gt;검측하는&lt;/Ins&gt;&lt;Del&gt;따라&lt;/Del&gt;&lt;Ins&gt;제1 전압 검측 회로,&lt;/Ins&gt; 상기 제1 &lt;Ins&gt;로드 스위치를 통해 흐르는 제1 &lt;/Ins&gt;배터리 &lt;Del&gt;팩에&lt;/Del&gt;&lt;Ins&gt;셀 전류를 검측하는 제1 전류 검측 회로를&lt;/Ins&gt; 포함&lt;Del&gt;된&lt;/Del&gt;&lt;Ins&gt;하고,&lt;br /&gt;상기 배터리 충전 방법은,&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 이상인 경우, 상기&lt;/Ins&gt; 제1 로드 스위치의 정전류 기능을 활성화하&lt;Del&gt;고,&lt;/Del&gt;&lt;Ins&gt;는 동작;&lt;/Ins&gt;&lt;br /&gt;상기 제1 로드 스위치의 정전류 기능이 비활성화될 때까지 상기 차저의 출력 전류를 감소시키도록 상기 차저를 제어하는&lt;Del&gt;,&lt;/Del&gt;&lt;Del&gt;전자&lt;/Del&gt;&lt;Ins&gt;동작을&lt;/Ins&gt;&lt;Del&gt;장치의&lt;/Del&gt;&lt;Ins&gt;포함하는,&lt;/Ins&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>12</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 11에 있어서, &lt;br /&gt;상기 제2 배터리 팩은 제2 배터리 셀, 제2 로드 스위치, 상기 제2 배터리 셀의 양단에 걸리는 제2 배터리 셀 전압을 검측하는 제2 전압 검측 회로, 상기 제2 로드 스위치를 통해 흐르는 제2 배터리 셀 전류를 검측하는 제2 전류 검측 회로를 포함하는, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 11에 있어서, &lt;Del&gt;&lt;br /&gt;상기 제1 배터리 팩은 제1 배터리 셀, 상기 제1 로드 스위치, 제3 로드 스위치, 상기 제1 배터리 셀의 양단에 걸리는 제1 배터리 셀 전압을 검측하는 제1 전압 검측 회로, 상기 제1 로드 스위치와 상기 제3 로드 스위치 사이에 위치하는 노드에 흐르는 제1 배터리 셀 전류를 검측하는 제1 전류 검측 회로를 포함하며,&lt;br /&gt;&lt;/Del&gt;&lt;Ins&gt;&lt;br /&gt;&lt;/Ins&gt;상기 제2 배터리 팩은 제2 배터리 셀, 제2&lt;Del&gt; 로드 스위치, 제4&lt;/Del&gt; 로드 스위치, 상기 제2 배터리 셀의 양단에 걸리는 제2 배터리 셀 전압을 검측하는 제2 전압 검측 회로, 상기 제2 로드 스위치&lt;Del&gt;와&lt;/Del&gt;&lt;Ins&gt;를&lt;/Ins&gt;&lt;Del&gt;상기 제4 로드 스위치 사이에 위치하는 노드에&lt;/Del&gt;&lt;Ins&gt;통해&lt;/Ins&gt; 흐르는 제2 배터리 셀 전류를 검측하는 제2 전류 검측 회로를 포함하는,&lt;Del&gt; 전자 장치의&lt;/Del&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>13</petitionclauseNumber>
+				<changeTypeCode>D</changeTypeCode>
+				<changeTypeName>삭제</changeTypeName>
+				<petitionclause> </petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>14</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 11에 있어서, 상기 차저를 제어하는 동작은,&lt;br /&gt;상기 제1 배터리 팩의 상기 제1 로드 스위치의 정전류 기능이 활성화됨에 따라 상기 제1 로드 스위치는 상기 제1 배터리 셀 전류가 제1 배터리 셀의 최대 허용 전류 미만이되도록 제어하는 동작을 포함하는, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 1&lt;Del&gt;2&lt;/Del&gt;&lt;Ins&gt;1&lt;/Ins&gt;에 있어서, &lt;Ins&gt;상기 차저를 제어하는 동작은,&lt;/Ins&gt;&lt;br /&gt;상기 제1 배터리 팩의 상기 제1 로드 스위치의 정전류 기능이 활성화됨에 따라 상기 제1 로드 스위치는 상기 제1 배터리 셀 전류가 제1 배터리 셀의 최대 허용 전류 미만이되도록 제어하는&lt;Del&gt;,&lt;/Del&gt;&lt;Del&gt;전자&lt;/Del&gt;&lt;Ins&gt;동작을&lt;/Ins&gt;&lt;Del&gt;장치의&lt;/Del&gt;&lt;Ins&gt;포함하는,&lt;/Ins&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>15</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 11에 있어서, 상기 차저를 제어하는 동작은,&lt;br /&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 미만이 됨에 따라 상기 제1 로드 스위치의 정전류 기능을 비활성화하도록 제어하는 동작을 포함하는, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 1&lt;Del&gt;2&lt;/Del&gt;&lt;Ins&gt;1&lt;/Ins&gt;에 있어서, &lt;Del&gt;&lt;br /&gt;&lt;/Del&gt;상기 &lt;Del&gt;프로세서&lt;/Del&gt;&lt;Ins&gt;차저를 제어하&lt;/Ins&gt;는&lt;Ins&gt; 동작은&lt;/Ins&gt;,&lt;Ins&gt;&lt;br /&gt;&lt;/Ins&gt;상기 제1 배터리 셀 전류가 상기 제1 배터리 셀의 최대 허용 전류 미만이 됨에 따라 상기 제1 로드 스위치의 정전류 기능을 비활성화하도록 제어하는&lt;Del&gt;,&lt;/Del&gt;&lt;Del&gt;전자&lt;/Del&gt;&lt;Ins&gt;동작을&lt;/Ins&gt;&lt;Del&gt;장치의&lt;/Del&gt;&lt;Ins&gt;포함하는,&lt;/Ins&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>16</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 11에 있어서, &lt;br /&gt;상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 간의 차이가 임계 전압 값 이상인 조건을 만족함에 따라 상기 차저의 기준 전압을 상기 제1 배터리 셀 전압에서 상기 제2 배터리 셀 전압으로 변경하는 동작을 포함하는, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 1&lt;Del&gt;2&lt;/Del&gt;&lt;Ins&gt;1&lt;/Ins&gt;에 있어서, &lt;br /&gt;상기 &lt;Del&gt;프로세서는,&lt;/Del&gt;&lt;Ins&gt;제1 배터리 셀 전압과 상기&lt;/Ins&gt; 제2 &lt;Ins&gt;배터리 셀 전압 간의 차이가 임계 전압 값 이상인 &lt;/Ins&gt;조건을 만족함에 따라 상기 차저의 기준 전압을 상기 제1 배터리 셀 전압에서 상기 제2 배터리 셀 전압으로 변경하는&lt;Del&gt;,&lt;/Del&gt;&lt;Del&gt;전자&lt;/Del&gt;&lt;Ins&gt;동작을&lt;/Ins&gt;&lt;Del&gt;장치의&lt;/Del&gt;&lt;Ins&gt;포함하는,&lt;/Ins&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>17</petitionclauseNumber>
+				<changeTypeCode>D</changeTypeCode>
+				<changeTypeName>삭제</changeTypeName>
+				<petitionclause> </petitionclause>
+				<transferReceiptDocNumber> </transferReceiptDocNumber>
+				<transferPetitionclause> </transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>18</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 16에 있어서, &lt;br /&gt;상기 조건을 만족함에 따라, 상기 제1 로드 스위치의 목표 전압 값을 상기 제1 배터리 셀의 만충 전압으로 설정하고 상기 제1 로드 스위치의 정전압 기능을 활성화하는 동작을 포함하는, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 16에 있어서, &lt;br /&gt;상기&lt;Del&gt; 프로세서는, 상기 제2&lt;/Del&gt; 조건을 만족함에 따라, 상기 제1 로드 스위치의 목표 전압 값을 상기 제1 배터리 셀의 만충 전압으로 설정하고 상기 제1 로드 스위치의 정전압 기능을 활성화하는&lt;Del&gt;,&lt;/Del&gt;&lt;Del&gt;전자&lt;/Del&gt;&lt;Ins&gt;동작을&lt;/Ins&gt;&lt;Del&gt;장치의&lt;/Del&gt;&lt;Ins&gt;포함하는,&lt;/Ins&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>19</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 16에 있어서, &lt;br /&gt;상기 조건을 만족하지 않음에 따라, 상기 차저의 상기 제어 기준 전압은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 중 큰 값으로 결정하는 동작을 포함하는, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 16에 있어서, &lt;br /&gt;상기&lt;Del&gt; 프로세서는, 상기 제2&lt;/Del&gt; 조건을 만족하지 않음에 따라, 상기 차저의 상기 제어 기준 전압은 상기 제1 배터리 셀 전압과 상기 제2 배터리 셀 전압 중 큰 값으로 결정하는&lt;Del&gt;,&lt;/Del&gt;&lt;Del&gt;전자&lt;/Del&gt;&lt;Ins&gt;동작을&lt;/Ins&gt;&lt;Del&gt;장치의&lt;/Del&gt;&lt;Ins&gt;포함하는,&lt;/Ins&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+			<amendmentHistoryDetailInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<petitionclauseNumber>20</petitionclauseNumber>
+				<changeTypeCode>A</changeTypeCode>
+				<changeTypeName>수정</changeTypeName>
+				<petitionclause>청구항 16에 있어서, &lt;br /&gt;상기 차저의 상기 기준 전압이 상기 차저의 목표 전압 값에 도달할 때까지 차저의 출력 전류를 정전류로 제어하며, 상기 기준 전압이 상기 차저의 목표 전압 값에 도달하면 상기 기준 전압이 상기 차저의 목표 전압 값을 유지하도록 상기 차저의 출력 전류를 정전압으로 제어하는 동작을 포함하고,&lt;br /&gt;상기 차저의 목표 전압 값은 상기 제1 배터리 셀 또는 상기 제2 배터리 셀의 만충 전압인, 배터리 충전 방법.</petitionclause>
+				<transferReceiptDocNumber>112020131608016</transferReceiptDocNumber>
+				<transferPetitionclause>청구항 16에 있어서, &lt;Del&gt;&lt;br /&gt;상기 프로세서는, &lt;/Del&gt;&lt;Ins&gt;&lt;br /&gt;&lt;/Ins&gt;상기 차저의 상기 기준 전압이 상기 차저의 목표 전압 값에 도달할 때까지 차저의 출력 전류를 정전류로 제어하며, 상기 기준 전압이 상기 차저의 목표 전압 값에 도달하면 상기 기준 전압이 상기 차저의 목표 전압 값을 유지하도록 상기 차저의 출력 전류를 정전압으로 제어하&lt;Ins&gt;는 동작을 포함하&lt;/Ins&gt;고,&lt;br /&gt;상기 차저의 목표 전압 값은 상기 제1 배터리 셀 또는 상기 제2 배터리 셀의 만충 전압인,&lt;Del&gt; 전자 장치의&lt;/Del&gt; 배터리 충전 방법.</transferPetitionclause>
+			</amendmentHistoryDetailInfo>
+		</items>
+	</body>
+</response>

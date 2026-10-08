@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			<examineResultInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<sendNumber>952025088260221</sendNumber>
+				<examinationTitle>[심사결과] □ 심사 대상 청구항 :</examinationTitle>
+				<examinationContent>제1-20항</examinationContent>
+				<refusalLawTitle>□ 이 출원의 거절이유가 있는 부분과 관련 법조항</refusalLawTitle>
+				<refusalLawTabularstatement>순번†거절이유가 있는 부분†관련 법조항§1†청구항 전항†특허법 제42조제4항제2호</refusalLawTabularstatement>
+				<patentAbleTitle> </patentAbleTitle>
+				<patentAbleContent> </patentAbleContent>
+				<descriptionSummary> </descriptionSummary>
+				<refusalLawarticleSequence> </refusalLawarticleSequence>
+				<refusalPetitionclause> </refusalPetitionclause>
+				<refusalLawarticleContent> </refusalLawarticleContent>
+				<supplementaryTitle> </supplementaryTitle>
+				<supplementaryContentOne> </supplementaryContentOne>
+				<supplementaryContentTwo> </supplementaryContentTwo>
+				<supplementaryContentThree> </supplementaryContentThree>
+				<supplementaryContentFour> </supplementaryContentFour>
+			</examineResultInfo>
+		</items>
+	</body>
+</response>

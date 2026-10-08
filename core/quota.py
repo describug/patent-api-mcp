@@ -2,14 +2,17 @@
 
 - KIPRIS: 월별 호출 수를 센다. 경고선 이상이면 notes에 경고, 한도에 닿으면 호출하지 않는다.
 - OPS: 응답 헤더의 사용량 정보를 기록해 둔다.
+- KIPRIS 상품별 신청 상태: 호출 결과로 '신청됨/미신청'을 기억한다. 미신청은 하루만 기억해
+  다음 조회 때 다시 확인한다(신청하면 자동으로 풀림). 인증키가 바뀌면 기록을 무시한다.
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
 import sqlite3
 import threading
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Callable, Mapping
 
@@ -23,6 +26,15 @@ OPS_USAGE_HEADERS = (
     "x-registeredpayingquotaperweek-used",
     "x-rejection-reason",
 )
+
+SUBSCRIBED = "subscribed"
+NOT_SUBSCRIBED = "not_subscribed"
+NOT_SUBSCRIBED_MEMORY = timedelta(days=1)
+
+
+def key_fingerprint(key: str | None) -> str:
+    """인증키 자체는 저장하지 않고, 바뀌었는지만 알 수 있게 짧은 해시를 쓴다."""
+    return hashlib.sha256((key or "").encode("utf-8")).hexdigest()[:12]
 
 
 def _now() -> datetime:
@@ -53,6 +65,11 @@ class Quota:
             self._conn.execute(
                 "CREATE TABLE IF NOT EXISTS ops_usage ("
                 " id INTEGER PRIMARY KEY CHECK (id = 1), headers TEXT NOT NULL, updated_at TEXT NOT NULL)"
+            )
+            self._conn.execute(
+                "CREATE TABLE IF NOT EXISTS kipris_products ("
+                " product TEXT PRIMARY KEY, status TEXT NOT NULL, key_fp TEXT NOT NULL,"
+                " checked_at TEXT NOT NULL, detail TEXT)"
             )
 
     # --- KIPRIS ---------------------------------------------------------
@@ -117,6 +134,53 @@ class Quota:
         if not row:
             return None
         return {"headers": json.loads(row[0]), "recordedAt": row[1]}
+
+    # --- KIPRIS 상품 신청 상태 ------------------------------------------
+
+    def set_product_status(self, product: str, status: str, key: str | None, detail: str | None = None) -> None:
+        with self._lock, self._conn:
+            self._conn.execute(
+                "INSERT OR REPLACE INTO kipris_products (product, status, key_fp, checked_at, detail) VALUES (?, ?, ?, ?, ?)",
+                (product, status, key_fingerprint(key), self._now().isoformat(timespec="seconds"), detail),
+            )
+
+    def product_status(self, product: str, key: str | None) -> dict | None:
+        """{'status', 'checkedAt', 'detail', 'active'} 또는 None(확인 안 함).
+
+        active: 미신청 기록이 아직 유효해(하루 안) 호출을 건너뛸지. 신청됨이면 항상 False.
+        인증키가 바뀌었으면 None(다시 확인).
+        """
+        with self._lock:
+            row = self._conn.execute(
+                "SELECT status, key_fp, checked_at, detail FROM kipris_products WHERE product = ?", (product,)
+            ).fetchone()
+        if not row or row[1] != key_fingerprint(key):
+            return None
+        status, _, checked_at, detail = row
+        active = False
+        if status == NOT_SUBSCRIBED:
+            try:
+                checked = datetime.fromisoformat(checked_at)
+                active = self._now() - checked < NOT_SUBSCRIBED_MEMORY
+            except ValueError:
+                active = False
+        return {"status": status, "checkedAt": checked_at, "detail": detail, "active": active}
+
+    def any_product_subscribed(self, key: str | None) -> bool:
+        fp = key_fingerprint(key)
+        with self._lock:
+            row = self._conn.execute(
+                "SELECT 1 FROM kipris_products WHERE status = ? AND key_fp = ? LIMIT 1", (SUBSCRIBED, fp)
+            ).fetchone()
+        return row is not None
+
+    def clear_product_status(self, status: str | None = None) -> int:
+        with self._lock, self._conn:
+            if status:
+                cur = self._conn.execute("DELETE FROM kipris_products WHERE status = ?", (status,))
+            else:
+                cur = self._conn.execute("DELETE FROM kipris_products")
+            return cur.rowcount
 
     # --- 요약 -----------------------------------------------------------
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode>00</resultCode>
+		<resultMsg>조회성공(Normal Service)</resultMsg>
+	</header>
+	<body>
+		<items>
+			<amendmentHistoryInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>1</receiptSendSerialNumber>
+				<receiptSendNumber>112020131608016</receiptSendNumber>
+				<receiptSendDate>20201204</receiptSendDate>
+				<receiptSendDocumentCode>1011101</receiptSendDocumentCode>
+				<receiptSendDocumentName>[특허출원]특허출원서</receiptSendDocumentName>
+			</amendmentHistoryInfo>
+			<amendmentHistoryInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<receiptSendSerialNumber>2</receiptSendSerialNumber>
+				<receiptSendNumber>112026002915391</receiptSendNumber>
+				<receiptSendDate>20260108</receiptSendDate>
+				<receiptSendDocumentCode>1013271</receiptSendDocumentCode>
+				<receiptSendDocumentName>[명세서등 보정]보정서</receiptSendDocumentName>
+			</amendmentHistoryInfo>
+		</items>
+	</body>
+</response>

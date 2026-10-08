@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			<additionRejectInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<sendNumber>952025088260221</sendNumber>
+				<sequence>1</sequence>
+				<additionRejectionContent>이 출원은 청구범위의 청구항 전항의 기재가 아래에 지적한 바와 같이 불비하여 특허법 제42조제4항제2호에 따른 요건을 충족하지 못하므로 특허를 받을 수 없습니다.</additionRejectionContent>
+			</additionRejectInfo>
+			<additionRejectInfo>
+				<applicationNumber>1020200168607</applicationNumber>
+				<sendNumber>952025088260221</sendNumber>
+				<sequence>2</sequence>
+				<additionRejectionContent>- 아    래 -&lt;BR&gt;청구항 제1,11항은 ‘제1 조건을 만족함에 따라 상기 제1 배터리 팩에 포함된 제1 로드 스위치의 정전류 기능을 활성화하고,’로만 기재되어, ‘제1 조건’의 대상과 그 대상이 어떠한 조건인지 불명료합니다.&lt;BR&gt;&lt;BR&gt;청구항 제6,16항은 ‘제2 조건을 만족함에 따라 상기 차저의 기준 전압을 상기 제1 배터리 셀 전압에서 상기 제2 배터리 셀 전압으로 변경하는,’으로만 기재되어, ‘제2 조건’의 대상과 그 대상이 어떠한 조건인지 불명료합니다.&lt;BR&gt;&lt;BR&gt;따라서 청구항 제1,6,11,16항 및 이를 인용하고 있는 청구항 제2-5,7-10,12-15,17-20항은 보호받고자 하는 그 발명이 명확하게 기재되어 있다고 볼 수 없습니다.  끝.</additionRejectionContent>
+			</additionRejectInfo>
+		</items>
+	</body>
+</response>

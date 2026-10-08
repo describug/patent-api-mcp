@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<response>
+	<header>
+		<resultCode></resultCode>
+		<resultMsg></resultMsg>
+	</header>
+	<body>
+		<items>
+			
+			<citingInfo>
+				<StandardCitationApplicationNumber>1019470000187</StandardCitationApplicationNumber>
+				<ApplicationNumber>1020130028607</ApplicationNumber>
+				<StandardStatusCode>20001</StandardStatusCode>
+				<StandardStatusCodeName>표준화</StandardStatusCodeName>
+				<CitationLiteratureTypeCode>E0805</CitationLiteratureTypeCode>
+				<CitationLiteratureTypeCodeName>선행기술조사문헌</CitationLiteratureTypeCodeName>
+			</citingInfo>
+			
+		</items>
+	</body>
+</response>
