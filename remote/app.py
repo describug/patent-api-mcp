@@ -64,9 +64,13 @@ def create_http_server(
     )
     mcp.custom_route("/.well-known/oauth-protected-resource", methods=["GET"])(prm.handle)
 
-    @mcp.custom_route("/healthz", methods=["GET"])
-    async def healthz(_: Request) -> Response:
+    # Cloud Run은 끝이 z인 일부 경로(/healthz 등)를 예약해 요청이 서버까지 오지 않는다(2026-10-08 실측: 구글 404).
+    # 그래서 /health를 기본으로 두고 /healthz는 내 컴퓨터 시험용으로만 남긴다.
+    async def health(_: Request) -> Response:
         return JSONResponse({"ok": True})
+
+    mcp.custom_route("/health", methods=["GET"])(health)
+    mcp.custom_route("/healthz", methods=["GET"])(health)
 
     return mcp
 

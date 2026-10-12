@@ -162,7 +162,7 @@ def test_tools_registered_only_for_enabled_products():
         out = subprocess.run([sys.executable, "-c", code], cwd=ROOT, env=env, capture_output=True, text=True, check=True)
         return set(out.stdout.strip().split(","))
 
-    ops_tools = {"ep_biblio", "ep_text", "family", "legal_status", "quota_status"}
+    ops_tools = {"ep_biblio", "ep_text", "family", "legal_status", "quota_status", "pdf_download"}
     assert tools("publication") == ops_tools | {"kr_biblio", "kr_search"}
     assert tools("opinion,citing") == ops_tools | {"kr_biblio", "kr_search", "kr_exam_documents", "kr_citations"}
     assert tools("all") == ops_tools | {

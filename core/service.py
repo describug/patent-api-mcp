@@ -8,7 +8,9 @@ MCP를 모르는 계층이다. server.py(로컬 MCP)와 B단계 원격 서버가
 
 from __future__ import annotations
 
+import asyncio
 import logging
+import re
 from datetime import datetime
 from typing import Any, Awaitable, Callable
 
@@ -19,6 +21,7 @@ from .cache import Cache
 from .config import Settings
 from .errors import PatentApiError, scrub
 from . import kipris_docs as KD
+from . import pdf as PDF
 from .kipris import NOT_SUBSCRIBED_CODES, KiprisClient
 from .kipris import SOURCE as KIPRIS
 from .numbers import (
@@ -28,7 +31,7 @@ from .numbers import (
     normalize_kr_registration_number,
     normalize_ops_number,
 )
-from .ops import OpsClient
+from .ops import OpsClient, images_throttle, section_range
 from .ops import SOURCE as OPS
 from .products import BY_KEY as PRODUCTS
 from .products import PRODUCTS as PRODUCT_LIST
@@ -104,6 +107,7 @@ class PatentService:
             key_hint=key_hint,
             rest_base_url=settings.kipris_rest_base_url,
         )
+        self._sleep = asyncio.sleep  # OPS 이미지 속도 조절(테스트에서 바꿔 끼움)
         self.ops = OpsClient(
             settings.epo_consumer_key,
             settings.epo_consumer_secret,
@@ -211,7 +215,10 @@ class PatentService:
         try:
             return await body()
         except PatentApiError as e:
-            return envelope_error(source, query, e.code, scrub(e.message, self.settings.secrets()))
+            env = envelope_error(source, query, e.code, scrub(e.message, self.settings.secrets()))
+            if e.candidates:
+                env["error"]["candidates"] = e.candidates
+            return env
         except Exception as e:  # 예상하지 못한 오류도 틀을 지켜 돌려준다
             log.exception("unexpected error")
             msg = scrub(f"예상하지 못한 내부 오류: {type(e).__name__}: {e}", self.settings.secrets())
@@ -455,6 +462,233 @@ class PatentService:
             return env
 
         return await self._guard(OPS, query, body)
+
+    # --- 공보 원본 PDF -------------------------------------------------
+
+    async def pdf_download(
+        self,
+        number: str,
+        part: str = "full",
+        save_dir: str | None = None,
+        label: str | None = None,
+        max_pages: int | None = None,
+    ) -> dict:
+        query: dict[str, Any] = _drop_empty({"input": number, "part": part, "label": label})
+
+        async def body() -> dict:
+            if part not in PDF.PARTS:
+                raise PatentApiError(E.INVALID_INPUT, "part는 full(전문) 또는 drawings(도면만)입니다.")
+            tag = PDF.clean_label(label)
+            root = PDF.allowed_root(self.settings.pdf_allowed_dir)
+            directory = PDF.resolve_save_dir(save_dir, self.settings.pdf_allowed_dir)
+            ref = self._pdf_ref(number)
+            query.update(ref.to_query())
+            query["saveDir"] = str(directory)
+            notes: list[str] = []
+            if ref.kind_assumed:
+                notes.append(f"종류코드가 없어 {ref.kind}로 보고 받았습니다({ref.display}). 다른 종류면 종류코드를 붙여 주세요.")
+            limit = int(max_pages) if max_pages else self.settings.pdf_max_pages
+
+            # 종류코드를 알면 아무것도 부르기 전에 같은 이름의 파일부터 본다.
+            if ref.kind:
+                first = KIPRIS if ref.country == "KR" and part == "full" else OPS
+                done = self._pdf_existing(directory, PDF.file_name(tag, ref.display, part), part, query, notes, first)
+                if done:
+                    return done
+            if ref.country == "KR" and part == "full" and ref.kind:
+                got = await self._kr_fulltext_pdf(ref, notes)
+                if got is not None:
+                    data, url = got
+                    return self._pdf_saved(KIPRIS, directory, root, PDF.file_name(tag, ref.display, part), data, part, query, notes,
+                                           {"publicationNumber": ref.display, "sourceUrl": url})
+            return await self._ops_pdf(ref, part, tag, directory, root, limit, query, notes)
+
+        try:
+            ref0 = self._pdf_ref(number)
+            source = KIPRIS if ref0.country == "KR" and part == "full" else OPS
+        except PatentApiError:
+            source = OPS
+        return await self._guard(source, query, body)
+
+    def _pdf_ref(self, number: str) -> OpsReference:
+        try:
+            ref = normalize_ops_number(number, None)
+        except PatentApiError as e:
+            if e.code == E.AMBIGUOUS_NUMBER and "출원번호인지 공개번호인지" in e.message:
+                raise PatentApiError(
+                    E.AMBIGUOUS_NUMBER,
+                    f"'{number}'는 한국 출원번호와 공개번호가 같은 모양이라 알 수 없습니다. "
+                    "공개번호면 종류코드를 붙여 주세요(예: KR 10-2011-0040179 A). 등록번호는 KR 10-1234567 B1 모양입니다.",
+                ) from None
+            raise
+        if ref.ref_type != "publication":
+            raise PatentApiError(E.INVALID_INPUT, "공보 원본은 공개·등록번호로만 받을 수 있습니다.")
+        return ref
+
+    def _pdf_existing(self, directory, name: str, part: str, query: dict, notes: list[str], source: str = OPS) -> dict | None:
+        path = directory / name
+        if not path.exists():
+            return None
+        info: dict[str, Any] = {"path": str(path), "part": part, "alreadyExists": True}
+        try:
+            data = path.read_bytes()
+            if PDF.is_pdf(data):
+                info.update(PDF.describe(data))
+        except OSError:
+            pass
+        notes.append("같은 이름의 파일이 이미 있어 받지 않았습니다(덮어쓰지 않음). 기존 파일 경로를 돌려줍니다. 다시 받으려면 그 파일을 옮기거나 지우세요.")
+        return envelope_ok(source, query, info, cached=True, notes=notes)
+
+    def _pdf_saved(self, source: str, directory, root, name: str, data: bytes, part: str, query: dict, notes: list[str], extra: dict) -> dict:
+        try:
+            path = PDF.save_new(directory, name, data, root)
+        except FileExistsError:
+            return self._pdf_existing(directory, name, part, query, notes, source) or envelope_ok(source, query, None, notes=notes)
+        info = {"path": str(path), "source": "KIPRIS" if source == KIPRIS else "OPS", "part": part, **PDF.describe(data), **extra}
+        if info.get("hasTextLayer") is False:
+            notes.append("텍스트층이 없는 스캔본입니다(글자 검색·복사가 안 됨). 문장 대조에는 ep_text 원문(EP·WO 등)을 함께 보세요.")
+        return envelope_ok(source, query, _drop_empty(info), notes=notes)
+
+    async def _kr_fulltext_pdf(self, ref: OpsReference, notes: list[str]) -> tuple[bytes, str] | None:
+        """한국 문헌 전문을 KIPRIS에서 받는다. 못 받으면 None(사유는 notes에, 호출한 쪽이 OPS로 넘어간다)."""
+        kind = PDF.kind_of(ref.kind)
+        label = "공개전문" if kind == "publication" else "공고전문"
+        try:
+            app = await self._kr_application_for(ref, notes)
+            if not app:
+                notes.append(f"이 문헌의 한국 출원번호를 찾지 못해 KIPRIS {label} 대신 OPS로 받습니다.")
+                return None
+            info, _, n = await self._fetch(
+                tool=f"pdf_download:kipris:{kind}", cache_params=None, ttl=0,
+                fetch=lambda: self.kipris.fulltext(app, kind), product="publication",
+            )
+            notes.extend(x for x in n if x not in notes)
+            if not info:
+                notes.append(f"KIPRIS에 {ref.display}의 {label}이 없어 OPS로 받습니다.")
+                return None
+            data = await self.kipris.download(info["url"])
+        except PatentApiError as e:
+            notes.append(f"KIPRIS {label}을 받지 못해 OPS로 받습니다: {scrub(e.message, self.settings.secrets())}")
+            return None
+        notes.append(f"KIPRIS {label}(출원번호 {format_kr_application(app)})입니다.")
+        return data, info["url"]
+
+    async def _kr_application_for(self, ref: OpsReference, notes: list[str]) -> str | None:
+        """한국 공개·등록번호 → KIPRIS 출원번호(13자리). OPS 서지(호출 수 무관)를 먼저 보고, 없으면 KIPRIS 검색 1회."""
+        right = "10" if ref.kind[:1] in ("A", "B") else "20"
+        try:
+            biblio, _, _ = await self._fetch(
+                tool="ep_biblio", cache_params={"ref": ref.path()}, ttl=self.settings.ttl_biblio,
+                fetch=lambda: self.ops.biblio(ref),
+            )
+            for doc in (biblio or {}).get("documents", []):
+                if doc.get("publicationNumber") != ref.display:
+                    continue
+                m = re.fullmatch(r"KR(\d{11})[A-Z]?\d?", (doc.get("application") or {}).get("number") or "")
+                if m:
+                    return right + m.group(1)
+        except PatentApiError:
+            pass  # OPS 키가 없거나 일시 오류면 KIPRIS 검색으로
+        if PDF.kind_of(ref.kind) == "registration":
+            params = {"registerNumber": ref.number + "0000"}
+            want = ref.number
+        else:
+            params = {"openNumber": right + ref.number}
+            want = right + ref.number
+        params.update({"patent": "true", "utility": "true"})
+        found, _, n = await self._fetch(
+            tool="kr_search", cache_params=params, ttl=self.settings.ttl_search,
+            fetch=lambda: self.kipris.advanced_search(params), product="publication",
+        )
+        notes.extend(x for x in n if x not in notes)
+        for item in (found or {}).get("items", []):
+            got = item.get("registerNumber") if "registerNumber" in params else item.get("openNumber")
+            if re.sub(r"\D", "", got or "") == want and item.get("applicationNumber"):
+                return re.sub(r"\D", "", item["applicationNumber"])
+        return None
+
+    async def _ops_pdf(self, ref, part: str, tag, directory, root, limit: int, query: dict, notes: list[str]) -> dict:
+        found, _, n = await self._fetch(
+            tool="pdf_download:ops_images", cache_params={"ref": ref.path()}, ttl=self.settings.ttl_text,
+            fetch=lambda: self.ops.images(ref),
+        )
+        notes.extend(n)
+        docs = found or []
+        if ref.kind:
+            # 요청한 문헌만 받는다(다른 종류코드·패밀리 구성원으로 바꾸지 않음).
+            docs = [d for d in docs if d.get("publicationNumber") == ref.display]
+        if not docs:
+            notes += [NO_DATA_NOTE, "다른 공보(패밀리 구성원)는 family 도구로 찾아볼 수 있습니다."]
+            return envelope_ok(OPS, query, None, notes=notes)
+        if len(docs) > 1:
+            cands = [_drop_empty({"number": d.get("publicationNumber"), "kind": d.get("kind"),
+                                  "pages": (d["instances"].get("full") or {}).get("pages")}) for d in docs]
+            listing = ", ".join(f"{c['number']}({c.get('pages', '?')}쪽)" for c in cands)
+            raise PatentApiError(
+                E.AMBIGUOUS_NUMBER,
+                f"종류코드가 없어 여러 문헌이 걸립니다: {listing}. 받을 문헌의 종류코드를 붙여 다시 요청해 주세요.",
+                candidates=cands,
+            )
+        doc = docs[0]
+        number = doc.get("publicationNumber") or ref.display
+        query["publicationNumber"] = number
+        name = PDF.file_name(tag, number, part)
+        if not ref.kind:
+            done = self._pdf_existing(directory, name, part, query, notes)
+            if done:
+                return done
+        inst = doc["instances"]
+        page_list: list[int]
+        sections: dict[str, int] | None
+        if part == "full":
+            chosen = inst.get("full")
+            if not chosen or not chosen.get("pages"):
+                notes += [NO_DATA_NOTE + " — OPS에 이 문헌의 전문 원본이 없습니다.", "다른 공보(패밀리 구성원)는 family 도구로 찾아볼 수 있습니다."]
+                return envelope_ok(OPS, query, None, notes=notes)
+            page_list, sections = list(range(1, chosen["pages"] + 1)), chosen.get("sections")
+        elif inst.get("drawings", {}).get("pages"):
+            chosen = inst["drawings"]
+            page_list, sections = list(range(1, chosen["pages"] + 1)), {"DRAWINGS": 1}
+        else:
+            full = inst.get("full") or {}
+            rng = section_range(full.get("sections") or {}, "DRAWINGS", full.get("pages") or 0)
+            if not rng:
+                notes += [NO_DATA_NOTE + " — OPS에 이 문헌의 도면 원본이 없습니다.", "다른 공보(패밀리 구성원)는 family 도구로 찾아볼 수 있습니다."]
+                return envelope_ok(OPS, query, None, notes=notes)
+            chosen = full
+            page_list, sections = list(range(rng[0], rng[1] + 1)), {"DRAWINGS": 1}
+            notes.append(f"도면 원본이 따로 없어 전문의 도면 구간({rng[0]}~{rng[1]}쪽)만 잘라 저장했습니다.")
+        if len(page_list) > limit:
+            notes.append(
+                f"{len(page_list)}쪽이라 상한({limit}쪽)을 넘어 받지 않았습니다. OPS는 쪽마다 1회 호출합니다. "
+                "꼭 필요하면 max_pages를 올려 다시 요청하세요."
+            )
+            return envelope_ok(OPS, query, _drop_empty({"publicationNumber": number, "source": "OPS", "part": part,
+                                                        "pages": len(page_list), "sections": sections, "downloaded": False}), notes=notes)
+        data = await self._ops_pages(chosen["link"], page_list, notes)
+        return self._pdf_saved(OPS, directory, root, name, data, part, query, notes,
+                               _drop_empty({"publicationNumber": number, "sections": sections}))
+
+    async def _ops_pages(self, link: str, pages: list[int], notes: list[str]) -> bytes:
+        """쪽을 차례로 받아 합친다. images 상태가 yellow·red면 쪽 사이를 띄우고, black이면 멈춘다."""
+        parts: list[bytes] = []
+        slowed = False
+        for i, n in enumerate(pages):
+            state = images_throttle(self.ops.last_headers)
+            if state:
+                color, per_minute = state
+                if color == "black":
+                    raise PatentApiError(
+                        E.RATE_LIMITED,
+                        f"EPO OPS 이미지 서비스가 차단(black) 상태라 {i}쪽까지 받고 멈췄습니다(파일은 남기지 않음). 잠시 뒤 다시 요청하세요.",
+                    )
+                if color in ("yellow", "red") and i > 0:
+                    slowed = True
+                    await self._sleep(max(60.0 / max(per_minute, 1), 1.0 if color == "yellow" else 3.0))
+            parts.append(await self.ops.image_page(link, n))
+        if slowed:
+            notes.append("EPO OPS 이미지 서비스가 붐벼(yellow·red) 쪽 사이 간격을 늘려 받았습니다.")
+        return PDF.merge(parts)
 
     # --- KIPRIS 추가 상품 -----------------------------------------------
 

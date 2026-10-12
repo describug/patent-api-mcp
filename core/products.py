@@ -24,7 +24,7 @@ PRODUCTS: tuple[Product, ...] = (
     # 기본 상품은 항상 켠다. 확장(.mcpb)을 업데이트하면 Claude 앱이 새로 생긴 체크칸에 기본값을
     # 넣지 않고 '꺼짐'으로 보여 줘서, 다른 상품만 켜고 저장하면 서지·검색 도구가 사라졌다(2026-10-08).
     # 신청하지 않았다면 첫 조회 때 신청 안내가 나가므로 켜 둬도 손해가 없다.
-    Product("publication", "특허·실용 공개·등록공보", ("kr_biblio", "kr_search"), default=True, always=True),
+    Product("publication", "특허·실용 공개·등록공보", ("kr_biblio", "kr_search", "pdf_download"), default=True, always=True),
     Product("opinion", "의견제출통지서", ("kr_exam_documents",)),
     Product("rejection", "거절결정서", ("kr_exam_documents",)),
     Product("allowance", "등록결정서", ("kr_exam_documents",)),

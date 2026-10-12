@@ -20,17 +20,22 @@ TIMEOUT = "TIMEOUT"                            # 응답 시간 초과
 NETWORK_ERROR = "NETWORK_ERROR"                # 연결 실패
 UPSTREAM_ERROR = "UPSTREAM_ERROR"              # 그 밖의 상대 서버 오류
 PARSE_ERROR = "PARSE_ERROR"                    # 응답을 해석할 수 없음
+FILE_ERROR = "FILE_ERROR"                      # PDF를 저장 폴더에 쓰지 못함(권한·허용 폴더 없음)
 
 
 class PatentApiError(Exception):
     """도구 응답의 ``error`` 로 그대로 옮겨지는 예외."""
 
-    def __init__(self, code: str, message: str, *, retryable: bool = False, upstream_code: str | None = None):
+    def __init__(
+        self, code: str, message: str, *, retryable: bool = False, upstream_code: str | None = None,
+        candidates: list[dict] | None = None,
+    ):
         super().__init__(message)
         self.code = code
         self.message = message
         self.retryable = retryable
         self.upstream_code = upstream_code  # 상대 서버가 준 원래 코드(KIPRIS resultCode 등)
+        self.candidates = candidates  # AMBIGUOUS_NUMBER일 때 고를 수 있는 문헌 목록
 
     def to_dict(self) -> dict:
         return {"code": self.code, "message": self.message}

@@ -4,6 +4,7 @@
   (서비스명의 'Sevice' 오타는 공식 이름이다)
 - getBibliographyDetailInfoSearch : 출원번호 → 서지상세
 - getAdvancedSearch               : 항목별 검색
+- getPubFullTextInfoSearch / getAnnFullTextInfoSearch : 출원번호 → 공개·등록(공고)전문 PDF 내려받기 주소
 인증 파라미터: ServiceKey
 """
 
@@ -12,6 +13,7 @@ from __future__ import annotations
 import re
 import xml.etree.ElementTree as ET
 from typing import Any, Callable
+from urllib.parse import urlsplit, urlunsplit
 
 import httpx
 
@@ -333,6 +335,31 @@ def parse_search(xml_text: str) -> dict | None:
     return {"totalCount": total, "items": items}
 
 
+FULLTEXT_OPERATIONS = {"publication": "getPubFullTextInfoSearch", "registration": "getAnnFullTextInfoSearch"}
+FILE_HOST_SUFFIX = "kipris.or.kr"
+
+
+def parse_fulltext_path(xml_text: str) -> dict | None:
+    """공개·등록전문 응답 → {'docName', 'url'}. 자료가 없으면(빈 <item/>) None.
+
+    url은 KIPRIS 파일 주소(fileToss.jsp?arg=...)이며 인증키 없이 열린다(2026-10 실측).
+    공식 예시는 http지만 https로도 같은 파일이 와서 https로 바꿔 둔다.
+    """
+    root = parse_xml(xml_text)
+    if check_header(root):
+        return None
+    for item in root.iter("item"):
+        path = _text(item, "path")
+        if not path:
+            continue
+        parts = urlsplit(path)
+        if not (parts.hostname or "").endswith(FILE_HOST_SUFFIX):
+            raise PatentApiError(E.PARSE_ERROR, "KIPRIS가 알 수 없는 곳의 파일 주소를 돌려줬습니다.")
+        url = urlunsplit(("https", parts.netloc, parts.path, parts.query, ""))
+        return _drop_none({"docName": _text(item, "docName"), "url": url})
+    return None
+
+
 # ---------------------------------------------------------------------------
 # 호출
 # ---------------------------------------------------------------------------
@@ -404,3 +431,27 @@ class KiprisClient:
     async def advanced_search(self, params: dict[str, Any]) -> dict | None:
         xml_text = await self._get("getAdvancedSearch", params)
         return parse_search(xml_text)
+
+    async def fulltext(self, application_number13: str, kind: str) -> dict | None:
+        """kind: 'publication'(공개전문) | 'registration'(등록·공고전문)."""
+        xml_text = await self._get(FULLTEXT_OPERATIONS[kind], {"applicationNumber": application_number13})
+        return parse_fulltext_path(xml_text)
+
+    async def download(self, url: str, *, timeout: float = 120.0) -> bytes:
+        """parse_fulltext_path가 준 파일 주소에서 PDF를 받는다. 키를 붙이지 않으므로 호출 수에 넣지 않는다."""
+        if not (urlsplit(url).hostname or "").endswith(FILE_HOST_SUFFIX):
+            raise PatentApiError(E.INVALID_INPUT, "KIPRIS 파일 주소가 아닙니다.")
+        resp = await request_with_retry(self._http, "GET", url, source=SOURCE, timeout=timeout)
+        if resp.status_code >= 400:
+            raise PatentApiError(
+                E.UPSTREAM_UNAVAILABLE if resp.status_code >= 500 else E.UPSTREAM_ERROR,
+                f"KIPRIS에서 PDF 파일을 받지 못했습니다(HTTP {resp.status_code}).",
+                retryable=resp.status_code >= 500,
+            )
+        if not resp.content[:1024].lstrip().startswith(b"%PDF"):
+            raise PatentApiError(
+                E.UPSTREAM_ERROR,
+                "KIPRIS 파일 주소가 PDF 대신 다른 내용을 돌려줬습니다(주소가 만료됐거나 일시 장애일 수 있음). 잠시 뒤 다시 시도해 주세요.",
+                retryable=True,
+            )
+        return resp.content

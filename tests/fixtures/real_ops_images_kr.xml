@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../../../../../style/pub-inquiry.xsl"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ops:document-inquiry>
+        <ops:publication-reference>
+            <document-id document-id-type="docdb">
+                <country>KR</country>
+                <doc-number>20220079145</doc-number>
+                <kind>A</kind>
+            </document-id>
+        </ops:publication-reference>
+        <ops:inquiry-result>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>KR</country>
+                    <doc-number>20220079145</doc-number>
+                    <kind>A</kind>
+                </document-id>
+            </publication-reference>
+            <ops:document-instance system="ops.epo.org" number-of-pages="1" desc="FirstPageClipping" link="published-data/images/KR/20220079145/A/firstpage">
+                <ops:document-format-options>
+                    <ops:document-format>application/pdf</ops:document-format>
+                    <ops:document-format>application/tiff</ops:document-format>
+                    <ops:document-format>image/jpeg</ops:document-format>
+                    <ops:document-format>image/png</ops:document-format>
+                </ops:document-format-options>
+                <ops:document-section name="ABSTRACT" start-page="1"/>
+                <ops:document-section name="BIBLIOGRAPHY" start-page="1"/>
+            </ops:document-instance>
+            <ops:document-instance system="ops.epo.org" number-of-pages="28" desc="FullDocument" link="published-data/images/KR/20220079145/A/fullimage">
+                <ops:document-format-options>
+                    <ops:document-format>application/pdf</ops:document-format>
+                    <ops:document-format>application/tiff</ops:document-format>
+                </ops:document-format-options>
+                <ops:document-section name="ABSTRACT" start-page="1"/>
+                <ops:document-section name="BIBLIOGRAPHY" start-page="1"/>
+                <ops:document-section name="CLAIMS" start-page="3"/>
+                <ops:document-section name="DESCRIPTION" start-page="5"/>
+                <ops:document-section name="DRAWINGS" start-page="21"/>
+            </ops:document-instance>
+            <ops:document-instance system="ops.epo.org" number-of-pages="8" desc="Drawing" link="published-data/images/KR/20220079145/A/thumbnail">
+                <ops:document-format-options>
+                    <ops:document-format>application/pdf</ops:document-format>
+                    <ops:document-format>application/tiff</ops:document-format>
+                </ops:document-format-options>
+                <ops:document-section name="DRAWINGS" start-page="1"/>
+            </ops:document-instance>
+        </ops:inquiry-result>
+    </ops:document-inquiry>
+</ops:world-patent-data>

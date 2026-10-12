@@ -192,6 +192,41 @@ async def legal_status(
     return await service.legal_status(number, number_type)
 
 
+def local_tool(**meta: Any):
+    """로컬(stdio)에서만 쓰는 도구. 원격 서버 모드에서는 등록하지 않는다(서버 디스크에 파일을 남겨도 쓸 데가 없음)."""
+    if TRANSPORT != "http":
+        return mcp.tool(**meta)
+    return lambda fn: fn
+
+
+@local_tool(
+    name="pdf_download",
+    title="공보 원본 PDF 저장 (KIPRIS · EPO OPS)",
+    annotations=ToolAnnotations(readOnlyHint=False, destructiveHint=False, idempotentHint=True, openWorldHint=True),
+    description=(
+        "인용문헌·대응 출원의 공보 원본 PDF를 사건폴더에 저장할 때 쓰는 도구.\n"
+        "공개·등록번호(국가 무관: KR, CN, JP, US, EP, WO 등)를 넣으면 원본 PDF를 save_dir에 저장하고 "
+        "경로·쪽수·크기·텍스트층 여부(hasTextLayer)·구간 시작 쪽(sections, 예: DRAWINGS)을 돌려준다.\n"
+        "part=full(전문, 기본) | drawings(도면만). 한국 문헌 전문은 KIPRIS 공개·공고전문을 먼저 쓰고, 없으면 EPO OPS로 받는다. "
+        "그 밖의 문헌과 도면은 EPO OPS에서 쪽마다 받아 하나로 합친다(OPS 원본은 대개 텍스트층 없는 스캔본).\n"
+        "파일 이름: {label}_{국가}{번호}{종류코드}.pdf(예: D1_WO2022119250A1.pdf, 도면만이면 끝에 _drawings). "
+        "같은 이름의 파일이 있으면 덮어쓰지 않고 기존 경로를 알려준다.\n"
+        "요청한 문헌만 받는다. 종류코드 없이 넣어 여러 문헌(A1·B1 등)이 걸리면 후보 목록(error.candidates)을 돌려주니 "
+        "종류코드를 붙여 다시 부른다. 없으면 '자료 없음'이며 다른 공보는 family로 찾는다.\n"
+        "save_dir은 허용 폴더(확장 설정의 'PDF 허용 폴더', 기본은 다운로드 폴더) 아래의 절대경로만 받는다. "
+        "코워크는 격리된 작업 공간에서 돌아 그 폴더를 못 볼 수 있으니, 코워크에서 열어 보려면 코워크에 연결한 폴더를 허용 폴더로 둔다."
+    ),
+)
+async def pdf_download(
+    number: Annotated[str, Field(description="공개·등록번호. 예: WO2022/119250 A1, US 2022/0181889 A1, KR 10-3028032 B1, EP1000000B1")],
+    part: Annotated[Literal["full", "drawings"], Field(description="full=전문, drawings=도면만")] = "full",
+    save_dir: Annotated[str | None, Field(description="저장할 폴더(절대경로, 허용 폴더 아래). 없는 하위 폴더는 만든다. 비우면 허용 폴더")] = None,
+    label: Annotated[str | None, Field(description="파일 이름 앞에 붙일 표시(영문·숫자). 예: D1")] = None,
+    max_pages: Annotated[int | None, Field(ge=1, le=1000, description="OPS로 받을 때 쪽 수 상한(기본 100). 넘으면 받지 않고 쪽 수만 알려준다")] = None,
+) -> dict[str, Any]:
+    return await service.pdf_download(number, part, save_dir, label, max_pages)
+
+
 ExamKind = Literal["opinion", "rejection", "allowance"]
 KrApplicationNumber = Annotated[str, Field(description="한국 출원번호. 예: 10-2020-0168607")]
 

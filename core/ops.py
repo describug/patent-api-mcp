@@ -6,6 +6,8 @@
     published-data/{ref}/biblio | claims | description | abstract
     family/{ref}
     legal/{ref}
+    published-data/{ref}/images → 원본 이미지 목록(FullDocument: 쪽 수·링크)
+    published-data/images/{CC}/{번호}/{종류}/fullimage?Range=N → N쪽 PDF(한 번에 한 쪽만 온다, 2026-10 실측)
 """
 
 from __future__ import annotations
@@ -391,6 +393,71 @@ def parse_legal(xml_text: str) -> dict | None:
     )
 
 
+IMAGE_KINDS = {"FullDocument": "full", "Drawing": "drawings", "FirstPageClipping": "firstPage"}
+
+
+def parse_images(xml_text: str) -> list[dict] | None:
+    """images 조회 응답 → 문헌별 원본 이미지 목록. 없으면 None.
+
+    [{'publicationNumber', 'country', 'docNumber', 'kind',
+      'instances': {'full'|'drawings'|'firstPage': {'link', 'pages', 'formats', 'sections'}}}]
+    종류코드 없이(epodoc) 물으면 같은 번호의 문헌(A1, B1 …)마다 inquiry-result가 하나씩 온다.
+    """
+    root = parse_xml(xml_text)
+    out = []
+    for result in root.iter("inquiry-result"):
+        pub = _doc_id(result.find("publication-reference")) or {}
+        instances: dict[str, dict] = {}
+        for inst in result.findall("document-instance"):
+            key = IMAGE_KINDS.get(inst.get("desc") or "")
+            if not key or not inst.get("link"):
+                continue
+            pages = inst.get("number-of-pages") or ""
+            sections = {
+                s.get("name"): int(s.get("start-page"))
+                for s in inst.findall("document-section")
+                if s.get("name") and (s.get("start-page") or "").isdigit()
+            }
+            instances[key] = _drop_none(
+                {
+                    "link": inst.get("link"),
+                    "pages": int(pages) if pages.isdigit() else None,
+                    "formats": [f.text.strip() for f in inst.iter("document-format") if f.text and f.text.strip()],
+                    "sections": dict(sorted(sections.items(), key=lambda kv: kv[1])),
+                }
+            )
+        if instances:
+            out.append(
+                _drop_none(
+                    {
+                        "publicationNumber": pub.get("number"),
+                        "country": pub.get("country"),
+                        "docNumber": pub.get("docNumber"),
+                        "kind": pub.get("kind"),
+                        "instances": instances,
+                    }
+                )
+            )
+    return out or None
+
+
+def section_range(sections: dict[str, int], name: str, total_pages: int) -> tuple[int, int] | None:
+    """FullDocument의 구간(예: DRAWINGS) → (시작 쪽, 끝 쪽). 끝은 다음 구간 시작 전 쪽 또는 마지막 쪽."""
+    start = sections.get(name)
+    if not start or start > total_pages:
+        return None
+    later = [p for n, p in sections.items() if n != name and p > start]
+    end = min(later) - 1 if later else total_pages
+    return start, max(start, end)
+
+
+def images_throttle(headers: Mapping[str, str] | None) -> tuple[str, int] | None:
+    """X-Throttling-Control의 images 항목 → (색, 분당 허용 수). 예: 'busy (images=yellow:60, …)' → ('yellow', 60)."""
+    value = (headers or {}).get("x-throttling-control") or (headers or {}).get("X-Throttling-Control") or ""
+    m = re.search(r"images=(\w+):(\d+)", value)
+    return (m.group(1).lower(), int(m.group(2))) if m else None
+
+
 # ---------------------------------------------------------------------------
 # 호출
 # ---------------------------------------------------------------------------
@@ -417,6 +484,7 @@ class OpsClient:
         self._key_hint = key_hint
         self._token: str | None = None
         self._token_expires_at = 0.0
+        self.last_headers: Mapping[str, str] | None = None  # 마지막 응답 헤더(이미지 받을 때 속도 조절에 씀)
 
     def require_key(self) -> None:
         missing = [n for n, v in (("EPO_OPS_CONSUMER_KEY", self._key), ("EPO_OPS_CONSUMER_SECRET", self._secret)) if not v]
@@ -466,6 +534,15 @@ class OpsClient:
 
     async def get(self, path: str) -> str | None:
         """rest-services 아래 경로를 조회해 XML 텍스트를 돌려준다. 404(자료 없음)면 None."""
+        resp = await self._request(path, "application/xml")
+        return resp.text if resp is not None else None
+
+    async def get_bytes(self, path: str, accept: str, params: dict | None = None) -> bytes | None:
+        """이미지처럼 바이너리 응답. 404(자료 없음)면 None."""
+        resp = await self._request(path, accept, params)
+        return resp.content if resp is not None else None
+
+    async def _request(self, path: str, accept: str, params: dict | None = None) -> httpx.Response | None:
         url = f"{self._base}/rest-services/{path.lstrip('/')}"
         for attempt in range(2):
             token = await self._get_token()
@@ -474,8 +551,11 @@ class OpsClient:
                 "GET",
                 url,
                 source=SOURCE,
-                headers={"Authorization": f"Bearer {token}", "Accept": "application/xml"},
+                headers={"Authorization": f"Bearer {token}", "Accept": accept},
+                params=params,
             )
+            # 이미지 요청도 사용량 헤더(X-Throttling-Control의 images=… 등)를 기록한다.
+            self.last_headers = resp.headers
             if self._on_headers is not None:
                 self._on_headers(resp.headers)
             if resp.status_code == 401 and attempt == 0:
@@ -485,10 +565,10 @@ class OpsClient:
             return self._handle(resp)
         raise PatentApiError(E.AUTH_FAILED, "EPO OPS가 새로 받은 토큰도 거부했습니다. consumer key/secret을 확인하세요.")
 
-    def _handle(self, resp: httpx.Response) -> str | None:
+    def _handle(self, resp: httpx.Response) -> httpx.Response | None:
         status = resp.status_code
         if status == 200:
-            return resp.text
+            return resp
         code, message = parse_fault(resp.text)
         detail = f" ({code}: {message})" if code or message else ""
         if status == 404:
@@ -542,3 +622,18 @@ class OpsClient:
     async def legal(self, ref: OpsReference) -> dict | None:
         xml_text = await self.get(f"legal/{ref.path()}")
         return parse_legal(xml_text) if xml_text is not None else None
+
+    async def images(self, ref: OpsReference) -> list[dict] | None:
+        xml_text = await self.get(f"published-data/{ref.path()}/images")
+        return parse_images(xml_text) if xml_text is not None else None
+
+    async def image_page(self, link: str, page: int) -> bytes:
+        """images 조회가 준 link(published-data/images/…/fullimage)의 page쪽 PDF. 한 번에 한 쪽만 온다."""
+        if not link.startswith("published-data/images/"):
+            raise PatentApiError(E.PARSE_ERROR, "EPO OPS 이미지 링크 형식이 예상과 다릅니다.")
+        data = await self.get_bytes(f"{link}.pdf", "application/pdf", {"Range": str(page)})
+        if data is None:
+            raise PatentApiError(E.UPSTREAM_ERROR, f"EPO OPS가 원본 {page}쪽을 주지 않았습니다(자료 없음).")
+        if not data[:1024].lstrip().startswith(b"%PDF"):
+            raise PatentApiError(E.PARSE_ERROR, f"EPO OPS 원본 {page}쪽이 PDF가 아닙니다.")
+        return data

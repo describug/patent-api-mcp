@@ -1,0 +1,17 @@
+# gcloud run deploy --source 때 Cloud Build로 올리지 않을 것.
+# 이미지에는 Dockerfile이 고른 파일만 들어가지만, 업로드되는 압축 파일 자체에 키가 섞이면 안 된다.
+#!include:.gitignore
+.env
+.env.*
+!.env.example
+.git/
+.gitignore
+.claude/
+.venv/
+data/
+dist/
+*.mcpb
+tests/
+docs/
+patent-api-mcp_*.md
+.DS_Store

@@ -23,6 +23,7 @@ patent-api-mcp_*.md
 remote/
 Dockerfile
 .dockerignore
+.gcloudignore
 
 # 클로드 작업 공간(worktree)·맥 폴더 정보 — 프로젝트 사본이 통째로 들어갈 수 있다
 .claude/

@@ -4,7 +4,7 @@ KIPRIS Plus(한국)와 EPO OPS(유럽특허청)를 하나의 MCP 서버로 감�
 Claude 데스크톱 앱과 Claude Code에 **한 번만** 등록해 모든 프로젝트에서 쓴다.
 API 키는 들어 있지 않다 — 쓰는 사람이 각자 무료로 발급받아 넣는다.
 
-용도: 인용문헌·대응 출원의 서지, 패밀리, 법적 상태, 청구항 확인. (선택) 한국 출원의 심사 서류·청구항 변동·등록사항 등 OA 대응 자료.
+용도: 인용문헌·대응 출원의 서지, 패밀리, 법적 상태, 청구항 확인, 공보 원본 PDF를 사건폴더에 저장. (선택) 한국 출원의 심사 서류·청구항 변동·등록사항 등 OA 대응 자료.
 
 ## 도구
 
@@ -16,6 +16,7 @@ API 키는 들어 있지 않다 — 쓰는 사람이 각자 무료로 발급받�
 | `ep_text` | 번호, `section`=claims/description/abstract | 청구항·명세서·초록 원문(EP·WO 등 제공 범위 내, 기본 2만 자에서 자름) | OPS `published-data/.../claims` 등 |
 | `family` | 번호(국가 무관) | INPADOC 패밀리 구성원(국가·번호·종류코드·일자) | OPS `family` |
 | `legal_status` | 번호 | INPADOC 법적 상태 이벤트 | OPS `legal` |
+| `pdf_download` | 공개·등록번호(국가 무관), `part`=full/drawings, `save_dir`, `label` | 공보 **원본 PDF**(전문·도면)를 사건폴더에 저장(경로·쪽수·크기·텍스트층 여부·구간). 아래 「공보 원본 PDF」 참고 | 한국 전문: KIPRIS `getPubFullTextInfoSearch`·`getAnnFullTextInfoSearch` / 그 밖·도면: OPS `published-data/.../images` |
 | `quota_status` | 선택: `recheck_products` | 이번 달 KIPRIS 호출 수, KIPRIS 상품별 켜짐·신청 상태, 최근 OPS 사용량 헤더 | 내부 |
 
 ### KIPRIS 추가 상품 도구 (신청한 상품만 켜기)
@@ -26,7 +27,7 @@ KIPRIS Plus는 상품마다 따로(무료) 신청한다. 신청한 상품을 설
 
 | 설정 이름 | KIPRIS 상품 | 도구 | 하는 일 | KIPRIS 호출 |
 |---|---|---|---|---|
-| `publication` | 특허·실용 공개·등록공보 | `kr_biblio`, `kr_search` | 위 표 | 1회 |
+| `publication` | 특허·실용 공개·등록공보 | `kr_biblio`, `kr_search`, `pdf_download`(한국 전문) | 위 표 | 1회(`pdf_download`는 1~2회) |
 | `opinion` · `rejection` · `allowance` | 의견제출통지서 · 거절결정서 · 등록결정서 | `kr_exam_documents` | 서류별 발송일·제출기한, 심사 대상 청구항, 거절이유 표(부분·법조항), 구체적 거절이유 본문, 본문에서 뽑은 인용발명, 등록결정 내용. `kinds`·`send_number`로 좁힘 | 종류당 1~4회 |
 | `claim_history` | 청구항 변동 이력 | `kr_claim_history` | 출원서·보정서마다 신규·수정·삭제 청구항 번호와 남은 청구항 수. `claim`을 주면 그 청구항의 판별 원문과 바뀐 부분(`[-삭제-]{+추가+}`) | 2회 |
 | `deadline` | 특허·실용 통지서 마감기한 | `kr_deadlines` | 통지서별 마감일·남은 날. ⚠️ 참고용(공식 기한관리 대체 불가, 대응 완료·연장 미반영, 공개 전 출원은 없을 수 있음) | 1회 |
@@ -44,6 +45,42 @@ KIPRIS Plus는 상품마다 따로(무료) 신청한다. 신청한 상품을 설
 - `quota_status`의 `kiprisProducts`: 상품별 켜짐(`enabled`)과 `신청됨`/`미신청`/`확인 안 함`.
 - 월 1,000회 무료 한도는 **신청한 상품 전체 합산**이다. 한 번에 여러 번 부르는 도구(`kr_exam_documents` 등, 표의 호출 수 참고)가 있으니 남은 양은 `quota_status`로 확인한다.
 
+### 공보 원본 PDF (`pdf_download`)
+
+OA에 적힌 인용문헌 번호만으로 공보 원본 PDF를 사건폴더에 저장한다(도면 캡처, 심사관이 지적한 단락 대조용).
+
+```
+pdf_download(number="WO2022/119250 A1", save_dir="/…/사건폴더/인용문헌", label="D1")        → D1_WO2022119250A1.pdf
+pdf_download(number="KR 10-3028032 B1", save_dir="/…/사건폴더/인용문헌", label="D2")        → D2_KR103028032B1.pdf (KIPRIS 공고전문)
+pdf_download(number="EP1000000B1", part="drawings", save_dir="/…/사건폴더/인용문헌")        → EP1000000B1_drawings.pdf
+```
+
+- **입력:** `number`(공개·등록번호, 국가 무관 — 번호 정규화는 다른 도구와 같다), `part`=`full`(전문, 기본) | `drawings`(도면만),
+  `save_dir`(저장할 폴더 절대경로, 비우면 허용 폴더), `label`(선택, 예: `D1` → 파일 이름 앞에 붙음), `max_pages`(선택, 기본 100)
+- **출처:**
+  - 한국 문헌 전문: **KIPRIS 공개전문·공고전문**(`getPubFullTextInfoSearch`·`getAnnFullTextInfoSearch`, '특허·실용 공개·등록공보' 상품에 포함 — 추가 신청 불필요)을 먼저 쓴다.
+    이 오퍼레이션은 출원번호를 받으므로 공개·등록번호를 출원번호로 바꾼다: EPO OPS 서지(KIPRIS 한도와 무관)를 먼저 보고, OPS에 없는 최근 문헌은 KIPRIS 검색 1회.
+    KIPRIS 호출은 1~2회이고 월 한도 집계에 들어간다. KIPRIS 키가 없거나, 상품 미신청·한도 초과·자료 없음이면 **EPO OPS로 넘어가고** `notes`에 적는다.
+    KIPRIS가 준 파일 주소(`sourceUrl`)는 인증키 없이 열린다(2026-10 실측). 파일 내려받기 자체는 API 호출로 세지 않는다.
+  - 그 밖의 문헌과 도면: **EPO OPS images**. `published-data/publication/docdb/{번호}/images`로 원본(FullDocument·Drawing)의 쪽 수·구간을 보고,
+    `{link}.pdf?Range=n`을 **쪽마다 1회** 불러 하나의 PDF로 합친다([pypdf](https://pypi.org/project/pypdf/)). 한 번에 한 쪽만 온다(`Range=1-3`도 한 쪽, 실측).
+  - 도면만: Drawing 원본이 있으면 그것을, 없으면 전문의 DRAWINGS 구간(다음 구간 앞까지)만 잘라 저장한다. 둘 다 없으면 '자료 없음'.
+- **요청한 문헌만 받는다.** 다른 종류코드·패밀리 구성원으로 바꿔 받지 않는다. 없으면 `data: null`과 "자료 없음"(다른 공보는 `family`로 찾기).
+  종류코드 없이 넣어 여러 문헌(A1·B1 등)이 걸리면 받지 않고 `AMBIGUOUS_NUMBER` 오류와 후보 목록(`error.candidates`)을 돌려준다.
+- **파일 이름:** `{label}_{국가}{번호}{종류코드}.pdf`(ASCII만), 도면만이면 끝에 `_drawings`. 번호는 OPS(docdb) 표기를 따르되
+  미국 공개번호만 흔히 쓰는 표기로 적는다(예: `US20220181889A1`, `KR20220079145A`, `KR103028032B1`, `JP2020123456A`). **같은 이름의 파일이 있으면 덮어쓰지 않고** 받지도 않으며 기존 경로를 알려 준다(`alreadyExists: true`).
+- **허용 폴더:** `save_dir`은 허용 폴더(확장 설정의 **PDF 허용 폴더**, `.env`의 `PATENT_API_PDF_ALLOWED_DIR`, 기본 `~/Downloads`) 아래만 받는다.
+  절대경로가 아니거나, `..`가 들어 있거나, 심볼릭 링크로 밖을 가리키면 오류다. 허용 폴더 안의 없는 하위 폴더는 만든다.
+  경로는 NFC로 맞춰 비교한다(맥 한글 경로의 NFC/NFD 혼재). 사건폴더가 모여 있는 상위 폴더를 허용 폴더로 둔다.
+- **결과:** `data`에 `path`, `source`(KIPRIS|OPS), `part`, `pages`, `bytes`, `hasTextLayer`, `sections`(예: `{"DRAWINGS": 6}`), `publicationNumber`.
+  `hasTextLayer`는 앞쪽 몇 쪽에서 실제로 글자를 뽑아 판별한다. **OPS 원본은 대개 텍스트층 없는 스캔본**이라 글자 검색·복사가 안 된다(notes에 적음).
+- **한도·안정성:** OPS 응답의 `X-Throttling-Control` images 상태가 yellow·red면 쪽 사이를 띄우고(분당 허용 수 기준), black이면 멈추고 알린다.
+  쪽 수가 `max_pages`(기본 100, `PATENT_API_PDF_MAX_PAGES`)를 넘으면 받지 않고 쪽 수만 알려 준다.
+  임시 파일에 받아 다 받은 뒤에만 이름을 붙이므로 중간에 실패해도 반쪽 파일이 남지 않는다. PDF 자체는 캐시에 넣지 않고 images 조회 결과만 캐시한다(30일).
+- **코워크:** 확장은 내 컴퓨터에서 돌고 코워크는 격리된 작업 공간(VM)에서 일한다. 코워크에서 받은 PDF를 열어 보게 하려면 허용 폴더·저장 폴더가 코워크에 연결한 폴더 안이어야 한다.
+- **원격 서버 모드에서는 이 도구를 등록하지 않는다**(서버 디스크에 파일을 남겨도 쓸 데가 없어서).
+- **한계:** OPS에 원본이 없는 문헌(특히 최근 한국 공보, 일부 국가)은 받을 수 없다. 한국 문헌의 도면만(`drawings`)은 OPS에 있을 때만 된다 — 없으면 `part=full`로 KIPRIS 전문을 받는다.
+
 ### 응답 형식
 
 ```json
@@ -55,7 +92,7 @@ KIPRIS Plus는 상품마다 따로(무료) 신청한다. 신청한 상품을 설
 - 오류: `"ok": false, "error": {"code": "AUTH_FAILED", "message": "한국어 설명"}`
 - 오류 코드: `CONFIG_MISSING_KEY`, `AUTH_FAILED`, `PERMISSION_DENIED`, `PRODUCT_NOT_SUBSCRIBED`, `QUOTA_EXCEEDED`, `RATE_LIMITED`,
   `INVALID_INPUT`, `AMBIGUOUS_NUMBER`, `UPSTREAM_BAD_REQUEST`, `UPSTREAM_UNAVAILABLE`, `TIMEOUT`,
-  `NETWORK_ERROR`, `UPSTREAM_ERROR`, `PARSE_ERROR`
+  `NETWORK_ERROR`, `UPSTREAM_ERROR`, `PARSE_ERROR`, `FILE_ERROR`(허용 폴더가 없거나 PDF를 쓰지 못함)
 - 날짜는 `YYYY-MM-DD`
 
 ### 번호 입력
@@ -82,7 +119,7 @@ KIPRIS Plus는 상품마다 따로(무료) 신청한다. 신청한 상품을 설
 ### 방법 A. Claude 데스크톱 확장 파일 (가장 쉬움)
 
 1. [Releases](https://github.com/describug/patent-api-mcp/releases/latest)에서 `patent-api.mcpb`를 받아 더블클릭(또는 Claude 데스크톱 앱 > 설정 > 확장 프로그램으로 끌어다 놓기) → **설치**
-2. **설정 > 확장 프로그램 > Patent API**에서 키 3개 입력, 신청한 **KIPRIS 상품** 체크 → **저장**
+2. **설정 > 확장 프로그램 > Patent API**에서 키 3개 입력, 신청한 **KIPRIS 상품** 체크, (선택) **PDF 허용 폴더** 고르기(사건폴더가 모여 있는 상위 폴더) → **저장**
 3. **Claude 데스크톱 앱 완전 종료(⌘Q) 후 다시 열기**
 
 키는 운영체제 키체인에 저장된다. Python·uv를 따로 설치할 필요가 없다. **코워크에서 쓰려면 이 방법**으로 설치한다.
@@ -162,6 +199,7 @@ claude mcp list        # patent-api: ... ✔ Connected
 - KIPRIS: 실제로 보낸 요청(재시도 포함)을 월별로 센다. `KIPRIS_WARN_AT` 이상이면 `notes`에 경고,
   `KIPRIS_MONTHLY_LIMIT`에 닿으면 호출하지 않고 `QUOTA_EXCEEDED`(캐시는 계속 응답).
 - OPS: 응답의 사용량 헤더(`X-Throttling-Control`, `X-IndividualQuotaPerHour-Used` 등)를 기록해 `quota_status`에 보여준다.
+  원본 PDF(images) 요청의 헤더도 기록한다(`X-Throttling-Control`의 `images=…`).
   429·403(한도 초과)은 재시도하지 않는다.
 - 일시 오류(타임아웃, 503)만 짧은 간격으로 최대 2회 재시도한다.
 - KIPRIS 상품별 신청 상태(신청됨/미신청, 미신청은 하루만)도 같은 파일에 기록한다. 인증키 값은 저장하지 않는다(바뀌었는지만 짧은 해시로 비교).
@@ -175,6 +213,7 @@ uv run pytest
 
 - 번호 정규화, XML→JSON 변환(`tests/fixtures/`의 응답 샘플), 캐시, 한도, 재시도·토큰 재발급·비밀값 비노출
 - KIPRIS 추가 상품: 실제 응답(`real_kipris_*.xml`) 파싱, 상품 선택에 따른 도구 등록, 미신청 안내·하루 기억·재확인
+- 공보 원본 PDF: 실제 응답(`real_kipris_fulltext_*.xml`, `real_ops_images*.xml`, `real_ops_biblio_kr.xml`) 파싱, 파일 이름, 허용 폴더 밖·`..`·심볼릭 링크 거부, 덮어쓰기 거부, 쪽 합치기, 모호한 종류코드 후보, KIPRIS→OPS 넘어가기, 속도 조절(`tests/test_pdf.py`)
 - MCP Inspector로 도구 목록 확인: 위 데스크톱 앱 설정과 같은 내용을 `mcp.json`으로 저장한 뒤
 
 ```bash
@@ -203,12 +242,13 @@ core/            MCP를 모르는 계층 — B단계 원격 서버가 그대로 
   products.py    KIPRIS 상품 목록·설정(어떤 상품의 도구를 켤지)
   ops.py         EPO OPS 인증·호출·파싱
   numbers.py     번호 정규화
+  pdf.py         공보 원본 PDF: 허용 폴더 검사·파일 이름·쪽 합치기·안전한 저장
   cache.py       SQLite 캐시
   quota.py       호출 횟수·한도, KIPRIS 상품 신청 상태
   http.py        재시도
   errors.py      표준 오류 코드
   config.py      설정 읽기(환경변수 > .env)
-manifest.json    Claude 데스크톱 확장(.mcpb) 정의 — 키 입력칸·KIPRIS 상품 체크칸(user_config)
+manifest.json    Claude 데스크톱 확장(.mcpb) 정의 — 키 입력칸·PDF 허용 폴더·KIPRIS 상품 체크칸(user_config)
 ```
 
 비밀값은 `.env`(또는 확장 설치 시 키체인)에만 두고 코드·로그·도구 응답 어디에도 출력하지 않는다(오류 메시지도 키를 가린다).
@@ -217,5 +257,6 @@ manifest.json    Claude 데스크톱 확장(.mcpb) 정의 — 키 입력칸·KIP
 
 > 인용문헌·대응 출원의 서지, 패밀리, 법적 상태, 청구항은 patent-api 도구(kr_biblio, ep_biblio, family,
 > legal_status, ep_text)로, 한국 출원의 심사 서류·청구항 변동은 kr_exam_documents·kr_claim_history로 확인한다.
+> 인용문헌 공보 원본 PDF가 필요하면 pdf_download로 사건폴더에 받는다(label에 D1 등).
 > kr_deadlines의 기한은 참고만 하고 기한관리 시스템으로 확인한다. 도구 결과의 번호·날짜는 그대로 옮기고, 도구가 "자료 없음"을 돌려주면
 > 추정해서 채우지 않고 그 사실을 적는다. 출원 전 사건의 발명 내용을 검색어로 보내지 않는다.

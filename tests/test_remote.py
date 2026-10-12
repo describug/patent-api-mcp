@@ -269,6 +269,7 @@ def test_authorization_server_metadata(client):
 
 def test_healthz_needs_no_auth(client):
     assert client.get("/healthz").json() == {"ok": True}
+    assert client.get("/health").json() == {"ok": True}
 
 
 # --------------------------------------------------------------------------- 인증 거부

@@ -31,6 +31,11 @@ def user_data_dir() -> Path:
     return base / APP_NAME
 
 
+def default_pdf_allowed_dir() -> Path:
+    """pdf_download가 저장할 수 있는 폴더(이 아래만 허용)의 기본값."""
+    return Path.home() / "Downloads"
+
+
 def remote_cache_path() -> Path:
     """원격 모드 기본 캐시 위치. 컨테이너에서 쓰기 가능한 임시 폴더(Cloud Run은 재시작 시 비워진다)."""
     return Path(tempfile.gettempdir()) / APP_NAME / "cache.sqlite3"
@@ -128,6 +133,9 @@ class Settings:
     ttl_docs: int = 1 * DAY  # 심사 서류·마감기한·청구항 이력·등록사항·법적 상태(자주 바뀜)
     # 긴 응답 상한(문자 수)
     max_text_chars: int = 20000
+    # 공보 원본 PDF(pdf_download): 이 폴더 아래에만 저장한다. OPS는 쪽마다 1회 호출하므로 쪽 수 상한을 둔다.
+    pdf_allowed_dir: Path = field(default_factory=default_pdf_allowed_dir)
+    pdf_max_pages: int = 100
     env_path: Path = DEFAULT_ENV_PATH
 
     runtime: str = "local"  # "mcpb"면 Claude 데스크톱 확장, "remote"면 원격 서버
@@ -168,6 +176,9 @@ class Settings:
             return int(_float(env, name, default_days) * DAY)
 
         cache_path = _clean_value(env.get("PATENT_API_CACHE_PATH"))
+        pdf_dir = _clean_value(env.get("PATENT_API_PDF_ALLOWED_DIR"))
+        if pdf_dir and "${" in pdf_dir:  # 치환되지 않은 '${DOWNLOADS}/…' 같은 값
+            pdf_dir = None
         products, warnings = P.resolve_enabled(
             _clean_value(env.get("PATENT_API_KIPRIS_PRODUCTS")),
             {p.key: _clean_value(env.get(P.env_flag_name(p.key))) for p in P.PRODUCTS},
@@ -192,6 +203,8 @@ class Settings:
             ttl_search=days("CACHE_TTL_SEARCH_DAYS", 1),
             ttl_docs=days("CACHE_TTL_DOCS_DAYS", 1),
             max_text_chars=_int(env, "PATENT_API_MAX_TEXT_CHARS", 20000),
+            pdf_allowed_dir=Path(pdf_dir).expanduser() if pdf_dir else default_pdf_allowed_dir(),
+            pdf_max_pages=_int(env, "PATENT_API_PDF_MAX_PAGES", 100),
             env_path=env_path,
             runtime=(_clean_value(env.get("PATENT_API_RUNTIME")) or ("remote" if remote else "local")).lower(),
         )
