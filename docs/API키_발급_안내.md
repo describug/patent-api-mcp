@@ -208,7 +208,7 @@ patent-api를 쓰려면 키 두 종류가 필요합니다. 둘 다 **무료**이
    - 위쪽 칸 3개에 **KIPRIS Plus 인증키 / EPO OPS Consumer Key / EPO OPS Consumer Secret**을 붙여 넣습니다.
      넣은 값은 ●로 가려져 보입니다. 아직 없는 키는 비워 두고 나중에 넣어도 됩니다. 월 호출 한도는 1000 그대로.
 
-     ![구성 — 키 입력칸](images/install-03-keys.png)
+     ![구성 — 키 입력칸과 PDF 허용 폴더](images/install-03-keys.png)
 
    - 아래쪽 **KIPRIS 상품: …** 체크칸에서 1-3에서 신청한 상품만 켭니다.
      '특허·실용 공개·등록공보'는 항상 켜져 있어서 체크칸이 없습니다.
