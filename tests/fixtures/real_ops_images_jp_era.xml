@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../../../../../style/pub-inquiry.xsl"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ops:document-inquiry>
+        <ops:publication-reference>
+            <document-id document-id-type="docdb">
+                <country>JP</country>
+                <doc-number>H10123456</doc-number>
+                <kind>A</kind>
+            </document-id>
+        </ops:publication-reference>
+        <ops:inquiry-result>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>JP</country>
+                    <doc-number>H10123456</doc-number>
+                    <kind>A</kind>
+                </document-id>
+            </publication-reference>
+            <ops:document-instance system="ops.epo.org" number-of-pages="2" desc="Drawing" link="published-data/images/JP/H10123456/A/thumbnail">
+                <ops:document-format-options>
+                    <ops:document-format>application/pdf</ops:document-format>
+                    <ops:document-format>application/tiff</ops:document-format>
+                </ops:document-format-options>
+                <ops:document-section name="DRAWINGS" start-page="1"/>
+            </ops:document-instance>
+            <ops:document-instance system="ops.epo.org" number-of-pages="4" desc="FullDocument" link="published-data/images/JP/H10123456/A/fullimage">
+                <ops:document-format-options>
+                    <ops:document-format>application/pdf</ops:document-format>
+                    <ops:document-format>application/tiff</ops:document-format>
+                </ops:document-format-options>
+                <ops:document-section name="ABSTRACT" start-page="1"/>
+                <ops:document-section name="BIBLIOGRAPHY" start-page="1"/>
+                <ops:document-section name="CLAIMS" start-page="2"/>
+                <ops:document-section name="DESCRIPTION" start-page="2"/>
+                <ops:document-section name="DRAWINGS" start-page="3"/>
+            </ops:document-instance>
+        </ops:inquiry-result>
+    </ops:document-inquiry>
+</ops:world-patent-data>

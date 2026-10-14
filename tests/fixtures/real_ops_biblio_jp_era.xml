@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../../../../../style/exchange.xsl"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <exchange-documents>
+        <exchange-document system="ops.epo.org" family-id="17851200" country="JP" doc-number="H10123456" kind="A">
+            <bibliographic-data>
+                <publication-reference>
+                    <document-id document-id-type="docdb">
+                        <country>JP</country>
+                        <doc-number>H10123456</doc-number>
+                        <kind>A</kind>
+                        <date>19980515</date>
+                    </document-id>
+                    <document-id document-id-type="epodoc">
+                        <doc-number>JPH10123456</doc-number>
+                        <date>19980515</date>
+                    </document-id>
+                </publication-reference>
+                <classification-ipc>
+                    <text>G02B27/02</text>
+                    <text>H04N5/64</text>
+                </classification-ipc>
+                <classifications-ipcr>
+                    <classification-ipcr sequence="1">
+                        <text>G02B  27/    02            A I                    </text>
+                    </classification-ipcr>
+                    <classification-ipcr sequence="2">
+                        <text>H04N   5/    64            A I                    </text>
+                    </classification-ipcr>
+                </classifications-ipcr>
+                <patent-classifications>
+                    <patent-classification sequence="1">
+                        <classification-scheme office="JP" scheme="FI"/>
+                        <classification-symbol>G02B27/02&amp;Z</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="2">
+                        <classification-scheme office="JP" scheme="FI"/>
+                        <classification-symbol>H04N5/64&amp;511A</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="1">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA04</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="2">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA23</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="3">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA41</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="4">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA42</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="5">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA70</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="6">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA81</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="7">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA89</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="8">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA91</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="9">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>2H199/CA93</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="10">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>5G066/AA09</classification-symbol>
+                    </patent-classification>
+                    <patent-classification sequence="11">
+                        <classification-scheme office="JP" scheme="FTERM"/>
+                        <classification-symbol>5G066/AE07</classification-symbol>
+                    </patent-classification>
+                </patent-classifications>
+                <application-reference doc-id="35813198">
+                    <document-id document-id-type="docdb">
+                        <country>JP</country>
+                        <doc-number>29778996</doc-number>
+                        <kind>A</kind>
+                        <date>19961021</date>
+                    </document-id>
+                    <document-id document-id-type="epodoc">
+                        <doc-number>JP19960297789</doc-number>
+                        <date>19961021</date>
+                    </document-id>
+                    <document-id document-id-type="original">
+                        <doc-number>8297789</doc-number>
+                    </document-id>
+                </application-reference>
+                <priority-claims>
+                    <priority-claim sequence="1" kind="national">
+                        <document-id document-id-type="docdb">
+                            <country>JP</country>
+                            <doc-number>29778996</doc-number>
+                            <kind>A</kind>
+                            <date>19961021</date>
+                        </document-id>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>JP19960297789</doc-number>
+                            <date>19961021</date>
+                        </document-id>
+                    </priority-claim>
+                </priority-claims>
+                <parties>
+                    <applicants>
+                        <applicant sequence="1" data-format="epodoc">
+                            <applicant-name>
+                                <name>TAKARA CO LTD</name>
+                            </applicant-name>
+                        </applicant>
+                        <applicant sequence="1" data-format="original">
+                            <applicant-name>
+                                <name>TAKARA CO LTD</name>
+                            </applicant-name>
+                        </applicant>
+                    </applicants>
+                    <inventors>
+                        <inventor sequence="1" data-format="epodoc">
+                            <inventor-name>
+                                <name>ISHIZUKA SATOSHI</name>
+                            </inventor-name>
+                        </inventor>
+                        <inventor sequence="1" data-format="original">
+                            <inventor-name>
+                                <name>ISHIZUKA SATOSHI</name>
+                            </inventor-name>
+                        </inventor>
+                    </inventors>
+                </parties>
+                <invention-title lang="en">HEAD MOUNTED DISPLAY DEVICE</invention-title>
+            </bibliographic-data>
+            <abstract lang="en">
+                <p>PROBLEM TO BE SOLVED: To make it possible to observe an image without being influenced by external light and to check a scene outside a display device by simple action by forming see-through parts just under eyes. SOLUTION: A protector 8 for protecting the device from the entry of external light through a gap between a device body 1 and a face at the time of fitting the device is fitted to the device body 1. The protector 8 is formed from a material having the flexibility and non-translucency of synthetic resin such as rubber so as to control the entry of external light by fitting it close to user's face at the time of fitting the device and see-through parts 9 are formed on the protector 8 to see the external in a state fitting the body 1 to the head part. These see-through parts 9 are respectively formed under the lenses 4 of a face mask 3 correspondingly to positions just under right and left eyes. Respective see-through parts 9 are constituted of slits 10.  Thereby a user can observe a picture on a liquid crystal panel in the device body 1 through the lenses 4 by seeing the front and see his (her) own feet through the slits 10 at the time of moving his (or her) eyes downward.</p>
+            </abstract>
+        </exchange-document>
+    </exchange-documents>
+</ops:world-patent-data>

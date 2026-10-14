@@ -4,7 +4,7 @@ KIPRIS Plus(한국)와 EPO OPS(유럽특허청)를 하나의 MCP 서버로 감�
 Claude 데스크톱 앱과 Claude Code에 **한 번만** 등록해 모든 프로젝트에서 쓴다.
 API 키는 들어 있지 않다 — 쓰는 사람이 각자 무료로 발급받아 넣는다.
 
-용도: 인용문헌·대응 출원의 서지, 패밀리, 법적 상태, 청구항 확인, 공보 원본 PDF를 사건폴더에 저장. (선택) 한국 출원의 심사 서류·청구항 변동·등록사항 등 OA 대응 자료.
+용도: 인용문헌·대응 출원의 서지, 패밀리, 법적 상태, 청구항 확인, 공개 문헌 검색(한국·해외), 공보 원본 PDF를 사건폴더에 저장. (선택) 한국 출원의 심사 서류·청구항 변동·등록사항 등 OA 대응 자료.
 
 ## 도구
 
@@ -12,12 +12,14 @@ API 키는 들어 있지 않다 — 쓰는 사람이 각자 무료로 발급받�
 |---|---|---|---|
 | `kr_biblio` | 한국 출원번호 | 서지 상세(명칭·출원인·발명자·IPC·공개/등록번호·일자·초록·상태·우선권·심사관 인용문헌). 선택: 청구항, 행정처리 이력 | KIPRIS `getBibliographyDetailInfoSearch` |
 | `kr_search` | 키워드·명칭·출원인·IPC·출원일 기간·쪽 | 한국 특허·실용신안 검색 목록 ⚠️ 출원 전 사건 내용으로 검색 금지 | KIPRIS `getAdvancedSearch` |
-| `ep_biblio` | 공개·등록번호(국가 무관) | 서지·초록·인용문헌 | OPS `published-data/.../biblio` |
+| `ep_biblio` | 공개·등록번호(국가 무관) | 서지·초록·인용문헌. 넣은 종류코드가 없으면 종류코드 없이 다시 찾고 실제 종류코드를 알려 줌 | OPS `published-data/.../biblio` |
+| `ep_search` | 키워드(명칭·요약)·명칭·출원인·발명자·IPC·CPC·공개일 기간·국가, 또는 `cql` 직접·쪽 | 해외(EP·US·WO·CN·JP 등) 공개 문헌 검색 목록(공개번호·명칭·출원인·IPC·패밀리ID, 한 번에 최대 100건, 앞 2000건까지). 청구항·본문은 검색 안 됨 ⚠️ 출원 전 사건 내용으로 검색 금지 | OPS `published-data/search/biblio`(CQL) |
 | `ep_text` | 번호, `section`=claims/description/abstract | 청구항·명세서·초록 원문(EP·WO 등 제공 범위 내, 기본 2만 자에서 자름) | OPS `published-data/.../claims` 등 |
 | `family` | 번호(국가 무관) | INPADOC 패밀리 구성원(국가·번호·종류코드·일자) | OPS `family` |
 | `legal_status` | 번호 | INPADOC 법적 상태 이벤트 | OPS `legal` |
+| `ep_register` | EP 출원번호(`26123456.7`, `EP26123456`)·EP 공개번호·유럽 단계 WO 공개번호, 선택: `max_items` | EP Register: 진행 상태·갱신일, 공개번호·일자, 출원인·대리인, 모출원(분할), 검색보고서 종류·발송일, 인용문헌(X/Y/A·관련 청구항·단계), 심사청구일 등 일자, 지정국, 최근 절차 단계·이벤트. 응답 기한은 계산하지 않음. 서류 원문(PDF)은 OPS가 주지 않음 | OPS `register/.../biblio,events,procedural-steps` |
 | `pdf_download` | 공개·등록번호(국가 무관), `part`=full/drawings, `save_dir`, `label` | 공보 **원본 PDF**(전문·도면)를 사건폴더에 저장(경로·쪽수·크기·텍스트층 여부·구간). 아래 「공보 원본 PDF」 참고 | 한국 전문: KIPRIS `getPubFullTextInfoSearch`·`getAnnFullTextInfoSearch` / 그 밖·도면: OPS `published-data/.../images` |
-| `quota_status` | 선택: `recheck_products` | 이번 달 KIPRIS 호출 수, KIPRIS 상품별 켜짐·신청 상태, 최근 OPS 사용량 헤더 | 내부 |
+| `quota_status` | 선택: `recheck_products` | 이번 달 KIPRIS 호출 수, KIPRIS 상품별 켜짐·신청 상태, 최근 OPS 사용량 헤더와 서비스별 혼잡도(`opsThrottle`) | 내부 |
 
 ### KIPRIS 추가 상품 도구 (신청한 상품만 켜기)
 
@@ -103,9 +105,19 @@ pdf_download(number="EP1000000B1", part="drawings", save_dir="/…/사건폴더/
 | `KR 10-2026-0012345 A` | OPS: 한국 공개번호 `KR.20260012345.A` |
 | `KR 10-1234567 B1` | OPS: 한국 등록번호 `KR.101234567.B1` |
 | `EP1234567A1`, `US 2026/0123456 A1`, `WO2026/012345` | OPS 공개번호 |
+| `JPS60012345A`, `JP S60-012345 A`, `JPH10123456A` | 2000년 이전 일본 번호(연호 S 쇼와·H 헤이세이·T 다이쇼): OPS `JP.S60012345.A` |
+| `26123456.7`, `EP26123456` | `ep_register`: EP 출원번호(다른 OPS 도구는 `number_type='application'`) |
 
 한국 `10-YYYY-NNNNNNN`은 출원번호와 공개번호가 같은 모양이라, OPS 도구에서는 종류코드(`A`)를 붙이거나
 `number_type`(`publication`/`application`)을 지정해야 한다. 추측하지 않고 `AMBIGUOUS_NUMBER`로 돌려준다.
+
+OPS 번호 조회(`ep_biblio`·`ep_text`·`family`·`legal_status`·`pdf_download`)가 "자료 없음"이면 한 번씩만 다시 묻는다.
+
+- 연호 없이 적은 2000년 이전 일본 번호(`JP60012345A`: 연도 2자리 + 6자리) → 연호를 붙인 후보(`JPS60012345A`, H01~H12면 `JPH…` 먼저).
+  OPS는 연호 없는 `JP.60012345.A`로는 찾지 못한다(2026-10 실측).
+- 넣은 종류코드가 없을 때(예: A2·A3만 있는데 `A1`) → 종류코드 없이(epodoc) 다시 찾고, `notes`에 실제 종류코드를 적는다.
+  `pdf_download`는 문헌을 자동으로 고르지 않고 후보(`error.candidates`)를 돌려준다. 한국 번호는 종류코드 없이 찾지 못해 다시 묻지 않는다.
+- 그래도 없는 EP·WO 번호는 공개 직후(1~2주)라 OPS에 아직 없을 수 있다고 알리고 `ep_register`를 권한다.
 
 ## 시작하기
 
@@ -195,11 +207,13 @@ claude mcp list        # patent-api: ... ✔ Connected
 
 - SQLite 캐시: 사용자 폴더의 `patent-api-mcp/cache.sqlite3`
   (macOS `~/Library/Application Support/`, Windows `%LOCALAPPDATA%\`, Linux `~/.local/share/`). 키 = 도구명 + 정규화된 입력. 보존 기간 기본값: 서지·원문 30일, 패밀리 7일,
-  법적 상태 1일, 검색 1일, KIPRIS 심사 서류 등 1일(`CACHE_TTL_DOCS_DAYS`). `.env`의 `CACHE_TTL_*_DAYS`로 바꾼다. "자료 없음"은 최대 1일만 기억한다.
+  법적 상태 1일, 검색 1일, KIPRIS 심사 서류 등 1일(`CACHE_TTL_DOCS_DAYS`), EP Register 6시간(`CACHE_TTL_REGISTER_DAYS=0.25`). `.env`의 `CACHE_TTL_*_DAYS`로 바꾼다. "자료 없음"은 최대 1일만 기억한다.
 - KIPRIS: 실제로 보낸 요청(재시도 포함)을 월별로 센다. `KIPRIS_WARN_AT` 이상이면 `notes`에 경고,
   `KIPRIS_MONTHLY_LIMIT`에 닿으면 호출하지 않고 `QUOTA_EXCEEDED`(캐시는 계속 응답).
 - OPS: 응답의 사용량 헤더(`X-Throttling-Control`, `X-IndividualQuotaPerHour-Used` 등)를 기록해 `quota_status`에 보여준다.
   원본 PDF(images) 요청의 헤더도 기록한다(`X-Throttling-Control`의 `images=…`).
+  `ep_search`는 `search=…` 항목이 yellow·red면 `notes`로 알린다(검색은 분당 허용 수가 가장 적다).
+  `quota_status`의 `opsThrottle`에 서비스별 혼잡도를 풀어 보여 준다. `ep_register`(Register)는 헤더에 따로 항목이 없다(2026-10 실측, 기타 `other`로 묶이는 것으로 보임).
   429·403(한도 초과)은 재시도하지 않는다.
 - 일시 오류(타임아웃, 503)만 짧은 간격으로 최대 2회 재시도한다.
 - KIPRIS 상품별 신청 상태(신청됨/미신청, 미신청은 하루만)도 같은 파일에 기록한다. 인증키 값은 저장하지 않는다(바뀌었는지만 짧은 해시로 비교).
@@ -213,6 +227,9 @@ uv run pytest
 
 - 번호 정규화, XML→JSON 변환(`tests/fixtures/`의 응답 샘플), 캐시, 한도, 재시도·토큰 재발급·비밀값 비노출
 - KIPRIS 추가 상품: 실제 응답(`real_kipris_*.xml`) 파싱, 상품 선택에 따른 도구 등록, 미신청 안내·하루 기억·재확인
+- 해외 검색(`ep_search`): CQL 조립·따옴표/괄호 무력화, 실제 응답(`real_ops_search.xml`, 0건 `real_ops_search_nodata.xml`) 파싱, 쪽 범위(최대 100건·2000건), 스로틀 안내, 한도 오류 재시도 안 함(`tests/test_search.py`)
+- 다시 묻기: JP 연호 후보, 틀린 종류코드 → 종류코드 없이, 공개 직후 안내(`tests/test_fallback.py`, 실제 응답 `real_ops_biblio_epodoc.xml`·`real_ops_biblio_jp_era.xml`·`real_ops_images_jp_era.xml`)
+- EP Register(`ep_register`): 실제 응답(`real_ops_register.xml`, 없음 `real_ops_register_nodata.xml`) 파싱, 출원/공개번호 → 경로, 인용문헌이 빈 경우 안내, 캐시·`opsThrottle`(`tests/test_register.py`)
 - 공보 원본 PDF: 실제 응답(`real_kipris_fulltext_*.xml`, `real_ops_images*.xml`, `real_ops_biblio_kr.xml`) 파싱, 파일 이름, 허용 폴더 밖·`..`·심볼릭 링크 거부, 덮어쓰기 거부, 쪽 합치기, 모호한 종류코드 후보, KIPRIS→OPS 넘어가기, 속도 조절(`tests/test_pdf.py`)
 - MCP Inspector로 도구 목록 확인: 위 데스크톱 앱 설정과 같은 내용을 `mcp.json`으로 저장한 뒤
 
@@ -257,6 +274,8 @@ manifest.json    Claude 데스크톱 확장(.mcpb) 정의 — 키 입력칸·PDF
 
 > 인용문헌·대응 출원의 서지, 패밀리, 법적 상태, 청구항은 patent-api 도구(kr_biblio, ep_biblio, family,
 > legal_status, ep_text)로, 한국 출원의 심사 서류·청구항 변동은 kr_exam_documents·kr_claim_history로 확인한다.
+> 공개된 기술 주제의 해외 문헌은 ep_search로, 한국 문헌은 kr_search로 찾는다(출원 전 사건 내용은 넣지 않는다).
+> 유럽 출원의 진행 상태·검색보고서·인용문헌(X/Y/A)·분할 관계는 ep_register로 확인한다.
 > 인용문헌 공보 원본 PDF가 필요하면 pdf_download로 사건폴더에 받는다(label에 D1 등).
 > kr_deadlines의 기한은 참고만 하고 기한관리 시스템으로 확인한다. 도구 결과의 번호·날짜는 그대로 옮기고, 도구가 "자료 없음"을 돌려주면
 > 추정해서 채우지 않고 그 사실을 적는다. 출원 전 사건의 발명 내용을 검색어로 보내지 않는다.

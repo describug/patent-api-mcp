@@ -24,6 +24,12 @@ _KIND_RE = r"[A-Z][0-9]?"
 # 번호 사이에 흔히 끼는 구분자
 _SEPARATORS = re.compile(r"[\s\-./,]")
 
+# 2000년 이전 일본 번호: 연호(S 쇼와·H 헤이세이·T 다이쇼) + 연도 2자리 + 일련번호 6자리. 예: JPS60012345A, JP H10-123456 A
+# OPS는 docdb 'JP.H10123456.A' / epodoc 'JPH10123456' 둘 다 받고, 연호 없이 'JP.58123456.A'로는 못 찾는다(2026-10 실측).
+_JP_ERA_RE = re.compile(
+    rf"JP\s*[-.]?\s*([STH])\s*[-.]?\s*([0-9]{{1,2}})\s*[-./]?\s*([0-9]{{1,6}})\s*[-.]?\s*({_KIND_RE})?"
+)
+
 
 def _clean(raw: str) -> str:
     if not isinstance(raw, str):
@@ -209,6 +215,16 @@ def normalize_ops_number(raw: str, ref_type: RefType | None = None) -> OpsRefere
             f"'{raw}'는 PCT 국제출원번호입니다. 국제공개번호(예: WO2026/012345)를 넣어 주세요.",
         )
 
+    m_era = _JP_ERA_RE.fullmatch(s)
+    if m_era:
+        era, year, serial, kind = m_era.groups()
+        if kind and ref_type == "application":
+            raise PatentApiError(
+                INVALID_INPUT,
+                f"'{raw}'에 종류코드({kind})가 있는데 출원번호로 조회하라고 했습니다. 종류코드는 공개·등록번호에 붙습니다.",
+            )
+        return OpsReference(ref_type or "publication", "JP", f"{era}{int(year):02d}{serial.zfill(6)}", kind)
+
     m = re.fullmatch(rf"([A-Z]{{2}})?\s*[-.]?\s*([0-9][0-9\s\-./,]*?)\s*[-.]?\s*({_KIND_RE})?", s)
     if not m or not m.group(2):
         raise PatentApiError(
@@ -373,3 +389,24 @@ def _normalize_jp(raw: str, body: str, digits: str, kind: str | None, ref_type: 
     if len(parts) == 2 and len(parts[0]) == 4 and _valid_year(parts[0]):
         return OpsReference(ref_type or "publication", "JP", parts[0] + parts[1].zfill(6), kind)
     return OpsReference(ref_type or "publication", "JP", digits, kind)
+
+
+def jp_era_candidates(ref: OpsReference) -> list[OpsReference]:
+    """연호 없이 적은 2000년 이전 일본 번호(연도 2자리 + 일련번호 6자리) → 연호를 붙인 후보.
+
+    헤이세이 번호는 H01~H12(1989~2000)까지 쓰였고, 그 앞은 쇼와(S)다. 2000년부터는 서기 4자리 번호다.
+    """
+    if ref.country != "JP" or not (len(ref.number) == 8 and ref.number.isdigit()):
+        return []
+    eras = ("H", "S") if int(ref.number[:2]) <= 12 else ("S",)
+    return [OpsReference(ref.ref_type, "JP", era + ref.number, ref.kind) for era in eras]
+
+
+def kind_fallback(ref: OpsReference) -> OpsReference | None:
+    """입력한 종류코드로 자료 없음일 때 다시 물을 '종류코드 없는'(epodoc) 번호. 다시 묻지 않을 번호면 None.
+
+    한국은 종류코드 없이(epodoc) 찾지 못하고(실측), 출원번호·관례로 붙인 종류코드는 사용자가 넣은 게 아니라 빼지 않는다.
+    """
+    if not ref.kind or ref.kind_assumed or ref.ref_type != "publication" or ref.country == "KR":
+        return None
+    return OpsReference("publication", ref.country, ref.number, None)

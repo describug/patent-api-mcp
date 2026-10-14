@@ -8,11 +8,15 @@
     legal/{ref}
     published-data/{ref}/images → 원본 이미지 목록(FullDocument: 쪽 수·링크)
     published-data/images/{CC}/{번호}/{종류}/fullimage?Range=N → N쪽 PDF(한 번에 한 쪽만 온다, 2026-10 실측)
+    published-data/search/biblio?q={CQL} (X-OPS-Range: 1-25) → 키워드 검색 + 서지를 한 번에
+    register/{application|publication}/epodoc/{번호}/biblio,events,procedural-steps → EP Register(절차·상태), core/register.py
+      (OPS 3.2 reference guide v1.3.20: 한 번에 최대 100건, 앞 2000건까지만, total-result-count는 10000에서 잘림)
 """
 
 from __future__ import annotations
 
 import base64
+import calendar
 import re
 import time
 import xml.etree.ElementTree as ET
@@ -162,90 +166,92 @@ def parse_biblio(xml_text: str) -> dict | None:
     docs = root.findall(".//exchange-document")
     if not docs:
         return None
-    out = []
-    for doc in docs:
-        bib = doc.find("bibliographic-data")
-        pub = _doc_id(bib.find("publication-reference") if bib is not None else None) or {}
-        titles = bib.findall("invention-title") if bib is not None else []
-        title_el = _pick_lang(titles)
-        abstracts = doc.findall("abstract")
-        abstract_el = _pick_lang(abstracts)
-        parties = bib.find("parties") if bib is not None else None
-        applicants_parent = parties.find("applicants") if parties is not None else None
-        inventors_parent = parties.find("inventors") if parties is not None else None
+    return {"documents": [_biblio_document(doc) for doc in docs]}
 
-        ipc = []
-        if bib is not None:
-            for c in bib.findall("classifications-ipcr/classification-ipcr"):
-                txt = _t(c, "text")
-                if txt:
-                    code = _ipcr_text(txt)
-                    if code not in ipc:
-                        ipc.append(code)
-        cpc = []
-        if bib is not None:
-            for pc in bib.findall("patent-classifications/patent-classification"):
-                code = _cpc(pc)
-                if code and code not in cpc:
-                    cpc.append(code)
 
-        citations, npl = [], []
-        if bib is not None:
-            for c in bib.findall("references-cited/citation"):
-                patcit = c.find("patcit")
-                if patcit is not None:
-                    d = _doc_id(patcit) or {}
-                    citations.append(
-                        _drop_none(
-                            {
-                                "number": d.get("number"),
-                                "date": d.get("date"),
-                                "category": _all_text(c.find("category")),
-                                "phase": c.get("cited-phase"),
-                            }
-                        )
+def _biblio_document(doc: ET.Element) -> dict:
+    """<exchange-document> 하나 → 서지 dict (biblio 조회와 검색 결과가 함께 쓴다)."""
+    bib = doc.find("bibliographic-data")
+    pub = _doc_id(bib.find("publication-reference") if bib is not None else None) or {}
+    titles = bib.findall("invention-title") if bib is not None else []
+    title_el = _pick_lang(titles)
+    abstracts = doc.findall("abstract")
+    abstract_el = _pick_lang(abstracts)
+    parties = bib.find("parties") if bib is not None else None
+    applicants_parent = parties.find("applicants") if parties is not None else None
+    inventors_parent = parties.find("inventors") if parties is not None else None
+
+    ipc = []
+    if bib is not None:
+        for c in bib.findall("classifications-ipcr/classification-ipcr"):
+            txt = _t(c, "text")
+            if txt:
+                code = _ipcr_text(txt)
+                if code not in ipc:
+                    ipc.append(code)
+    cpc = []
+    if bib is not None:
+        for pc in bib.findall("patent-classifications/patent-classification"):
+            code = _cpc(pc)
+            if code and code not in cpc:
+                cpc.append(code)
+
+    citations, npl = [], []
+    if bib is not None:
+        for c in bib.findall("references-cited/citation"):
+            patcit = c.find("patcit")
+            if patcit is not None:
+                d = _doc_id(patcit) or {}
+                citations.append(
+                    _drop_none(
+                        {
+                            "number": d.get("number"),
+                            "date": d.get("date"),
+                            "category": _all_text(c.find("category")),
+                            "phase": c.get("cited-phase"),
+                        }
                     )
-                nplcit = c.find("nplcit")
-                if nplcit is not None:
-                    t = _all_text(nplcit)
-                    if t:
-                        npl.append(t)
+                )
+            nplcit = c.find("nplcit")
+            if nplcit is not None:
+                t = _all_text(nplcit)
+                if t:
+                    npl.append(t)
 
-        priorities = []
-        if bib is not None:
-            for pc in bib.findall("priority-claims/priority-claim"):
-                d = _doc_id(pc, "epodoc") or _doc_id(pc) or {}
-                if d.get("number") or d.get("docNumber"):
-                    priorities.append(_drop_none({"number": d.get("number") or d.get("docNumber"), "date": d.get("date")}))
+    priorities = []
+    if bib is not None:
+        for pc in bib.findall("priority-claims/priority-claim"):
+            d = _doc_id(pc, "epodoc") or _doc_id(pc) or {}
+            if d.get("number") or d.get("docNumber"):
+                priorities.append(_drop_none({"number": d.get("number") or d.get("docNumber"), "date": d.get("date")}))
 
-        app = _doc_id(bib.find("application-reference") if bib is not None else None) or {}
-        item = {
-            "publicationNumber": pub.get("number")
-            or f"{doc.get('country', '')}{doc.get('doc-number', '')}{doc.get('kind', '')}",
-            "country": doc.get("country") or pub.get("country"),
-            "docNumber": doc.get("doc-number") or pub.get("docNumber"),
-            "kind": doc.get("kind") or pub.get("kind"),
-            "publicationDate": pub.get("date"),
-            "familyId": doc.get("family-id"),
-            "title": (title_el.text or "").strip() if title_el is not None and title_el.text else None,
-            "titleLang": title_el.get("lang") if title_el is not None else None,
-            "applicants": _names(applicants_parent, "applicant", "epodoc"),
-            "applicantsOriginal": _names(applicants_parent, "applicant", "original"),
-            "inventors": _names(inventors_parent, "inventor", "epodoc"),
-            "inventorsOriginal": _names(inventors_parent, "inventor", "original"),
-            "ipc": ipc,
-            "cpc": cpc,
-            "application": _drop_none({"number": app.get("number"), "date": app.get("date")}),
-            "priorities": priorities,
-            "abstract": _all_text(abstract_el),
-            "abstractLang": abstract_el.get("lang") if abstract_el is not None else None,
-            "citations": citations,
-            "nonPatentCitations": npl,
-        }
-        if doc.get("status"):
-            item["opsStatus"] = doc.get("status")
-        out.append(_drop_none(item))
-    return {"documents": out}
+    app = _doc_id(bib.find("application-reference") if bib is not None else None) or {}
+    item = {
+        "publicationNumber": pub.get("number")
+        or f"{doc.get('country', '')}{doc.get('doc-number', '')}{doc.get('kind', '')}",
+        "country": doc.get("country") or pub.get("country"),
+        "docNumber": doc.get("doc-number") or pub.get("docNumber"),
+        "kind": doc.get("kind") or pub.get("kind"),
+        "publicationDate": pub.get("date"),
+        "familyId": doc.get("family-id"),
+        "title": (title_el.text or "").strip() if title_el is not None and title_el.text else None,
+        "titleLang": title_el.get("lang") if title_el is not None else None,
+        "applicants": _names(applicants_parent, "applicant", "epodoc"),
+        "applicantsOriginal": _names(applicants_parent, "applicant", "original"),
+        "inventors": _names(inventors_parent, "inventor", "epodoc"),
+        "inventorsOriginal": _names(inventors_parent, "inventor", "original"),
+        "ipc": ipc,
+        "cpc": cpc,
+        "application": _drop_none({"number": app.get("number"), "date": app.get("date")}),
+        "priorities": priorities,
+        "abstract": _all_text(abstract_el),
+        "abstractLang": abstract_el.get("lang") if abstract_el is not None else None,
+        "citations": citations,
+        "nonPatentCitations": npl,
+    }
+    if doc.get("status"):
+        item["opsStatus"] = doc.get("status")
+    return _drop_none(item)
 
 
 def parse_fulltext(xml_text: str, section: str, lang: str | None = None) -> dict | None:
@@ -451,11 +457,183 @@ def section_range(sections: dict[str, int], name: str, total_pages: int) -> tupl
     return start, max(start, end)
 
 
+def throttle_state(headers: Mapping[str, str] | None, service: str) -> tuple[str, int] | None:
+    """X-Throttling-Control의 한 서비스 항목 → (색, 분당 허용 수). 예: 'busy (search=yellow:15, …)' → ('yellow', 15)."""
+    value = (headers or {}).get("x-throttling-control") or (headers or {}).get("X-Throttling-Control") or ""
+    m = re.search(rf"\b{re.escape(service)}=(\w+):(\d+)", value)
+    return (m.group(1).lower(), int(m.group(2))) if m else None
+
+
 def images_throttle(headers: Mapping[str, str] | None) -> tuple[str, int] | None:
     """X-Throttling-Control의 images 항목 → (색, 분당 허용 수). 예: 'busy (images=yellow:60, …)' → ('yellow', 60)."""
-    value = (headers or {}).get("x-throttling-control") or (headers or {}).get("X-Throttling-Control") or ""
-    m = re.search(r"images=(\w+):(\d+)", value)
-    return (m.group(1).lower(), int(m.group(2))) if m else None
+    return throttle_state(headers, "images")
+
+
+# ---------------------------------------------------------------------------
+# 키워드 검색 (published-data/search, CQL)
+# ---------------------------------------------------------------------------
+
+SEARCH_MAX_RANGE = 100  # 한 번에 받을 수 있는 최대 건수
+SEARCH_MAX_TOTAL = 2000  # 결과 목록에서 볼 수 있는 최대 순번
+_CLASS_RE = re.compile(r"[A-HY]\d{2}[A-Z](\d{1,4}(/\d{1,6})?)?")
+_COUNTRY_RE = re.compile(r"[A-Z]{2}")
+
+
+def _cql_term(index: str, value: str | None) -> str | None:
+    """사용자 입력 → 'ti=word' 또는 'ti all "w1 w2"'. 따옴표·역슬래시·괄호는 공백으로 바꿔 CQL 구조를 못 건드리게 한다.
+
+    여러 낱말은 모두 들어 있어야 맞는 것으로 본다(all). 순서·붙어 있음까지 따지려면 cql을 직접 쓴다.
+    끝자르기 기호(*, ?, #)는 그대로 둔다.
+    """
+    words = re.sub(r'["\\()]', " ", value or "").split()
+    if not words:
+        return None
+    if len(words) == 1:
+        return f'{index}="{words[0]}"'
+    return f'{index} all "{" ".join(words)}"'
+
+
+def _cql_classes(index: str, value: str | None, label: str) -> str | None:
+    """'H04W 72/04, H02J50' → '(ipc=H04W72/04 or ipc=H02J50)'. 형식이 틀리면 오류."""
+    if not value or not value.strip():
+        return None
+    codes = []
+    for part in re.split(r"[,;]", value):
+        code = re.sub(r"\s+", "", part).upper()
+        if not code:
+            continue
+        if not _CLASS_RE.fullmatch(code):
+            raise PatentApiError(E.INVALID_INPUT, f"{label} 형식이 아닙니다: {part.strip()} (예: H04W 72/04, H02J, 여러 개는 쉼표로)")
+        codes.append(f"{index}={code}")
+    if not codes:
+        return None
+    return codes[0] if len(codes) == 1 else "(" + " or ".join(codes) + ")"
+
+
+def _search_date(value: str | None, label: str, end: bool) -> str | None:
+    """YYYY, YYYY-MM, YYYY-MM-DD → YYYYMMDD. 끝 날짜는 그 해·달의 마지막 날로 채운다."""
+    if not value or not value.strip():
+        return None
+    digits = "".join(ch for ch in value if ch.isdigit())
+    try:
+        if len(digits) == 4:
+            return digits + ("1231" if end else "0101")
+        if len(digits) == 6:
+            year, month = int(digits[:4]), int(digits[4:])
+            last = calendar.monthrange(year, month)[1]
+            return digits + (f"{last:02d}" if end else "01")
+        if len(digits) == 8:
+            year, month, day = int(digits[:4]), int(digits[4:6]), int(digits[6:])
+            if day <= calendar.monthrange(year, month)[1]:
+                return digits
+    except (ValueError, calendar.IllegalMonthError):
+        pass
+    raise PatentApiError(E.INVALID_INPUT, f"{label}은 YYYY-MM-DD(또는 YYYY, YYYY-MM) 형식이어야 합니다(입력: {value}).")
+
+
+def build_cql(
+    *,
+    keywords: str | None = None,
+    title: str | None = None,
+    applicant: str | None = None,
+    inventor: str | None = None,
+    ipc: str | None = None,
+    cpc: str | None = None,
+    date_from: str | None = None,
+    date_to: str | None = None,
+    countries: list[str] | None = None,
+) -> str:
+    """따로 받은 검색 조건 → CQL. 빈 값은 빼고 and로 잇는다."""
+    clauses = [
+        _cql_term("ta", keywords),
+        _cql_term("ti", title),
+        _cql_term("pa", applicant),
+        _cql_term("in", inventor),
+        _cql_classes("ipc", ipc, "IPC"),
+        _cql_classes("cpc", cpc, "CPC"),
+    ]
+    if not any(clauses):
+        raise PatentApiError(E.INVALID_INPUT, "keywords, title, applicant, inventor, ipc, cpc 중 하나는 넣거나 cql을 직접 넣어야 합니다.")
+    d_from = _search_date(date_from, "date_from", end=False)
+    d_to = _search_date(date_to, "date_to", end=True)
+    if d_from and d_to:
+        if d_from > d_to:
+            raise PatentApiError(E.INVALID_INPUT, f"date_from({date_from})이 date_to({date_to})보다 늦습니다.")
+        clauses.append(f'pd within "{d_from} {d_to}"')
+    elif d_from:
+        clauses.append(f"pd>={d_from}")
+    elif d_to:
+        clauses.append(f"pd<={d_to}")
+    codes = []
+    for c in countries or []:
+        cc = (c or "").strip().upper()
+        if not cc:
+            continue
+        if not _COUNTRY_RE.fullmatch(cc):
+            raise PatentApiError(E.INVALID_INPUT, f"countries에는 두 글자 국가 코드만 넣습니다(입력: {c}). 예: EP, US, WO, CN, JP")
+        if cc not in codes:
+            codes.append(cc)
+    if codes:
+        terms = [f"pn={cc}" for cc in codes]
+        clauses.append(terms[0] if len(terms) == 1 else "(" + " or ".join(terms) + ")")
+    return " and ".join(c for c in clauses if c)
+
+
+def parse_search(xml_text: str) -> dict | None:
+    """published-data/search(/biblio) 응답 → {'totalCount', 'range', 'items'}. 결과가 없으면 None.
+
+    constituent=biblio면 exchange-document에서 서지를 뽑고, 아니면 publication-reference의 번호만 쓴다.
+    """
+    root = parse_xml(xml_text)
+    search = root if root.tag == "biblio-search" else root.find(".//biblio-search")
+    if search is None:
+        return None
+    total_raw = search.get("total-result-count") or ""
+    rng = search.find("range")
+    items: list[dict] = []
+    docs = search.findall(".//exchange-document")
+    if docs:
+        for doc in docs:
+            d = _biblio_document(doc)
+            status = (doc.get("status") or "").strip()
+            item = {
+                "publicationNumber": d.get("publicationNumber"),
+                "country": d.get("country"),
+                "kind": d.get("kind"),
+                "date": d.get("publicationDate"),
+                "title": d.get("title"),
+                "applicants": d.get("applicants") or d.get("applicantsOriginal"),
+                "ipc": d.get("ipc"),
+                "familyId": d.get("familyId"),
+            }
+            if status:
+                item["unavailable"] = status  # 'invalid result' 등: OPS가 내용을 주지 않는 자리
+            items.append(_drop_none(item))
+    else:
+        for pr in search.findall(".//search-result/publication-reference"):
+            d = _doc_id(pr) or {}
+            items.append(
+                _drop_none(
+                    {
+                        "publicationNumber": d.get("number"),
+                        "country": d.get("country"),
+                        "kind": d.get("kind"),
+                        "date": d.get("date"),
+                        "familyId": pr.get("family-id"),
+                    }
+                )
+            )
+    if not items:
+        return None
+    total = int(total_raw) if total_raw.isdigit() else len(items)
+    begin, end = (rng.get("begin"), rng.get("end")) if rng is not None else (None, None)
+    return _drop_none(
+        {
+            "totalCount": total,
+            "range": f"{begin}-{end}" if begin and end else None,
+            "items": items,
+        }
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -542,7 +720,16 @@ class OpsClient:
         resp = await self._request(path, accept, params)
         return resp.content if resp is not None else None
 
-    async def _request(self, path: str, accept: str, params: dict | None = None) -> httpx.Response | None:
+    async def _request(
+        self,
+        path: str,
+        accept: str,
+        params: dict | None = None,
+        *,
+        headers: dict[str, str] | None = None,
+        bad_request: str | None = None,
+    ) -> httpx.Response | None:
+        """bad_request: HTTP 400일 때 쓸 안내(기본은 번호 형식 안내)."""
         url = f"{self._base}/rest-services/{path.lstrip('/')}"
         for attempt in range(2):
             token = await self._get_token()
@@ -551,7 +738,7 @@ class OpsClient:
                 "GET",
                 url,
                 source=SOURCE,
-                headers={"Authorization": f"Bearer {token}", "Accept": accept},
+                headers={"Authorization": f"Bearer {token}", "Accept": accept, **(headers or {})},
                 params=params,
             )
             # 이미지 요청도 사용량 헤더(X-Throttling-Control의 images=… 등)를 기록한다.
@@ -562,10 +749,10 @@ class OpsClient:
                 # 토큰 만료 → 한 번 다시 발급
                 self._token = None
                 continue
-            return self._handle(resp)
+            return self._handle(resp, bad_request)
         raise PatentApiError(E.AUTH_FAILED, "EPO OPS가 새로 받은 토큰도 거부했습니다. consumer key/secret을 확인하세요.")
 
-    def _handle(self, resp: httpx.Response) -> httpx.Response | None:
+    def _handle(self, resp: httpx.Response, bad_request: str | None = None) -> httpx.Response | None:
         status = resp.status_code
         if status == 200:
             return resp
@@ -574,7 +761,9 @@ class OpsClient:
         if status == 404:
             return None
         if status == 400:
-            raise PatentApiError(E.INVALID_INPUT, f"EPO OPS가 번호 형식을 받지 않았습니다{detail}. 번호와 종류코드를 확인하세요.")
+            raise PatentApiError(
+                E.INVALID_INPUT, (bad_request or "EPO OPS가 번호 형식을 받지 않았습니다{detail}. 번호와 종류코드를 확인하세요.").format(detail=detail)
+            )
         if status == 401:
             raise PatentApiError(E.AUTH_FAILED, f"EPO OPS 인증이 거부되었습니다{detail}. consumer key/secret을 확인하세요.")
         if status == 403:
@@ -614,6 +803,24 @@ class OpsClient:
             return parse_abstract(xml_text, lang) if xml_text is not None else None
         xml_text = await self.get(f"published-data/{ref.path()}/{section}")
         return parse_fulltext(xml_text, section, lang) if xml_text is not None else None
+
+    async def search(self, cql: str, begin: int, end: int) -> dict | None:
+        """CQL 검색 + 서지(constituent=biblio)를 한 번에. 결과가 없으면(404) None."""
+        resp = await self._request(
+            "published-data/search/biblio",
+            "application/xml",
+            {"q": cql},
+            headers={"X-OPS-Range": f"{begin}-{end}"},
+            bad_request="EPO OPS가 검색식을 받지 않았습니다{detail}. CQL 문법(필드=값, and/or/not, 따옴표)을 확인하세요.",
+        )
+        return parse_search(resp.text) if resp is not None else None
+
+    async def register(self, ref_type: str, epodoc: str, max_items: int) -> dict | None:
+        """EP Register 서지·이벤트·절차 단계를 한 번에. epodoc: 'EP26123456'(출원) / 'EP4123456'·'WO2022123456'(공개)."""
+        from .register import parse_register
+
+        xml_text = await self.get(f"register/{ref_type}/epodoc/{epodoc}/biblio,events,procedural-steps")
+        return parse_register(xml_text, max_items) if xml_text is not None else None
 
     async def family(self, ref: OpsReference) -> dict | None:
         xml_text = await self.get(f"family/{ref.path()}")

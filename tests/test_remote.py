@@ -333,7 +333,7 @@ def test_full_dcr_flow_lists_tools(client, google, server_module):
     names = [t["name"] for t in r.json()["result"]["tools"]]
     # 로컬(stdio) 서버와 같은 도구가 그대로 옮겨진다
     local = [t.name for t in asyncio.run(server_module.mcp.list_tools())]
-    assert names == local and {"kr_biblio", "ep_biblio", "family", "quota_status"} <= set(names)
+    assert names == local and {"kr_biblio", "ep_biblio", "ep_search", "ep_register", "family", "quota_status"} <= set(names)
 
 
 def test_code_is_single_use_and_needs_pkce(client):

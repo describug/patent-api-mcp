@@ -27,11 +27,13 @@ from .kipris import SOURCE as KIPRIS
 from .numbers import (
     OpsReference,
     format_kr_application,
+    jp_era_candidates,
+    kind_fallback,
     normalize_kr_application_number,
     normalize_kr_registration_number,
     normalize_ops_number,
 )
-from .ops import OpsClient, images_throttle, section_range
+from .ops import SEARCH_MAX_RANGE, SEARCH_MAX_TOTAL, OpsClient, build_cql, images_throttle, section_range, throttle_state
 from .ops import SOURCE as OPS
 from .products import BY_KEY as PRODUCTS
 from .products import PRODUCTS as PRODUCT_LIST
@@ -40,6 +42,11 @@ from .quota import NOT_SUBSCRIBED, SUBSCRIBED, Quota
 log = logging.getLogger("patent_api")
 
 NO_DATA_NOTE = "해당 번호의 자료 없음"
+RECENT_PUBLICATION_NOTE = (
+    "공개 직후(대략 1~2주)에는 OPS 공개 문헌 자료(published-data)에 아직 없을 수 있습니다. "
+    "ep_register로 EP Register의 진행 상태·공개 여부를 확인하세요."
+)
+JP_ERA_NOTE = "2000년 이전 일본 번호는 연호(S 쇼와·H 헤이세이)를 붙여 보세요(예: JPS60012345A, JPH10123456A)."
 EXAM_KINDS = ("opinion", "rejection", "allowance")
 EXAM_SERVICES = {
     "opinion": "IntermediateDocumentOPService",
@@ -52,6 +59,7 @@ DEADLINE_WARNING = (
 )
 TEXT_SECTIONS = ("claims", "description", "abstract")
 SEARCH_MAX_ROWS = 50
+SEARCH_NO_RESULT_NOTE = "검색 결과 없음(자료 없음)"
 _CACHE_MISS = object()
 
 
@@ -232,6 +240,79 @@ class PatentService:
         if ref.kind_assumed:
             env["notes"].append(f"종류코드가 없어 {ref.kind}로 보고 조회했습니다({ref.display}). 다른 종류면 종류코드를 붙여 주세요.")
 
+    async def _run_ops(
+        self,
+        *,
+        tool: str,
+        query: dict,
+        ref: OpsReference,
+        ttl: int,
+        fetch: Callable[[OpsReference], Awaitable[Any]],
+        cache_extra: dict | None = None,
+    ) -> tuple[dict, Any, OpsReference]:
+        """OPS 번호 조회 공통 틀. (envelope, data, 실제로 찾은 번호)를 돌려준다.
+
+        자료 없음이면 한 번씩만 다시 묻는다.
+        1) 연호 없이 적은 2000년 이전 일본 번호(JP58123456A) → 연호를 붙인 후보(JPS58123456A)
+        2) 넣은 종류코드(EP…A1)가 없는 경우 → 종류코드 없이(epodoc). 실제로 있는 종류코드를 notes에 적는다.
+        그래도 없으면 EP·WO는 공개 직후일 수 있다고, 일본 구번호는 연호를 붙여 보라고 안내한다.
+        """
+        extra = cache_extra or {}
+        env, data = await self._run(
+            source=OPS, tool=tool, query=query, cache_params={"ref": ref.path(), **extra}, ttl=ttl, fetch=lambda: fetch(ref)
+        )
+        used = ref
+
+        async def retry(alt: OpsReference) -> bool:
+            nonlocal data, used
+            got, cached, notes = await self._fetch(
+                tool=tool, cache_params={"ref": alt.path(), **extra}, ttl=ttl, fetch=lambda: fetch(alt)
+            )
+            if got is None:
+                return False
+            data, used = got, alt
+            env["cached"] = env["cached"] and cached
+            env["notes"] = [n for n in env["notes"] if n != NO_DATA_NOTE] + notes
+            query["retriedAs"] = f"{alt.input_format}:{alt.ops_number}"
+            return True
+
+        if data is None:
+            for alt in jp_era_candidates(ref):
+                if await retry(alt):
+                    env["notes"].append(
+                        f"{ref.display}는 자료 없음이라 연호를 붙인 {alt.display}로 조회했습니다"
+                        "(2000년 이전 일본 번호는 연호 S·H를 붙여 씁니다)."
+                    )
+                    break
+        if data is None:
+            alt = kind_fallback(ref)
+            if alt and await retry(alt):
+                kinds = await self._kinds_of(alt)
+                have = f"같은 번호로 {', '.join(kinds)}가 있습니다" if kinds else "같은 번호의 다른 공보가 있습니다"
+                env["notes"].append(
+                    f"입력한 종류코드 {ref.kind}인 문헌({ref.display})은 없고, {have}. 종류코드 없이({alt.display}) 조회한 결과입니다."
+                )
+        if data is None:
+            if jp_era_candidates(ref):
+                env["notes"].append(JP_ERA_NOTE)
+            if ref.country in ("EP", "WO"):
+                env["notes"].append(RECENT_PUBLICATION_NOTE)
+        return env, data, used
+
+    async def _kinds_of(self, ref: OpsReference) -> list[str]:
+        """같은 번호로 OPS에 있는 종류코드(A2, A3, B1 …). 서지 조회 1회(캐시 공유), 실패하면 빈 목록."""
+        try:
+            biblio, _, _ = await self._fetch(
+                tool="ep_biblio", cache_params={"ref": ref.path()}, ttl=self.settings.ttl_biblio, fetch=lambda: self.ops.biblio(ref)
+            )
+        except PatentApiError:
+            return []
+        kinds: list[str] = []
+        for doc in (biblio or {}).get("documents", []):
+            if doc.get("country") == ref.country and doc.get("docNumber") == ref.number and doc.get("kind") not in (None, *kinds):
+                kinds.append(doc["kind"])
+        return kinds
+
     # --- 도구 -----------------------------------------------------------
 
     async def kr_biblio(self, application_number: str, include_claims: bool = False, include_history: bool = False) -> dict:
@@ -351,17 +432,107 @@ class PatentService:
         async def body() -> dict:
             ref = self._ops_ref(number, number_type)
             query.update(ref.to_query())
-            env, data = await self._run(
-                source=OPS,
-                tool="ep_biblio",
-                query=query,
-                cache_params={"ref": ref.path()},
-                ttl=self.settings.ttl_biblio,
-                fetch=lambda: self.ops.biblio(ref),
+            env, data, _ = await self._run_ops(
+                tool="ep_biblio", query=query, ref=ref, ttl=self.settings.ttl_biblio, fetch=self.ops.biblio
             )
             self._kind_note(env, ref)
             if data is None and not ref.kind:
                 env["notes"].append("종류코드(A1, B1 등)를 붙여 다시 조회하면 찾을 수도 있습니다.")
+            env["data"] = data
+            return env
+
+        return await self._guard(OPS, query, body)
+
+    async def ep_search(
+        self,
+        keywords: str | None = None,
+        title: str | None = None,
+        applicant: str | None = None,
+        inventor: str | None = None,
+        ipc: str | None = None,
+        cpc: str | None = None,
+        date_from: str | None = None,
+        date_to: str | None = None,
+        countries: list[str] | None = None,
+        cql: str | None = None,
+        page: int = 1,
+        page_size: int = 20,
+    ) -> dict:
+        query: dict[str, Any] = _drop_empty(
+            {
+                "keywords": keywords,
+                "title": title,
+                "applicant": applicant,
+                "inventor": inventor,
+                "ipc": ipc,
+                "cpc": cpc,
+                "dateFrom": date_from,
+                "dateTo": date_to,
+                "countries": countries or None,
+                "cql": cql,
+                "page": page,
+                "pageSize": page_size,
+            }
+        )
+
+        async def body() -> dict:
+            fields = (keywords, title, applicant, inventor, ipc, cpc, date_from, date_to)
+            has_fields = any(v and str(v).strip() for v in fields) or any((c or "").strip() for c in countries or [])
+            raw = " ".join((cql or "").split())
+            if raw and has_fields:
+                raise PatentApiError(E.INVALID_INPUT, "cql을 넣었으면 나머지 검색 항목(keywords, applicant, date_from 등)은 비워 둡니다. 둘 중 하나만 씁니다.")
+            if raw:
+                if len(raw) > 2000:
+                    raise PatentApiError(E.INVALID_INPUT, "cql이 너무 깁니다(2000자 이하).")
+                expr = raw
+            else:
+                expr = build_cql(
+                    keywords=keywords, title=title, applicant=applicant, inventor=inventor, ipc=ipc, cpc=cpc,
+                    date_from=date_from, date_to=date_to, countries=countries,
+                )
+            p = max(int(page or 1), 1)
+            size = min(max(int(page_size or 20), 1), SEARCH_MAX_RANGE)
+            begin = (p - 1) * size + 1
+            if begin > SEARCH_MAX_TOTAL:
+                raise PatentApiError(
+                    E.INVALID_INPUT,
+                    f"EPO OPS는 검색 결과 앞 {SEARCH_MAX_TOTAL}건까지만 보여 줍니다({p}쪽은 {begin}번째부터). 조건을 좁혀 다시 검색하세요.",
+                )
+            end = min(begin + size - 1, SEARCH_MAX_TOTAL)
+            query.update({"cql": expr, "page": p, "pageSize": size})
+            env, data = await self._run(
+                source=OPS,
+                tool="ep_search",
+                query=query,
+                cache_params={"cql": expr, "range": f"{begin}-{end}"},
+                ttl=self.settings.ttl_search,
+                fetch=lambda: self.ops.search(expr, begin, end),
+            )
+            if not env["cached"]:
+                state = throttle_state(self.ops.last_headers, "search")
+                if state and state[0] in ("yellow", "red", "black"):
+                    env["notes"].append(
+                        f"EPO OPS 검색 서비스가 붐빕니다(search={state[0]}, 지금은 분당 {state[1]}회까지). "
+                        "검색을 연달아 부르지 말고 간격을 두세요. 한도를 넘으면 잠시 막힙니다."
+                    )
+            if data is None:
+                env["notes"] = [n if n != NO_DATA_NOTE else SEARCH_NO_RESULT_NOTE for n in env["notes"]]
+                if p > 1:
+                    env["notes"].append(f"{p}쪽({begin}번째부터)이 전체 결과 수를 넘었을 수 있습니다. page=1로 전체 건수를 확인하세요.")
+                env["data"] = None
+                return env
+            data = _drop_empty({"totalCount": data.get("totalCount"), "cql": expr, "range": data.get("range"), "items": data.get("items")})
+            total = data.get("totalCount", 0)
+            reachable = min(total, SEARCH_MAX_TOTAL)
+            if total > SEARCH_MAX_TOTAL:
+                env["notes"].append(
+                    f"전체 {total}건{'(10000건 이상은 10000으로 표시)' if total >= 10000 else ''}입니다. "
+                    f"EPO OPS는 앞 {SEARCH_MAX_TOTAL}건까지만 볼 수 있으니 출원인·IPC·기간·국가로 조건을 좁히세요."
+                )
+            if end < reachable:
+                env["notes"].append(
+                    f"{begin}~{end}번째({p}쪽, {size}건씩)입니다. page={p + 1}로 다음 쪽을 볼 수 있습니다."
+                )
             env["data"] = data
             return env
 
@@ -386,15 +557,17 @@ class PatentService:
             if lang:
                 query["lang"] = lang
             lang_norm = lang.strip().lower() if lang else None
-            env, data = await self._run(
-                source=OPS,
+            env, data, used = await self._run_ops(
                 tool="ep_text",
                 query=query,
-                cache_params={"ref": ref.path(), "section": section, "lang": lang_norm},
+                ref=ref,
                 ttl=self.settings.ttl_text,
-                fetch=lambda: self.ops.fulltext(ref, section, lang_norm),
+                fetch=lambda r: self.ops.fulltext(r, section, lang_norm),
+                cache_extra={"section": section, "lang": lang_norm},
             )
             self._kind_note(env, ref)
+            if data is not None and ref.kind and not used.kind:
+                env["notes"].append("종류코드 없이 조회하면 어느 공보의 원문을 줄지는 OPS가 정합니다. 특정 공보의 원문이 필요하면 위 종류코드 중 하나를 붙여 다시 조회하세요.")
             if data is None:
                 env["notes"].append(
                     "OPS 원문(청구항·명세서)은 EP·WO와 일부 국가만 제공합니다. "
@@ -427,13 +600,8 @@ class PatentService:
         async def body() -> dict:
             ref = self._ops_ref(number, number_type)
             query.update(ref.to_query())
-            env, data = await self._run(
-                source=OPS,
-                tool="family",
-                query=query,
-                cache_params={"ref": ref.path()},
-                ttl=self.settings.ttl_family,
-                fetch=lambda: self.ops.family(ref),
+            env, data, _ = await self._run_ops(
+                tool="family", query=query, ref=ref, ttl=self.settings.ttl_family, fetch=self.ops.family
             )
             self._kind_note(env, ref)
             env["data"] = data
@@ -447,17 +615,74 @@ class PatentService:
         async def body() -> dict:
             ref = self._ops_ref(number, number_type)
             query.update(ref.to_query())
-            env, data = await self._run(
-                source=OPS,
-                tool="legal_status",
-                query=query,
-                cache_params={"ref": ref.path()},
-                ttl=self.settings.ttl_legal,
-                fetch=lambda: self.ops.legal(ref),
+            env, data, _ = await self._run_ops(
+                tool="legal_status", query=query, ref=ref, ttl=self.settings.ttl_legal, fetch=self.ops.legal
             )
             self._kind_note(env, ref)
             if data is None:
                 env["notes"].append("OPS(INPADOC)에 법적 상태 이벤트가 없습니다. 한국 출원은 kr_biblio(include_history=true)로도 확인할 수 있습니다.")
+            env["data"] = data
+            return env
+
+        return await self._guard(OPS, query, body)
+
+    # --- EP Register ---------------------------------------------------
+
+    async def ep_register(self, number: str, number_type: str | None = None, max_items: int = 20) -> dict:
+        query: dict[str, Any] = {"input": number}
+
+        async def body() -> dict:
+            raw = number
+            if isinstance(number, str) and re.fullmatch(r"\d{8}(\s*\.\s*\d)?", number.strip()):
+                raw = "EP" + number.strip()  # 국가코드 없는 EP 출원번호(26123456.7)
+            try:
+                ref = self._ops_ref(raw, number_type)
+            except PatentApiError as e:
+                # EP 8자리(검증숫자 포함 26123456.7)는 Register에서는 출원번호뿐이다(공개번호는 7자리).
+                if e.code != E.AMBIGUOUS_NUMBER or not re.match(r"\s*EP", raw.strip().upper()):
+                    raise
+                ref = self._ops_ref(raw, "application")
+            if ref.country == "EP":
+                epodoc = f"EP{ref.number}"
+            elif ref.country == "WO" and ref.ref_type == "publication":
+                epodoc = f"WO{ref.number}"  # 유럽 단계에 들어온 PCT(Euro-PCT)
+            else:
+                raise PatentApiError(
+                    E.INVALID_INPUT,
+                    "EP Register는 EP 출원번호(예: 26123456.7, EP26123456)·EP 공개번호(예: EP4123456) "
+                    "또는 유럽 단계에 들어온 WO 공개번호만 조회합니다.",
+                )
+            items = min(max(int(max_items or 20), 1), 200)
+            query.clear()
+            query.update({"input": number, "type": ref.ref_type, "ops": f"register:{ref.ref_type}/epodoc/{epodoc}", "maxItems": items})
+            env, data = await self._run(
+                source=OPS,
+                tool="ep_register",
+                query=query,
+                cache_params={"type": ref.ref_type, "number": epodoc, "maxItems": items},
+                ttl=self.settings.ttl_register,
+                fetch=lambda: self.ops.register(ref.ref_type, epodoc, items),
+            )
+            if data is None:
+                env["notes"].append(
+                    "EP Register에 없는 번호입니다. EP 출원번호(EP26123456)·공개번호(EP4123456)인지 확인하세요."
+                    if ref.country == "EP" else "EP Register에 없는 번호입니다(유럽 단계에 들어오지 않은 PCT일 수 있음)."
+                )
+                env["data"] = None
+                return env
+            mailed = [r for r in data.get("searchReports", []) if r.get("mailed") or r.get("publishedWith")]
+            if mailed and not data.get("citations"):
+                env["notes"].append(
+                    "검색보고서는 나왔는데 인용문헌이 비어 있습니다. OPS Register에는 인용문헌이 늦게 들어올 수 있으니 "
+                    "register.epo.org에서 확인하세요."
+                )
+            for key, total_key in (("proceduralSteps", "proceduralStepsTotal"), ("events", "eventsTotal")):
+                if data.get(total_key, 0) > len(data.get(key, [])):
+                    env["notes"].append(f"{key}는 최근 {items}건만 담았습니다(전체 {data[total_key]}건). max_items로 늘릴 수 있습니다.")
+            env["notes"].append(
+                "응답 기한은 계산하지 않았습니다(Register에 있는 일자만 그대로). "
+                "서류 원문(검색보고서·심사 통지 등)은 OPS가 제공하지 않습니다 — 대리인 보고 첨부본을 쓰세요."
+            )
             env["data"] = data
             return env
 
@@ -613,20 +838,52 @@ class PatentService:
             fetch=lambda: self.ops.images(ref),
         )
         notes.extend(n)
-        docs = found or []
-        if ref.kind:
+
+        def wanted(found_docs, r):
             # 요청한 문헌만 받는다(다른 종류코드·패밀리 구성원으로 바꾸지 않음).
-            docs = [d for d in docs if d.get("publicationNumber") == ref.display]
+            return [d for d in found_docs or [] if not r.kind or d.get("publicationNumber") == r.display]
+
+        async def images_of(r):
+            got, _, more = await self._fetch(
+                tool="pdf_download:ops_images", cache_params={"ref": r.path()}, ttl=self.settings.ttl_text,
+                fetch=lambda: self.ops.images(r),
+            )
+            return got, more
+
+        docs = wanted(found, ref)
+        if not docs:
+            for alt in jp_era_candidates(ref):
+                got, more = await images_of(alt)
+                if wanted(got, alt):
+                    docs = wanted(got, alt)
+                    notes.extend(more)
+                    notes.append(f"{ref.display}는 자료 없음이라 연호를 붙인 {alt.display}로 받았습니다(2000년 이전 일본 번호는 연호 S·H를 붙여 씁니다).")
+                    query["retriedAs"] = f"{alt.input_format}:{alt.ops_number}"
+                    ref = alt
+                    break
+        if not docs and kind_fallback(ref):
+            # 넣은 종류코드가 없으면 종류코드 없이 다시 보되, 받을 문헌은 고르지 않고 후보로 돌려준다.
+            got, _ = await images_of(kind_fallback(ref))
+            if got:
+                cands = _pdf_candidates(got)
+                raise PatentApiError(
+                    E.AMBIGUOUS_NUMBER,
+                    f"입력한 종류코드 {ref.kind}인 문헌({ref.display})은 OPS에 원본이 없고, 같은 번호로 {_pdf_listing(cands)}가 있습니다. "
+                    "받을 문헌의 종류코드를 붙여 다시 요청해 주세요.",
+                    candidates=cands,
+                )
         if not docs:
             notes += [NO_DATA_NOTE, "다른 공보(패밀리 구성원)는 family 도구로 찾아볼 수 있습니다."]
+            if jp_era_candidates(ref):
+                notes.append(JP_ERA_NOTE)
+            if ref.country in ("EP", "WO"):
+                notes.append(RECENT_PUBLICATION_NOTE)
             return envelope_ok(OPS, query, None, notes=notes)
         if len(docs) > 1:
-            cands = [_drop_empty({"number": d.get("publicationNumber"), "kind": d.get("kind"),
-                                  "pages": (d["instances"].get("full") or {}).get("pages")}) for d in docs]
-            listing = ", ".join(f"{c['number']}({c.get('pages', '?')}쪽)" for c in cands)
+            cands = _pdf_candidates(docs)
             raise PatentApiError(
                 E.AMBIGUOUS_NUMBER,
-                f"종류코드가 없어 여러 문헌이 걸립니다: {listing}. 받을 문헌의 종류코드를 붙여 다시 요청해 주세요.",
+                f"종류코드가 없어 여러 문헌이 걸립니다: {_pdf_listing(cands)}. 받을 문헌의 종류코드를 붙여 다시 요청해 주세요.",
                 candidates=cands,
             )
         doc = docs[0]
@@ -1140,6 +1397,18 @@ class PatentService:
             }
             if data["ops"] is None:
                 notes.append("OPS 사용량 헤더가 아직 기록되지 않았습니다(OPS를 한 번 호출하면 기록됨).")
+            else:
+                header = (data["ops"].get("headers") or {}).get("x-throttling-control") or ""
+                services = {
+                    m.group(1): {"state": m.group(2).lower(), "perMinute": int(m.group(3))}
+                    for m in re.finditer(r"(\w+)=(\w+):(\d+)", header)
+                }
+                if services:
+                    data["opsThrottle"] = services
+                    notes.append(
+                        "opsThrottle은 OPS 서비스별 혼잡도(green→yellow→red→black)와 지금의 분당 허용 횟수입니다. "
+                        "ep_register(EP Register)는 따로 항목이 없습니다(2026-10 실측). 기타(other)로 묶이는 것으로 보입니다."
+                    )
             warn = self.quota.kipris_warning()
             if warn:
                 notes.append(warn)
@@ -1151,6 +1420,15 @@ class PatentService:
             return envelope_ok("internal", query, data, notes=notes)
 
         return await self._guard("internal", query, body)
+
+
+def _pdf_candidates(docs: list[dict]) -> list[dict]:
+    return [_drop_empty({"number": d.get("publicationNumber"), "kind": d.get("kind"),
+                         "pages": (d["instances"].get("full") or {}).get("pages")}) for d in docs]
+
+
+def _pdf_listing(cands: list[dict]) -> str:
+    return ", ".join(f"{c['number']}({c.get('pages', '?')}쪽)" for c in cands)
 
 
 def _drop_empty(d: dict) -> dict:

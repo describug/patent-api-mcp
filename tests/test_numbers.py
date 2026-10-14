@@ -1,7 +1,7 @@
 import pytest
 
 from core.errors import AMBIGUOUS_NUMBER, INVALID_INPUT, PatentApiError
-from core.numbers import normalize_kr_application_number, normalize_ops_number
+from core.numbers import jp_era_candidates, kind_fallback, normalize_kr_application_number, normalize_ops_number
 
 
 # ---------------------------------------------------------------------------
@@ -170,3 +170,54 @@ def test_ops_kr_registration_without_kind_assumes_b1():
     assert ref.kind == "B1" and ref.kind_assumed
     assert normalize_ops_number("KR 20-0412345").kind == "Y1"
     assert not normalize_ops_number("KR 10-1500000 B1").kind_assumed
+
+
+# --- 2000년 이전 일본 번호(연호) ----------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "raw,path,display",
+    [
+        ("JPS60012345A", "publication/docdb/JP.S60012345.A", "JPS60012345A"),
+        ("JPS60012345", "publication/epodoc/JPS60012345", "JPS60012345"),
+        ("JP S60012345 A", "publication/docdb/JP.S60012345.A", "JPS60012345A"),
+        ("JP S60-012345 A", "publication/docdb/JP.S60012345.A", "JPS60012345A"),
+        ("JP-H10-123456", "publication/epodoc/JPH10123456", "JPH10123456"),
+        ("jph10123456a", "publication/docdb/JP.H10123456.A", "JPH10123456A"),
+        ("JPH1-012345A", "publication/docdb/JP.H01012345.A", "JPH01012345A"),
+        ("JPT14001234B", "publication/docdb/JP.T14001234.B", "JPT14001234B"),
+    ],
+)
+def test_ops_jp_era_numbers(raw, path, display):
+    ref = normalize_ops_number(raw)
+    assert ref.path() == path and ref.display == display
+    assert jp_era_candidates(ref) == []
+
+
+def test_ops_jp_modern_numbers_unchanged():
+    assert normalize_ops_number("JP2015061404A").path() == "publication/docdb/JP.2015061404.A"
+    assert normalize_ops_number("JP6123456B2").path() == "publication/docdb/JP.6123456.B2"
+    assert jp_era_candidates(normalize_ops_number("JP2015061404A")) == []
+    assert jp_era_candidates(normalize_ops_number("JP6123456B2")) == []
+
+
+def test_ops_jp_without_era_candidates():
+    # 연도 2자리 + 일련번호 6자리: 헤이세이(H01~H12)면 H 먼저, 그 밖은 쇼와(S)
+    assert [c.path() for c in jp_era_candidates(normalize_ops_number("JP60012345A"))] == ["publication/docdb/JP.S60012345.A"]
+    assert [c.display for c in jp_era_candidates(normalize_ops_number("JP10123456A"))] == ["JPH10123456A", "JPS10123456A"]
+    assert [c.path() for c in jp_era_candidates(normalize_ops_number("JP60012345"))] == ["publication/epodoc/JPS60012345"]
+
+
+def test_ops_jp_era_with_kind_as_application_is_rejected():
+    with pytest.raises(PatentApiError) as ei:
+        normalize_ops_number("JPS60012345A", "application")
+    assert ei.value.code == INVALID_INPUT
+
+
+def test_kind_fallback():
+    assert kind_fallback(normalize_ops_number("EP1000000A2")).path() == "publication/epodoc/EP1000000"
+    assert kind_fallback(normalize_ops_number("JPS60012345A")).path() == "publication/epodoc/JPS60012345"
+    assert kind_fallback(normalize_ops_number("EP1000000")) is None  # 종류코드가 없으면 다시 묻지 않음
+    assert kind_fallback(normalize_ops_number("KR 10-1500000 B1")) is None  # 한국은 epodoc으로 못 찾음(실측)
+    assert kind_fallback(normalize_ops_number("KR 10-1500000")) is None  # 관례로 붙인 B1
+    assert kind_fallback(normalize_ops_number("EP 21900938.1", "application")) is None  # 출원번호

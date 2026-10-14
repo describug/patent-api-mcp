@@ -125,8 +125,10 @@ async def kr_search(
     description=(
         "공개·등록번호로 특허 문헌의 서지를 확인하는 도구(국가 무관: EP, US, WO, JP, CN, KR 등).\n"
         "명칭, 출원인, 발명자, IPC·CPC, 출원번호·일자, 우선권, 초록, 인용문헌(카테고리 포함)을 돌려준다.\n"
-        "번호 예: EP1234567A1, US 2026/0123456 A1, WO2026/012345, KR 10-2026-0012345 A, KR 10-1234567 B1. "
+        "번호 예: EP1234567A1, US 2026/0123456 A1, WO2026/012345, KR 10-2026-0012345 A, KR 10-1234567 B1, "
+        "2000년 이전 일본 번호는 연호를 붙여 JPS60012345A·JPH10123456A(연호 없이 넣으면 연호 후보로 한 번 더 찾는다). "
         "종류코드를 붙이면 그 문헌만, 빼면 같은 번호의 문헌을 모두 돌려준다. "
+        "넣은 종류코드가 없으면(예: A2인데 A1) 종류코드 없이 한 번 더 찾고 실제 종류코드를 notes에 적는다. "
         "한국 10-YYYY-NNNNNNN은 출원번호와 공개번호가 같은 모양이라 종류코드(A)를 붙이거나 "
         "number_type을 지정해야 한다."
     ),
@@ -136,6 +138,42 @@ async def ep_biblio(
     number_type: Annotated[NumberType | None, Field(description="번호 종류. 기본은 공개번호(publication)")] = None,
 ) -> dict[str, Any]:
     return await service.ep_biblio(number, number_type)
+
+
+@mcp.tool(
+    name="ep_search",
+    title="해외 특허 검색 (EPO OPS)",
+    annotations=READ_ONLY,
+    description=(
+        "해외(EP·US·WO·CN·JP 등) 공개 문헌을 키워드·출원인·IPC·기간으로 찾을 때 쓰는 도구.\n"
+        "⚠️ 검색어는 EPO 서버로 전송된다. 출원 전 사건(미공개 발명)의 내용·청구항·기술 요지를 검색어로 넣지 말 것. "
+        "이미 공개된 문헌·출원인·IPC 확인과 공개 기술 주제의 선행조사 용도로만 쓴다.\n"
+        "검색 대상은 서지뿐이다: keywords는 명칭·요약(대부분 영어), title은 명칭만 찾는다. 청구항·본문은 검색되지 않으므로 "
+        "영어 낱말로 넣는다(여러 낱말은 모두 들어간 문헌, 끝자르기 charg* 가능). "
+        "따로 받은 항목은 and로 묶어 CQL로 만든다. 순서·거리·or가 필요하면 cql에 직접 쓴다"
+        "(예: ta=wireless prox/distance<=3 ta=charging and pa=samsung and pd within \"2020 2022\"; "
+        "필드 ti·ab·ta·pa·in·ia·ipc·cpc·pd·pn·ct, cql과 다른 항목은 함께 쓰지 않음).\n"
+        "결과는 공개번호·국가·종류코드·공개일·명칭·출원인·IPC·패밀리ID 목록이며 한 번 호출에 최대 100건, "
+        "OPS는 앞 2000건까지만 보여 준다. 상세는 ep_biblio, 원문은 ep_text, 대응 출원은 family로 다시 부른다."
+    ),
+)
+async def ep_search(
+    keywords: Annotated[str | None, Field(description="명칭·요약에 들어간 영어 낱말(공개 기술 주제만). 예: wireless charging coil")] = None,
+    title: Annotated[str | None, Field(description="명칭에만 들어간 낱말")] = None,
+    applicant: Annotated[str | None, Field(description="출원인 이름(영문). 예: samsung")] = None,
+    inventor: Annotated[str | None, Field(description="발명자 이름(영문)")] = None,
+    ipc: Annotated[str | None, Field(description="IPC. 예: H02J 50/10 또는 H02J, 여러 개는 쉼표로(or)")] = None,
+    cpc: Annotated[str | None, Field(description="CPC. 예: H02J 50/12, 여러 개는 쉼표로(or)")] = None,
+    date_from: Annotated[str | None, Field(description="공개일 시작 YYYY-MM-DD(또는 YYYY)")] = None,
+    date_to: Annotated[str | None, Field(description="공개일 끝 YYYY-MM-DD(또는 YYYY)")] = None,
+    countries: Annotated[list[str] | None, Field(description="공개 국가 코드. 예: [\"EP\", \"US\", \"WO\"]. 비우면 전체")] = None,
+    cql: Annotated[str | None, Field(description="고급: CQL 검색식을 직접 넣는다(이때 나머지 검색 항목은 비움)")] = None,
+    page: Annotated[int, Field(ge=1, description="쪽 번호(1부터)")] = 1,
+    page_size: Annotated[int, Field(ge=1, le=100, description="한 쪽 건수(최대 100)")] = 20,
+) -> dict[str, Any]:
+    return await service.ep_search(
+        keywords, title, applicant, inventor, ipc, cpc, date_from, date_to, countries, cql, page, page_size
+    )
 
 
 @mcp.tool(
@@ -190,6 +228,29 @@ async def legal_status(
     number_type: Annotated[NumberType | None, Field(description="번호 종류. 기본은 공개번호(publication)")] = None,
 ) -> dict[str, Any]:
     return await service.legal_status(number, number_type)
+
+
+@mcp.tool(
+    name="ep_register",
+    title="EP Register 절차·상태 (EPO OPS)",
+    annotations=READ_ONLY,
+    description=(
+        "유럽 출원의 진행 상태와 절차를 확인할 때 쓰는 도구(EP Register, register.epo.org와 같은 자료).\n"
+        "진행 상태와 갱신일, 공개번호·일자, 출원일, 출원인·대리인, 모출원(분할 관계), 검색보고서 종류·발송일, "
+        "인용문헌(카테고리 X/Y/A, 관련 청구항·단락 표시, 단계 search/examination 등), 심사청구일 등 일자, 지정국, "
+        "최근 절차 단계(procedural steps)와 이벤트를 돌려준다.\n"
+        "입력: EP 출원번호(26123456.7, EP26123456) 또는 EP 공개번호(EP4123456), 유럽 단계에 들어온 WO 공개번호.\n"
+        "응답 기한은 계산하지 않는다(Register에 있는 일자만 그대로). "
+        "서류 원문(검색보고서·심사 통지 등의 PDF)은 OPS가 제공하지 않으므로 대리인 보고 첨부본을 쓴다. "
+        "공개 직후라 ep_biblio·pdf_download가 '자료 없음'일 때 공개 여부를 여기서 확인할 수 있다."
+    ),
+)
+async def ep_register(
+    number: Annotated[str, Field(description="EP 출원번호(26123456.7) 또는 EP 공개번호(EP4123456)")],
+    number_type: Annotated[NumberType | None, Field(description="번호 종류. EP 8자리는 출원번호로 본다")] = None,
+    max_items: Annotated[int, Field(description="절차 단계·이벤트를 최근 몇 건까지(1~200)", ge=1, le=200)] = 20,
+) -> dict[str, Any]:
+    return await service.ep_register(number, number_type, max_items)
 
 
 def local_tool(**meta: Any):

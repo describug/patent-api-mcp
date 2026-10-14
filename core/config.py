@@ -129,6 +129,7 @@ class Settings:
     ttl_text: int = 30 * DAY
     ttl_family: int = 7 * DAY
     ttl_legal: int = 1 * DAY
+    ttl_register: int = DAY // 4  # EP Register는 매일 바뀐다(6시간)
     ttl_search: int = 1 * DAY
     ttl_docs: int = 1 * DAY  # 심사 서류·마감기한·청구항 이력·등록사항·법적 상태(자주 바뀜)
     # 긴 응답 상한(문자 수)
@@ -200,6 +201,7 @@ class Settings:
             ttl_text=days("CACHE_TTL_TEXT_DAYS", 30),
             ttl_family=days("CACHE_TTL_FAMILY_DAYS", 7),
             ttl_legal=days("CACHE_TTL_LEGAL_DAYS", 1),
+            ttl_register=days("CACHE_TTL_REGISTER_DAYS", 0.25),
             ttl_search=days("CACHE_TTL_SEARCH_DAYS", 1),
             ttl_docs=days("CACHE_TTL_DOCS_DAYS", 1),
             max_text_chars=_int(env, "PATENT_API_MAX_TEXT_CHARS", 20000),

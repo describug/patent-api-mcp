@@ -10,3 +10,9 @@
 - `real_ops_images.xml`(EP1000000B1), `real_ops_images_epodoc.xml`(종류코드 없이 EP1000000 → A1·B1 두 건),
   `real_ops_images_kr.xml`(KR20220079145A), `real_ops_images_wo.xml`(WO2022119250A1, 도면 33쪽·조사보고서 41쪽): OPS images 조회(2026-10-12).
 - `real_ops_biblio_kr.xml`: KR20220079145A 서지 — 출원번호 KR20200168607A(공개번호→KIPRIS 출원번호 변환에 씀).
+- `real_ops_search.xml`: OPS 키워드 검색 + 서지(published-data/search/biblio, 2026-10-13) — `ta="wireless charging" and pa=samsung and pd within "2020 2022"`, 1~5번째(전체 164건).
+  `real_ops_search_nodata.xml`: 결과 0건(HTTP 404 `SERVER.EntityNotFound`).
+- `real_ops_biblio_epodoc.xml`: 종류코드 없이(epodoc) EP1000000 서지 → A1·B1 두 건(틀린 종류코드 다시 묻기, 2026-10-14).
+- `real_ops_biblio_jp_era.xml`, `real_ops_images_jp_era.xml`: 연호가 붙은 2000년 이전 일본 번호 JPH10123456A의 서지·원본 이미지 목록(2026-10-14).
+- `real_ops_register.xml`: EP Register(`register/publication/epodoc/EP1000000/biblio,events,procedural-steps`, 2026-10-14) — 상태·공개·인용문헌·절차·이벤트.
+  `real_ops_register_nodata.xml`: 없는 번호(HTTP 404 `SERVER.EntityNotFound`).

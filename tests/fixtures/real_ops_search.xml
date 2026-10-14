@@ -1,0 +1,1429 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../../../style/exchange.xsl"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ops:biblio-search total-result-count="164" publications-count="5">
+        <ops:query syntax="CQL">(ta = "wireless charging" and pa = samsung) and pd within "2020 2022"</ops:query>
+        <ops:range begin="1" end="5"/>
+        <ops:search-result>
+            <exchange-documents>
+                <exchange-document system="ops.epo.org" family-id="84228254" country="WO" doc-number="2022250346" kind="A1">
+                    <bibliographic-data>
+                        <publication-reference>
+                            <document-id document-id-type="docdb">
+                                <country>WO</country>
+                                <doc-number>2022250346</doc-number>
+                                <kind>A1</kind>
+                                <date>20221201</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>WO2022250346</doc-number>
+                                <date>20221201</date>
+                            </document-id>
+                        </publication-reference>
+                        <classifications-ipcr>
+                            <classification-ipcr sequence="1">
+                                <text>G06F   1/    16            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="2">
+                                <text>H01F  38/    14            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="3">
+                                <text>H01F   7/    02            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="4">
+                                <text>H02J  50/    00            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="5">
+                                <text>H02J  50/    10            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="6">
+                                <text>H02J  50/    70            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="7">
+                                <text>H04M   1/    02            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="8">
+                                <text>H05K   1/    03            A I                    </text>
+                            </classification-ipcr>
+                        </classifications-ipcr>
+                        <patent-classifications>
+                            <patent-classification sequence="1">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>06</class>
+                                <subclass>F</subclass>
+                                <main-group>1</main-group>
+                                <subgroup>16</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="2">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>06</class>
+                                <subclass>F</subclass>
+                                <main-group>1</main-group>
+                                <subgroup>1641</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="3">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>01</class>
+                                <subclass>F</subclass>
+                                <main-group>38</main-group>
+                                <subgroup>14</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="4">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>01</class>
+                                <subclass>F</subclass>
+                                <main-group>38</main-group>
+                                <subgroup>14</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="5">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>01</class>
+                                <subclass>F</subclass>
+                                <main-group>7</main-group>
+                                <subgroup>02</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="6">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>01</class>
+                                <subclass>F</subclass>
+                                <main-group>7</main-group>
+                                <subgroup>0273</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="7">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>00</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="8">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>005</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="9">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>10</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="10">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>10</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="11">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>70</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="12">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>70</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="13">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>M</subclass>
+                                <main-group>1</main-group>
+                                <subgroup>02</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="14">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>M</subclass>
+                                <main-group>1</main-group>
+                                <subgroup>026</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="15">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>05</class>
+                                <subclass>K</subclass>
+                                <main-group>1</main-group>
+                                <subgroup>03</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="16">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>05</class>
+                                <subclass>K</subclass>
+                                <main-group>1</main-group>
+                                <subgroup>0393</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                        </patent-classifications>
+                        <application-reference doc-id="583686282">
+                            <document-id document-id-type="docdb">
+                                <country>KR</country>
+                                <doc-number>2022006856</doc-number>
+                                <kind>W</kind>
+                                <date>20220513</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>WO2022KR06856</doc-number>
+                                <date>20220513</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>KR2022/006856</doc-number>
+                            </document-id>
+                        </application-reference>
+                        <priority-claims>
+                            <priority-claim sequence="1" kind="national">
+                                <document-id document-id-type="docdb">
+                                    <country>KR</country>
+                                    <doc-number>20210067822</doc-number>
+                                    <kind>A</kind>
+                                    <date>20210526</date>
+                                </document-id>
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>KR20210067822</doc-number>
+                                    <date>20210526</date>
+                                </document-id>
+                                <document-id document-id-type="original">
+                                    <doc-number>10-2021-0067822</doc-number>
+                                </document-id>
+                            </priority-claim>
+                        </priority-claims>
+                        <parties>
+                            <applicants>
+                                <applicant sequence="1" data-format="epodoc">
+                                    <applicant-name>
+                                        <name>SAMSUNG ELECTRONICS CO LTD [KR]</name>
+                                    </applicant-name>
+                                </applicant>
+                                <applicant sequence="1" data-format="original">
+                                    <applicant-name>
+                                        <name>삼성전자 주식회사</name>
+                                    </applicant-name>
+                                </applicant>
+                            </applicants>
+                            <inventors>
+                                <inventor sequence="1" data-format="epodoc">
+                                    <inventor-name>
+                                        <name>PARK SEHO [KR]</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="1" data-format="original">
+                                    <inventor-name>
+                                        <name>박세호</name>
+                                    </inventor-name>
+                                </inventor>
+                            </inventors>
+                        </parties>
+                        <invention-title lang="fr">DISPOSITIF ÉLECTRONIQUE COMPRENANT UNE STRUCTURE DE CHARGE SANS FIL</invention-title>
+                        <invention-title lang="en">ELECTRONIC DEVICE INCLUDING WIRELESS CHARGING STRUCTURE</invention-title>
+                        <invention-title lang="ol">무선 충전 구조를 포함하는 전자 장치</invention-title>
+                        <references-cited>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="1" office="US">
+                                <patcit dnum-type="publication number" num="1">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20190066530</doc-number>
+                                        <name>KOREA ADVANCED INSTITUTE OF SCIENCE AND TECHNOLOGY et al.</name>
+                                        <date>20190613</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20190066530</doc-number>
+                                        <kind>A</kind>
+                                        <name>KOREA ADVANCED INSTITUTE OF SCIENCE AND TECHNOLOGY et al.</name>
+                                        <date>20190613</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>1-3,7,11-13</rel-claims>
+                                <category>A</category>
+                                <rel-claims>4-6,8-10,14-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0202]-[0222], claims 1-5, and figure 14. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="2" office="US">
+                                <patcit dnum-type="publication number" num="2">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20200032576</doc-number>
+                                        <name>SAMSUNG ELECTRONICS CO., LTD.</name>
+                                        <date>20200326</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20200032576</doc-number>
+                                        <kind>A</kind>
+                                        <name>SAMSUNG ELECTRONICS CO., LTD.</name>
+                                        <date>20200326</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>1-3,7,11-13</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0090]-[0097], claims 19-20, and figure 16. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="3" office="US">
+                                <patcit dnum-type="publication number" num="3">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20200120134</doc-number>
+                                        <name>SAMSUNG ELECTRONICS CO., LTD.</name>
+                                        <date>20201021</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20200120134</doc-number>
+                                        <kind>A</kind>
+                                        <name>SAMSUNG ELECTRONICS CO., LTD.</name>
+                                        <date>20201021</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>11-13</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0034]-[0054], claims 1-7, and figure 2a. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="4" office="US">
+                                <patcit dnum-type="publication number" num="4">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>US2020089276</doc-number>
+                                        <name>APPLE INC.</name>
+                                        <date>20200319</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>US</country>
+                                        <doc-number>2020089276</doc-number>
+                                        <kind>A1</kind>
+                                        <name>APPLE INC.</name>
+                                        <date>20200319</date>
+                                    </document-id>
+                                </patcit>
+                                <category>A</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraph [0075], and figure 6. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="5" office="US">
+                                <patcit dnum-type="publication number" num="5">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20200066118</doc-number>
+                                        <name>NOVATECH CO., LTD.</name>
+                                        <date>20200609</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20200066118</doc-number>
+                                        <kind>A</kind>
+                                        <name>NOVATECH CO., LTD.</name>
+                                        <date>20200609</date>
+                                    </document-id>
+                                </patcit>
+                                <category>A</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0024]-[0035], and figures 1-3. *</passage>
+                                </rel-passage>
+                            </citation>
+                        </references-cited>
+                    </bibliographic-data>
+                    <abstract lang="en">
+                        <p>According to various embodiments of the present disclosure, an electronic device may include: a housing comprising a front plate facing a first direction and a rear plate facing a second direction opposite to the first direction; a display panel for outputting a screen through the front plate; and a wireless charging structure, which is disposed in the housing and comprises a wireless charging coil configured to generate a magnetic field and multiple magnets arranged in a ring structure along the edge of the wireless charging coil. The multiple magnets may comprise: first magnets configured such that the magnetic flux travels in a third direction; and second magnets configured such that the magnetic flux travels in a fourth direction different from the third direction. The first magnets and the second magnets may be alternately arranged on the basis of a Halbach array.</p>
+                    </abstract>
+                    <abstract lang="fr">
+                        <p>Selon divers modes de réalisation de la présente divulgation, un dispositif électronique peut comprendre : un boîtier comprenant une plaque avant dirigée dans une première direction et une plaque arrière dirigée dans une deuxième direction opposée à la première direction ; un panneau d'affichage pour délivrer en sortie un écran à travers la plaque avant ; et une structure de charge sans fil qui est placée dans le boîtier et comprend une bobine de charge sans fil configurée pour générer un champ magnétique et de multiples aimants agencés dans une structure annulaire le long du bord de la bobine de charge sans fil. Les multiples aimants peuvent comprendre : des premiers aimants configurés de telle sorte que le flux magnétique se déplace dans une troisième direction ; et des seconds aimants configurés de telle sorte que le flux magnétique se déplace dans une quatrième direction différente de la troisième direction. Les premiers aimants et les seconds aimants peuvent être agencés alternativement sur la base d'un réseau de Halbach.</p>
+                    </abstract>
+                    <abstract lang="ol">
+                        <p>본 개시의 다양한 실시예들에 따르면, 전자 장치는, 제1 방향을 향하는 전면 플레이트 및 상기 제1 방향에 반대인 제2 방향을 향하는 후면 플레이트를 포함하는 하우징, 상기 전면 플레이트를 통해 화면을 출력하기 위한 디스플레이 패널, 상기 하우징 내에 배치되고, 자기장(magnetic field)을 발생시키도록 구성된 무선 충전 코일 및 상기 무선 충전 코일의 가장자리를 따라 링 구조로 배치된 복수의 자석들을 포함하는 무선 충전 구조를 포함하고, 상기 복수의 자석들은, 자속의 방향이 제3 방향을 따라 진행하도록 구성된 제1 자석들 및 자속의 방향이 상기 제3 방향과 다른 제4 방향을 따라 진행하도록 구성된 제2 자석들을 포함하고, 상기 제1 자석들 및 상기 제2 자석들은 할 바흐 배열(Halbach array)에 기반하여 교대로 배열될 수 있다.</p>
+                    </abstract>
+                </exchange-document>
+            </exchange-documents>
+            <exchange-documents>
+                <exchange-document system="ops.epo.org" family-id="84235693" country="KR" doc-number="20220155667" kind="A">
+                    <bibliographic-data>
+                        <publication-reference>
+                            <document-id document-id-type="docdb">
+                                <country>KR</country>
+                                <doc-number>20220155667</doc-number>
+                                <kind>A</kind>
+                                <date>20221124</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>KR20220155667</doc-number>
+                                <date>20221124</date>
+                            </document-id>
+                        </publication-reference>
+                        <classifications-ipcr>
+                            <classification-ipcr sequence="1">
+                                <text>G01S  13/    02            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="2">
+                                <text>G01S  13/    75            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="3">
+                                <text>H02J  50/    12            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="4">
+                                <text>H02J  50/    40            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="5">
+                                <text>H02J  50/    80            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="6">
+                                <text>H02J  50/    90            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="7">
+                                <text>H04L   9/    40            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="8">
+                                <text>H04W   4/    02            A I                    </text>
+                            </classification-ipcr>
+                        </classifications-ipcr>
+                        <patent-classifications>
+                            <patent-classification sequence="1">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>01</class>
+                                <subclass>S</subclass>
+                                <main-group>13</main-group>
+                                <subgroup>0209</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="2">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>01</class>
+                                <subclass>S</subclass>
+                                <main-group>13</main-group>
+                                <subgroup>751</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="3">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>12</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="4">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>402</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="5">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>80</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="6">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>90</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="7">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>L</subclass>
+                                <main-group>63</main-group>
+                                <subgroup>08</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="8">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>W</subclass>
+                                <main-group>4</main-group>
+                                <subgroup>02</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                        </patent-classifications>
+                        <application-reference doc-id="583750000">
+                            <document-id document-id-type="docdb">
+                                <country>KR</country>
+                                <doc-number>20210063175</doc-number>
+                                <kind>A</kind>
+                                <date>20210517</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>KR20210063175</doc-number>
+                                <date>20210517</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>1020210063175</doc-number>
+                            </document-id>
+                        </application-reference>
+                        <priority-claims>
+                            <priority-claim sequence="1" kind="national">
+                                <document-id document-id-type="docdb">
+                                    <country>KR</country>
+                                    <doc-number>20210063175</doc-number>
+                                    <kind>A</kind>
+                                    <date>20210517</date>
+                                </document-id>
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>KR20210063175</doc-number>
+                                    <date>20210517</date>
+                                </document-id>
+                            </priority-claim>
+                        </priority-claims>
+                        <parties>
+                            <applicants>
+                                <applicant sequence="1" data-format="epodoc">
+                                    <applicant-name>
+                                        <name>SAMSUNG ELECTRONICS CO LTD [KR]</name>
+                                    </applicant-name>
+                                </applicant>
+                                <applicant sequence="1" data-format="original">
+                                    <applicant-name>
+                                        <name>삼성전자주식회사</name>
+                                    </applicant-name>
+                                </applicant>
+                            </applicants>
+                            <inventors>
+                                <inventor sequence="1" data-format="epodoc">
+                                    <inventor-name>
+                                        <name>CHOI EUNHA</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="2" data-format="epodoc">
+                                    <inventor-name>
+                                        <name>YEO SUNGKU</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="1" data-format="original">
+                                    <inventor-name>
+                                        <name>최은하</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="2" data-format="original">
+                                    <inventor-name>
+                                        <name>여성구</name>
+                                    </inventor-name>
+                                </inventor>
+                            </inventors>
+                        </parties>
+                        <invention-title lang="en">ELECTRONIC DEVICE FOR CONTROLLING WIRELESS CHARGING AND OPERATING MEHTOD THEREOF</invention-title>
+                        <invention-title lang="ol">무선 충전을 제어하는 전자 장치 및 이의 동작 방법</invention-title>
+                    </bibliographic-data>
+                    <abstract lang="en">
+                        <p>Disclosed is an electronic device which comprises: a plurality of resonators configured to transmit wireless power in at least one direction; a communication circuit; a processor; and a memory storing instructions. When executed by the processor, the instructions enable the electronic device to: use the communication circuit to receive authentication information from an external electronic device; identify the position of the external electronic device by using the communication circuit on the basis of the inclusion of the designated information in the authentication information; identify the one or more resonators corresponding to the position of the external electronic device among the plurality of resonators; and transmit wireless power towards the position of the electronic device by using the one or more resonators. Various other embodiments identified through the specification are possible. Therefore, a wireless charging service can be provided with a high efficiency.</p>
+                    </abstract>
+                    <abstract lang="ol">
+                        <p>[0001a]    [적어도 하나의 방향으로 무선 전력을 송신하도록 구성되는 복수의 공진기들, 통신 회로, 프로세서, 및 인스트럭션들을 저장하는 메모리를 포함하고, 상기 인스트럭션들은 상기 프로세서에 의해 실행 시, 상기 전자 장치가, 상기 통신 회로를 이용하여, 외부 전자 장치로부터 인증 정보를 수신하고, 상기 인증 정보에 지정된 정보가 포함됨에 기반하여, 상기 통신 회로를 이용하여 상기 외부 전자 장치의 위치를 식별하고, 상기 복수의 공진기들 중 상기 외부 전자 장치의 상기 위치에 대응하는 적어도 하나의 공진기를 식별하고, 상기 적어도 하나의 공진기를 이용하여 상기 외부 전자 장치가 위치하는 방향으로 무선 전력을 송신하도록 구성되는 전자 장치가 개시된다. 이 외에도 명세서를 통해 파악되는 다양한 실시 예가 가능하다.]</p>
+                    </abstract>
+                </exchange-document>
+            </exchange-documents>
+            <exchange-documents>
+                <exchange-document system="ops.epo.org" family-id="83932213" country="WO" doc-number="2022234955" kind="A1">
+                    <bibliographic-data>
+                        <publication-reference>
+                            <document-id document-id-type="docdb">
+                                <country>WO</country>
+                                <doc-number>2022234955</doc-number>
+                                <kind>A1</kind>
+                                <date>20221110</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>WO2022234955</doc-number>
+                                <date>20221110</date>
+                            </document-id>
+                        </publication-reference>
+                        <classifications-ipcr>
+                            <classification-ipcr sequence="1">
+                                <text>G01R  19/    00            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="2">
+                                <text>G01R  29/    26            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="3">
+                                <text>H02J  50/    10            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="4">
+                                <text>H02J  50/    70            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="5">
+                                <text>H02J  50/    80            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="6">
+                                <text>H04B   5/    00            A I                    </text>
+                            </classification-ipcr>
+                        </classifications-ipcr>
+                        <patent-classifications>
+                            <patent-classification sequence="1">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>01</class>
+                                <subclass>R</subclass>
+                                <main-group>19</main-group>
+                                <subgroup>00</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="2">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>01</class>
+                                <subclass>R</subclass>
+                                <main-group>19</main-group>
+                                <subgroup>0038</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="3">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>01</class>
+                                <subclass>R</subclass>
+                                <main-group>29</main-group>
+                                <subgroup>26</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="4">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>01</class>
+                                <subclass>R</subclass>
+                                <main-group>29</main-group>
+                                <subgroup>26</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="5">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>10</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="6">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>10</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="7">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>70</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="8">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>70</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="9">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>80</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="10">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>80</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="11">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>B</subclass>
+                                <main-group>5</main-group>
+                                <subgroup>266</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>US</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="12">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>B</subclass>
+                                <main-group>5</main-group>
+                                <subgroup>79</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                        </patent-classifications>
+                        <application-reference doc-id="582572146">
+                            <document-id document-id-type="docdb">
+                                <country>KR</country>
+                                <doc-number>2022004506</doc-number>
+                                <kind>W</kind>
+                                <date>20220330</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>WO2022KR04506</doc-number>
+                                <date>20220330</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>KR2022/004506</doc-number>
+                            </document-id>
+                        </application-reference>
+                        <priority-claims>
+                            <priority-claim sequence="1" kind="national">
+                                <document-id document-id-type="docdb">
+                                    <country>KR</country>
+                                    <doc-number>20210058734</doc-number>
+                                    <kind>A</kind>
+                                    <date>20210506</date>
+                                </document-id>
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>KR20210058734</doc-number>
+                                    <date>20210506</date>
+                                </document-id>
+                                <document-id document-id-type="original">
+                                    <doc-number>10-2021-0058734</doc-number>
+                                </document-id>
+                            </priority-claim>
+                        </priority-claims>
+                        <parties>
+                            <applicants>
+                                <applicant sequence="1" data-format="epodoc">
+                                    <applicant-name>
+                                        <name>SAMSUNG ELECTRONICS CO LTD [KR]</name>
+                                    </applicant-name>
+                                </applicant>
+                                <applicant sequence="1" data-format="original">
+                                    <applicant-name>
+                                        <name>삼성전자 주식회사</name>
+                                    </applicant-name>
+                                </applicant>
+                            </applicants>
+                            <inventors>
+                                <inventor sequence="1" data-format="epodoc">
+                                    <inventor-name>
+                                        <name>CHUNG MYUNGKYOON [KR]</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="1" data-format="original">
+                                    <inventor-name>
+                                        <name>정명균</name>
+                                    </inventor-name>
+                                </inventor>
+                            </inventors>
+                        </parties>
+                        <invention-title lang="fr">PROCÉDÉ DE TRAITEMENT DE BRUIT DE CHARGE SANS FIL ET DISPOSITIF ÉLECTRONIQUE LE PRENANT EN CHARGE</invention-title>
+                        <invention-title lang="en">WIRELESS CHARGING NOISE PROCESSING METHOD AND ELECTRONIC DEVICE SUPPORTING SAME</invention-title>
+                        <invention-title lang="ol">무선 충전 노이즈의 처리 방법 및 이를 지원하는 전자 장치</invention-title>
+                        <references-cited>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="1" office="US">
+                                <patcit dnum-type="publication number" num="1">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20170100178</doc-number>
+                                        <name>SAMSUNG ELECTRO-MECHANICS CO., LTD.</name>
+                                        <date>20170904</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20170100178</doc-number>
+                                        <kind>A</kind>
+                                        <name>SAMSUNG ELECTRO-MECHANICS CO., LTD.</name>
+                                        <date>20170904</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>1-12,14</rel-claims>
+                                <category>A</category>
+                                <rel-claims>13,15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0025]-[0064], and figures 4-6. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="2" office="US">
+                                <patcit dnum-type="publication number" num="2">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20180013088</doc-number>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20180207</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20180013088</doc-number>
+                                        <kind>A</kind>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20180207</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>1-12</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0059]-[0085], claims 1-16, and figures 4-5. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="3" office="US">
+                                <patcit dnum-type="publication number" num="3">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20190079815</doc-number>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20190708</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20190079815</doc-number>
+                                        <kind>A</kind>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20190708</date>
+                                    </document-id>
+                                </patcit>
+                                <category>X</category>
+                                <rel-claims>13,15</rel-claims>
+                                <category>Y</category>
+                                <rel-claims>2-5,7-11,14</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0064]-[0084], and figures 5-8. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="4" office="US">
+                                <patcit dnum-type="publication number" num="4">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>US2020169123</doc-number>
+                                        <name>INTEGRATED DEVICE TECHNOLOGY, INC.</name>
+                                        <date>20200528</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>US</country>
+                                        <doc-number>2020169123</doc-number>
+                                        <kind>A1</kind>
+                                        <name>INTEGRATED DEVICE TECHNOLOGY, INC.</name>
+                                        <date>20200528</date>
+                                    </document-id>
+                                </patcit>
+                                <category>A</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0032]-[0041], and figures 3-5. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="5" office="US">
+                                <patcit dnum-type="publication number" num="5">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20200013320</doc-number>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20200207</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20200013320</doc-number>
+                                        <kind>A</kind>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20200207</date>
+                                    </document-id>
+                                </patcit>
+                                <category>A</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0225]-[0239], and figure 8. *</passage>
+                                </rel-passage>
+                            </citation>
+                        </references-cited>
+                    </bibliographic-data>
+                    <abstract lang="en">
+                        <p>Disclosed is an electronic device comprising a wireless charging circuit including a rectifier for converting AC power into DC power, a processor electrically connected to the wireless charging circuit, and a noise detection circuit connected between the wireless charging circuit and the processor, wherein the noise detection circuit includes: a comparator having an output terminal connected to a GPIO port of the processor; a first resistance element connected to an output terminal of the rectifier and configured to apply a portion of an output voltage of the rectifier to a first input terminal of the comparator; a second resistance element connected to the output terminal of the rectifier and configured to apply the other portion of the output voltage of the rectifier to a second input terminal of the comparator; and a capacitor connected between the second resistance element and the second input terminal. In addition, various embodiments identified through the present document are possible.</p>
+                    </abstract>
+                    <abstract lang="fr">
+                        <p>Est divulgué un dispositif électronique comprenant un circuit de charge sans fil comprenant un redresseur pour convertir un courant alternatif en courant continu, un processeur connecté électriquement au circuit de charge sans fil, et un circuit de détection de bruit connecté entre le circuit de charge sans fil et le processeur, le circuit de détection de bruit comprenant : un comparateur ayant une borne de sortie connectée à un port GPIO du processeur; un premier élément de résistance connecté à une borne de sortie du redresseur et conçu pour appliquer une partie d'une tension de sortie du redresseur à une première borne d'entrée du comparateur; un second élément de résistance connecté à la borne de sortie du redresseur et conçu pour appliquer l'autre partie de la tension de sortie du redresseur à une seconde borne d'entrée du comparateur; et un condensateur connecté entre le second élément de résistance et la seconde borne d'entrée. De plus, divers modes de réalisation identifiés dans le présent document sont possibles.</p>
+                    </abstract>
+                    <abstract lang="ol">
+                        <p>전자 장치에 있어서, AC 전원을 DC 전원으로 전환하기 위한 정류기를 포함하는 무선 충전 회로, 상기 무선 충전 회로와 전기적으로 연결된 프로세서, 및 상기 무선 충전 회로와 상기 프로세서 사이에 연결된 노이즈 감지 회로를 포함하고, 상기 노이즈 감지 회로는, 상기 프로세서의 GPIO 포트에 출력단이 연결되는 비교기, 상기 정류기의 출력단에 연결되고, 상기 정류기의 출력 전압 중 일부를 상기 비교기의 제1 입력단에 인가하기 위한 제1 저항 소자, 상기 정류기의 출력단에 연결되고, 상기 정류기의 출력 전압 중 다른 일부를 상기 비교기의 제2 입력단에 인가하기 위한 제2 저항 소자, 및 상기 제2 저항 소자와 상기 제2 입력단 사이에 연결되는 커패시터를 포함하는 전자 장치가 개시된다. 이 외에도 본 문서를 통해 파악되는 다양한 실시예들이 가능하다.</p>
+                    </abstract>
+                </exchange-document>
+            </exchange-documents>
+            <exchange-documents>
+                <exchange-document system="ops.epo.org" family-id="83848218" country="WO" doc-number="2022231189" kind="A1">
+                    <bibliographic-data>
+                        <publication-reference>
+                            <document-id document-id-type="docdb">
+                                <country>WO</country>
+                                <doc-number>2022231189</doc-number>
+                                <kind>A1</kind>
+                                <date>20221103</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>WO2022231189</doc-number>
+                                <date>20221103</date>
+                            </document-id>
+                        </publication-reference>
+                        <classifications-ipcr>
+                            <classification-ipcr sequence="1">
+                                <text>H01F  38/    14            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="2">
+                                <text>H02J  50/    12            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="3">
+                                <text>H02J  50/    20            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="4">
+                                <text>H04B   5/    00            A I                    </text>
+                            </classification-ipcr>
+                        </classifications-ipcr>
+                        <patent-classifications>
+                            <patent-classification sequence="1">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>G</section>
+                                <class>06</class>
+                                <subclass>F</subclass>
+                                <main-group>1</main-group>
+                                <subgroup>266</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>US</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="2">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>01</class>
+                                <subclass>F</subclass>
+                                <main-group>38</main-group>
+                                <subgroup>14</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="3">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>10</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="4">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>12</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="5">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>12</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>US</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="6">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>12</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="7">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>20</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="8">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>20</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>US</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="9">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>20</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="10">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>40</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>US</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="11">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>40</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="12">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>80</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="13">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>7</main-group>
+                                <subgroup>42</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="14">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>B</subclass>
+                                <main-group>5</main-group>
+                                <subgroup>79</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="15">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>04</class>
+                                <subclass>B</subclass>
+                                <main-group>5</main-group>
+                                <subgroup>79</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="16">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>60</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>EP</generating-office>
+                            </patent-classification>
+                        </patent-classifications>
+                        <application-reference doc-id="582205226">
+                            <document-id document-id-type="docdb">
+                                <country>KR</country>
+                                <doc-number>2022005514</doc-number>
+                                <kind>W</kind>
+                                <date>20220418</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>WO2022KR05514</doc-number>
+                                <date>20220418</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>KR2022/005514</doc-number>
+                            </document-id>
+                        </application-reference>
+                        <priority-claims>
+                            <priority-claim sequence="1" kind="national">
+                                <document-id document-id-type="docdb">
+                                    <country>KR</country>
+                                    <doc-number>20210056751</doc-number>
+                                    <kind>A</kind>
+                                    <date>20210430</date>
+                                </document-id>
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>KR20210056751</doc-number>
+                                    <date>20210430</date>
+                                </document-id>
+                                <document-id document-id-type="original">
+                                    <doc-number>10-2021-0056751</doc-number>
+                                </document-id>
+                            </priority-claim>
+                        </priority-claims>
+                        <parties>
+                            <applicants>
+                                <applicant sequence="1" data-format="epodoc">
+                                    <applicant-name>
+                                        <name>SAMSUNG ELECTRONICS CO LTD [KR]</name>
+                                    </applicant-name>
+                                </applicant>
+                                <applicant sequence="1" data-format="original">
+                                    <applicant-name>
+                                        <name>삼성전자 주식회사</name>
+                                    </applicant-name>
+                                </applicant>
+                            </applicants>
+                            <inventors>
+                                <inventor sequence="1" data-format="epodoc">
+                                    <inventor-name>
+                                        <name>KIM YUSU [KR]</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="2" data-format="epodoc">
+                                    <inventor-name>
+                                        <name>PARK BYUNGHWA [KR]</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="1" data-format="original">
+                                    <inventor-name>
+                                        <name>김유수</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="2" data-format="original">
+                                    <inventor-name>
+                                        <name>박병화</name>
+                                    </inventor-name>
+                                </inventor>
+                            </inventors>
+                        </parties>
+                        <invention-title lang="fr">PROCÉDÉ DE COMMANDE DE MODE DE CHARGE SANS FIL ET DISPOSITIF ASSOCIÉ</invention-title>
+                        <invention-title lang="en">METHOD FOR CONTROLLING WIRELESS CHARGING MODE AND DEVICE THEREFOR</invention-title>
+                        <invention-title lang="ol">무선 충전 방식을 제어하는 방법 및 그 장치</invention-title>
+                        <references-cited>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="1" office="US">
+                                <patcit dnum-type="publication number" num="1">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20170054976</doc-number>
+                                        <name>SAMSUNG ELECTRONICS CO., LTD.</name>
+                                        <date>20170518</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20170054976</doc-number>
+                                        <kind>A</kind>
+                                        <name>SAMSUNG ELECTRONICS CO., LTD.</name>
+                                        <date>20170518</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0028]-[0047], claims 1-10, and figure 1. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="2" office="US">
+                                <patcit dnum-type="publication number" num="2">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20180124274</doc-number>
+                                        <name>UJU ELECTRONICS CO., LTD.</name>
+                                        <date>20181121</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20180124274</doc-number>
+                                        <kind>A</kind>
+                                        <name>UJU ELECTRONICS CO., LTD.</name>
+                                        <date>20181121</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0028]-[0053], claims 8-12, and figures 1-2. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="3" office="US">
+                                <patcit dnum-type="publication number" num="3">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20160119530</doc-number>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20161014</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20160119530</doc-number>
+                                        <kind>A</kind>
+                                        <name>LG INNOTEK CO., LTD.</name>
+                                        <date>20161014</date>
+                                    </document-id>
+                                </patcit>
+                                <category>Y</category>
+                                <rel-claims>4,6,9-10</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0104]-[0162], claim 22, and figures 5-7. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="4" office="US">
+                                <patcit dnum-type="publication number" num="4">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>US2013002035</doc-number>
+                                        <name>OODACHI, Noriaki et al.</name>
+                                        <date>20130103</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>US</country>
+                                        <doc-number>2013002035</doc-number>
+                                        <kind>A1</kind>
+                                        <name>OODACHI, Noriaki et al.</name>
+                                        <date>20130103</date>
+                                    </document-id>
+                                </patcit>
+                                <category>A</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0022]-[0036], and figures 1-2. *</passage>
+                                </rel-passage>
+                            </citation>
+                            <citation cited-phase="international-search-report" cited-by="examiner" sequence="5" office="US">
+                                <patcit dnum-type="publication number" num="5">
+                                    <document-id document-id-type="epodoc">
+                                        <doc-number>KR20110055903</doc-number>
+                                        <name>KOREA ELECTRONICS TECHNOLOGY INSTITUTE</name>
+                                        <date>20110526</date>
+                                    </document-id>
+                                    <document-id document-id-type="docdb">
+                                        <country>KR</country>
+                                        <doc-number>20110055903</doc-number>
+                                        <kind>A</kind>
+                                        <name>KOREA ELECTRONICS TECHNOLOGY INSTITUTE</name>
+                                        <date>20110526</date>
+                                    </document-id>
+                                </patcit>
+                                <category>A</category>
+                                <rel-claims>1-15</rel-claims>
+                                <rel-passage>
+                                    <passage>* See paragraphs [0044]-[0055], and figure 1. *</passage>
+                                </rel-passage>
+                            </citation>
+                        </references-cited>
+                    </bibliographic-data>
+                    <abstract lang="en">
+                        <p>An electronic device according to an embodiment disclosed in the present document comprises a wireless charging circuit and a processor operatively connected to the wireless charging circuit, wherein the processor can receive power wirelessly from an external device through the wireless charging circuit on the basis of a first wireless charging mode using a first frequency, detect a second frequency rather than the first frequency through the wireless charging circuit, and determine, in response to detecting the second frequency, whether to change the charging mode from the first wireless charging mode to a second wireless charging mode, the determination being made on the basis of at least one of the wireless charging efficiency or the output voltage of the electronic device.</p>
+                    </abstract>
+                    <abstract lang="fr">
+                        <p>Un dispositif électronique selon un mode de réalisation divulgué dans le présent document comprend un circuit de charge sans fil et un processeur connecté fonctionnellement au circuit de charge sans fil, le processeur pouvant recevoir de l'énergie sans fil à partir d'un dispositif externe par l'intermédiaire du circuit de charge sans fil sur la base d'un premier mode de charge sans fil utilisant une première fréquence, détecter une seconde fréquence plutôt que la première fréquence par l'intermédiaire du circuit de charge sans fil, et déterminer, en réponse à la détection de la seconde fréquence, s'il faut changer le mode de charge en passant du premier mode de charge sans fil à un second mode de charge sans fil, la détermination étant effectuée sur la base de l'efficacité de charge sans fil et/ou de la tension de sortie du dispositif électronique.</p>
+                    </abstract>
+                    <abstract lang="ol">
+                        <p>본 문서에 개시된 일 실시 예에 따른 전자 장치는 무선 충전 회로, 상기 무선 충전 회로와 작동적으로 연결된 프로세서를 포함하고, 상기 프로세서는 상기 무선 충전 회로를 통해 외부 장치로부터 제1 주파수를 이용하는 제1 무선 충전 방식에 기반하여 무선으로 전력을 수신하고, 상기 무선 충전 회로를 통해 상기 제1 주파수가 아닌 제2 주파수를 감지하고, 상기 제2 주파수의 감지에 응답하여, 무선 충전 효율 또는 상기 전자 장치의 출력 전압 중 적어도 하나에 기반하여 상기 제1 무선 충전 방식을 제2 무선 충전 방식으로 변경할지 여부를 결정할 수 있다.</p>
+                    </abstract>
+                </exchange-document>
+            </exchange-documents>
+            <exchange-documents>
+                <exchange-document system="ops.epo.org" family-id="83803163" country="KR" doc-number="20220145726" kind="A">
+                    <bibliographic-data>
+                        <publication-reference>
+                            <document-id document-id-type="docdb">
+                                <country>KR</country>
+                                <doc-number>20220145726</doc-number>
+                                <kind>A</kind>
+                                <date>20221031</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>KR20220145726</doc-number>
+                                <date>20221031</date>
+                            </document-id>
+                        </publication-reference>
+                        <classifications-ipcr>
+                            <classification-ipcr sequence="1">
+                                <text>H02J  50/    00            A I                    </text>
+                            </classification-ipcr>
+                            <classification-ipcr sequence="2">
+                                <text>H02J  50/    90            A I                    </text>
+                            </classification-ipcr>
+                        </classifications-ipcr>
+                        <patent-classifications>
+                            <patent-classification sequence="1">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>005</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                            <patent-classification sequence="2">
+                                <classification-scheme office="EP" scheme="CPCI"/>
+                                <section>H</section>
+                                <class>02</class>
+                                <subclass>J</subclass>
+                                <main-group>50</main-group>
+                                <subgroup>90</subgroup>
+                                <classification-value>I</classification-value>
+                                <generating-office>KR</generating-office>
+                            </patent-classification>
+                        </patent-classifications>
+                        <application-reference doc-id="582036883">
+                            <document-id document-id-type="docdb">
+                                <country>KR</country>
+                                <doc-number>20210087131</doc-number>
+                                <kind>A</kind>
+                                <date>20210702</date>
+                            </document-id>
+                            <document-id document-id-type="epodoc">
+                                <doc-number>KR20210087131</doc-number>
+                                <date>20210702</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>1020210087131</doc-number>
+                            </document-id>
+                        </application-reference>
+                        <priority-claims>
+                            <priority-claim sequence="1" kind="national">
+                                <document-id document-id-type="docdb">
+                                    <country>KR</country>
+                                    <doc-number>20210052207</doc-number>
+                                    <kind>A</kind>
+                                    <date>20210422</date>
+                                </document-id>
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>KR20210052207</doc-number>
+                                    <date>20210422</date>
+                                </document-id>
+                                <document-id document-id-type="original">
+                                    <doc-number>1020210052207</doc-number>
+                                </document-id>
+                            </priority-claim>
+                        </priority-claims>
+                        <parties>
+                            <applicants>
+                                <applicant sequence="1" data-format="epodoc">
+                                    <applicant-name>
+                                        <name>SAMSUNG ELECTRONICS CO LTD [KR]</name>
+                                    </applicant-name>
+                                </applicant>
+                                <applicant sequence="1" data-format="original">
+                                    <applicant-name>
+                                        <name>삼성전자주식회사</name>
+                                    </applicant-name>
+                                </applicant>
+                            </applicants>
+                            <inventors>
+                                <inventor sequence="1" data-format="epodoc">
+                                    <inventor-name>
+                                        <name>KIM TAESOO</name>
+                                    </inventor-name>
+                                </inventor>
+                                <inventor sequence="1" data-format="original">
+                                    <inventor-name>
+                                        <name>김태수</name>
+                                    </inventor-name>
+                                </inventor>
+                            </inventors>
+                        </parties>
+                        <invention-title lang="en">WIRELESS CHARGING DEVICE WITH PROXIMITY SENSOR</invention-title>
+                        <invention-title lang="ol">근접 센서를 구비한 무선 충전 장치</invention-title>
+                    </bibliographic-data>
+                    <abstract lang="en">
+                        <p>In various embodiments, a wireless charging apparatus may comprise: a cradle; a coil antenna wound several times in a direction perpendicular to the surface of the cradle on which an object is put; a power connection terminal to be connected to an external power source; a power transmission circuit configured to transmit, through the coil antenna, power received from the external power source through the power connection terminal; a holder coupled to the cradle to be able to move on the cradle; a holder driving unit which uses the power received from the external power source through the power connection terminal to move the holder so that the holder can be switched into a closed state, and which moves the holder in a reverse direction so that the holder can be switched into an open state; a proximity sensor activated by the power received from the external power source through the power connection terminal; a processor connected to the proximity sensor and the holder driving unit and activated by the power received from the external power source through the power connection terminal; and a memory connected to the processor. The memory can store instructions allowing the processor to, when executed by the processor, maintain the holder in a state before the external power source is connected to the wireless charging apparatus, and using the holder driving unit to perform an opening and closing operation of opening and closing the holder in response to the changing of a sensor value, received from the proximity sensor, from a first value indicating that no object is in proximity to the cradle to a second value indicating that an object is in proximity to the cradle, and to the continuous reception of the second value for a designated time. In addition, various other embodiments are possible. Therefore, provided is a wireless charging device configured to prevent the malfunction of a holder due to a malfunction of a proximity sensor or faulty power contact, and the problem that a portable electronic device falls from the cradle of the wireless charging device accordingly.</p>
+                    </abstract>
+                    <abstract lang="ol">
+                        <p>다양한 실시예에서, 무선 충전 장치는, 거치대; 상기 거치대에서 물체가 거치되는 면에 수직한 방향을 기준으로 여러 번 권선된 코일 안테나; 외부의 전원과 연결하기 위한 전원 연결 단자; 상기 전원 연결 단자를 통해 상기 외부 전원으로부터 수신된 전력을 상기 코일 안테나를 통해 전송하도록 구성된 전력 전송 회로; 상기 거치대에서 이동이 가능하도록 상기 거치대에 결합된 홀더; 상기 전원 연결 단자를 통해 상기 외부 전원으로부터 수신된 전력을 이용하여 상기 홀더를 움직여서 상기 홀더를 닫힌 상태가 되게 하고, 상기 홀더를 역방향으로 움직여서 상기 홀더를 열린 상태가 되게 하는 홀더 구동부; 상기 전원 연결 단자를 통해 상기 외부 전원으로부터 수신된 전력에 의해 활성화되는 근접 센서; 상기 근접 센서와 상기 홀더 구동부에 연결되고, 상기 전원 연결 단자를 통해 상기 외부 전원으로부터 수신된 전력에 의해 활성화되는 프로세서; 및 상기 프로세서에 연결된 메모리를 포함할 수 있다. 상기 메모리는, 상기 프로세서에 의해 실행될 때, 상기 프로세서가, 상기 홀더를 상기 외부 전원이 상기 무선 충전 장치에 연결되기 전의 상태로 유지하고, 상기 근접 센서로부터 수신되는 센서 값이 상기 거치대에 물체가 근접해 있지 않음을 나타내는 제1값에서 상기 거치대에 물체가 근접해 있음을 나타내는 제2값으로 변하고 상기 제2값이 지정된 시간 동안 지속적으로 수신되는 것에 반응하여, 상기 홀더 구동부를 이용하여 상기 홀더를 열었다가 닫는 개폐 동작을 수행하도록 하는 인스트럭션들을 저장할 수 있다. 그 외에도, 다양한 실시예들이 가능하다.</p>
+                    </abstract>
+                </exchange-document>
+            </exchange-documents>
+        </ops:search-result>
+    </ops:biblio-search>
+</ops:world-patent-data>

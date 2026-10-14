@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='../../../../../style/rplus.xsl' ?>
+<ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+    <ops:register-search total-result-count="1">
+        <ops:query syntax="CQL">publication=EP1000000</ops:query>
+        <ops:range begin="1" end="1"/>
+        <reg:register-documents dtd-version="1.3.3" produced-by="RO">
+            <reg:register-document date-produced="20261014" dtd-version="1.3.3" lang="en" produced-by="RO" status="No opposition filed within time limit">
+                <reg:ep-patent-statuses>
+                    <reg:ep-patent-status change-date="" status-code="7">No opposition filed within time limit</reg:ep-patent-status>
+                </reg:ep-patent-statuses>
+                <reg:bibliographic-data country="EP" id="EP99203729P" lang="en" status="No opposition filed within time limit">
+                    <reg:publication-reference change-gazette-num="2000/20">
+                        <reg:document-id lang="en">
+                            <reg:country>EP</reg:country>
+                            <reg:doc-number>1000000</reg:doc-number>
+                            <reg:kind>A1</reg:kind>
+                            <reg:date>20000517</reg:date>
+                        </reg:document-id>
+                    </reg:publication-reference>
+                    <reg:publication-reference change-gazette-num="2003/07">
+                        <reg:document-id lang="en">
+                            <reg:country>EP</reg:country>
+                            <reg:doc-number>1000000</reg:doc-number>
+                            <reg:kind>B1</reg:kind>
+                            <reg:date>20030212</reg:date>
+                        </reg:document-id>
+                    </reg:publication-reference>
+                    <reg:classifications-ipcr change-date="20000331" change-gazette-num="2000/20">
+                        <reg:classification-ipcr id="CLASSIFICATION_1508254">
+                            <reg:text>B28B5/02, B28B7/00, B28B1/29</reg:text>
+                        </reg:classification-ipcr>
+                    </reg:classifications-ipcr>
+                    <reg:application-reference change-gazette-num="2000/20">
+                        <reg:document-id>
+                            <reg:country>EP</reg:country>
+                            <reg:doc-number>99203729</reg:doc-number>
+                            <reg:date>19991108</reg:date>
+                        </reg:document-id>
+                    </reg:application-reference>
+                    <reg:language-of-filing>nl</reg:language-of-filing>
+                    <reg:priority-claims change-date="20000331" change-gazette-num="2000/20">
+                        <reg:priority-claim kind="national" sequence="1">
+                            <reg:country>NL</reg:country>
+                            <reg:doc-number>19981010536</reg:doc-number>
+                            <reg:date>19981112</reg:date>
+                        </reg:priority-claim>
+                    </reg:priority-claims>
+                    <reg:parties>
+                        <reg:applicants change-date="20000331" change-gazette-num="2000/20">
+                            <reg:applicant app-type="applicant" designation="all" sequence="1">
+<reg:addressbook cdsid="0100085116">
+    <reg:name>Beheermaatschappij De Boer Nijmegen B.V.</reg:name>
+    <reg:address>
+        <reg:address-1>Koopvaardijweg 2</reg:address-1>
+        <reg:address-2>6541 BS Nijmegen</reg:address-2>
+        <reg:country>NL</reg:country>
+    </reg:address>
+</reg:addressbook>
+<reg:nationality>
+    <reg:country></reg:country>
+</reg:nationality>
+<reg:residence>
+    <reg:country></reg:country>
+</reg:residence>
+                            </reg:applicant>
+                        </reg:applicants>
+                        <reg:inventors change-date="20000331" change-gazette-num="2000/20">
+                            <reg:inventor sequence="01">
+<reg:addressbook>
+    <reg:name>Kosman, Wilhelmus Jacobus Maria</reg:name>
+    <reg:address>
+        <reg:address-1>Bredeweg 9</reg:address-1>
+        <reg:address-2>6562 DA Groesbeek</reg:address-2>
+        <reg:country>NL</reg:country>
+    </reg:address>
+</reg:addressbook>
+                            </reg:inventor>
+                        </reg:inventors>
+                        <reg:agents change-date="20080718" change-gazette-num="N/P">
+                            <reg:agent rep-type="agent" sequence="1">
+<reg:addressbook cdsid="0100747114">
+    <reg:name>'t Jong, Bastiaan Jacobus, et al</reg:name>
+    <reg:address>
+        <reg:address-1>Arnold &amp; Siedsma</reg:address-1>
+        <reg:address-2>Sweelinckplein 1</reg:address-2>
+        <reg:address-3>2517 GK The Hague</reg:address-3>
+        <reg:country>NL</reg:country>
+    </reg:address>
+</reg:addressbook>
+                            </reg:agent>
+                        </reg:agents>
+                        <reg:agents change-date="20080718" change-gazette-num="2008/34">
+                            <reg:agent rep-type="agent" sequence="1">
+<reg:addressbook cdsid="0100747114">
+    <reg:name>'t Jong, Bastiaan Jacobus, et al</reg:name>
+    <reg:address>
+        <reg:address-1>Arnold &amp; Siedsma Sweelinckplein 1</reg:address-1>
+        <reg:address-2>2517 GK The Hague</reg:address-2>
+        <reg:country>NL</reg:country>
+    </reg:address>
+</reg:addressbook>
+                            </reg:agent>
+                        </reg:agents>
+                        <reg:agents change-date="20000526" change-gazette-num="2000/28">
+                            <reg:agent rep-type="agent" sequence="1">
+<reg:addressbook cdsid="1 00049911">
+    <reg:name>'t Jong, Bastiaan Jacobus, et al</reg:name>
+    <reg:address>
+        <reg:address-1>Arnold &amp; Siedsma, Advocaten en Octrooigemachtigden, Sweelinckplein 1</reg:address-1>
+        <reg:address-2>2517 GK Den Haag</reg:address-2>
+        <reg:country>NL</reg:country>
+    </reg:address>
+</reg:addressbook>
+                            </reg:agent>
+                        </reg:agents>
+                        <reg:agents change-date="20000331" change-gazette-num="2000/20">
+                            <reg:agent rep-type="agent" sequence="1">
+<reg:addressbook cdsid="0100021818">
+    <reg:name>Schumann, Bernard Herman Johan, et al</reg:name>
+    <reg:address>
+        <reg:address-1>Arnold &amp; Siedsma, Advocaten en Octrooigemachtigden, Sweelinckplein 1</reg:address-1>
+        <reg:address-2>2517 GK Den Haag</reg:address-2>
+        <reg:country>NL</reg:country>
+    </reg:address>
+</reg:addressbook>
+                            </reg:agent>
+                        </reg:agents>
+                    </reg:parties>
+                    <reg:designation-of-states change-date="20000331" change-gazette-num="2000/20">
+                        <reg:designation-pct>
+                            <reg:regional>
+<reg:region>
+    <reg:country>EP</reg:country>
+</reg:region>
+<reg:country>AT</reg:country>
+<reg:country>BE</reg:country>
+<reg:country>CH</reg:country>
+<reg:country>CY</reg:country>
+<reg:country>DE</reg:country>
+<reg:country>DK</reg:country>
+<reg:country>ES</reg:country>
+<reg:country>FI</reg:country>
+<reg:country>FR</reg:country>
+<reg:country>GB</reg:country>
+<reg:country>GR</reg:country>
+<reg:country>IE</reg:country>
+<reg:country>IT</reg:country>
+<reg:country>LI</reg:country>
+<reg:country>LU</reg:country>
+<reg:country>MC</reg:country>
+<reg:country>NL</reg:country>
+<reg:country>PT</reg:country>
+<reg:country>SE</reg:country>
+                            </reg:regional>
+                        </reg:designation-pct>
+                    </reg:designation-of-states>
+                    <reg:invention-title lang="de" change-date="20000331" change-gazette-num="2000/20">Vorrichtung zur Herstellung von Steinformlingen für die Ziegelindustrie</reg:invention-title>
+                    <reg:invention-title lang="en" change-date="20000331" change-gazette-num="2000/20">Apparatus for manufacturing green bricks for the brick manufacturing industry</reg:invention-title>
+                    <reg:invention-title lang="fr" change-date="20000331" change-gazette-num="2000/20">Dispositif pour la fabrication de briques crues utilisées dans l'industrie manufacturière des briques</reg:invention-title>
+                    <reg:term-of-grant change-date="20130315" change-gazette-num="2013/16">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>IT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DE</reg:country>
+                            <reg:date>20030513</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>ES</reg:country>
+                            <reg:date>20030828</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CY</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LU</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>IE</reg:country>
+                            <reg:date>20031110</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20080321" change-gazette-num="2008/17">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>IT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DE</reg:country>
+                            <reg:date>20030513</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>ES</reg:country>
+                            <reg:date>20030828</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CY</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LU</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>IE</reg:country>
+                            <reg:date>20031110</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20060217" change-gazette-num="2006/14">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DE</reg:country>
+                            <reg:date>20030513</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>ES</reg:country>
+                            <reg:date>20030828</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CY</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LU</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>IE</reg:country>
+                            <reg:date>20031110</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20041203" change-gazette-num="2005/03">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DE</reg:country>
+                            <reg:date>20030513</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>ES</reg:country>
+                            <reg:date>20030828</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CY</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LU</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>IE</reg:country>
+                            <reg:date>20031110</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20040806" change-gazette-num="2004/39">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DE</reg:country>
+                            <reg:date>20030513</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>ES</reg:country>
+                            <reg:date>20030828</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CY</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LU</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20040716" change-gazette-num="2004/36">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DE</reg:country>
+                            <reg:date>20030513</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>ES</reg:country>
+                            <reg:date>20030828</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CY</reg:country>
+                            <reg:date>20031108</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20031212" change-gazette-num="2004/05">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DE</reg:country>
+                            <reg:date>20030513</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>ES</reg:country>
+                            <reg:date>20030828</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20031121" change-gazette-num="2004/02">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>DK</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20031003" change-gazette-num="2003/47">
+                        <reg:lapsed-in-country>
+                            <reg:country>AT</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20030926" change-gazette-num="2003/46">
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>GR</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20030905" change-gazette-num="2003/43">
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>PT</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20030822" change-gazette-num="2003/41">
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>FI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20030815" change-gazette-num="2003/40">
+                        <reg:lapsed-in-country>
+                            <reg:country>CH</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>LI</reg:country>
+                            <reg:date>20030212</reg:date>
+                        </reg:lapsed-in-country>
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:term-of-grant change-date="20030620" change-gazette-num="2003/32">
+                        <reg:lapsed-in-country>
+                            <reg:country>SE</reg:country>
+                            <reg:date>20030512</reg:date>
+                        </reg:lapsed-in-country>
+                    </reg:term-of-grant>
+                    <reg:dates-rights-effective>
+                        <reg:request-for-examination change-gazette-num="2000/52">
+                            <reg:date>20001027</reg:date>
+                        </reg:request-for-examination>
+                        <reg:first-examination-report-despatched>
+                            <reg:date>20020423</reg:date>
+                        </reg:first-examination-report-despatched>
+                    </reg:dates-rights-effective>
+                    <reg:references-cited>
+                        <reg:citation id="cit_3146158" cited-phase="search" office="EP">
+                            <reg:patcit url="https://worldwide.espacenet.com/patent/search?q=pn%3DEP0680812&amp;called_by=EuropeanRegister">
+<reg:document-id>
+    <reg:country>EP</reg:country>
+    <reg:doc-number>0680812</reg:doc-number>
+</reg:document-id>
+<reg:text>(BOER BEHEER NIJMEGEN BV DE et al.)  [A]  1,10,11 * the whole document *</reg:text>
+                            </reg:patcit>
+                            <reg:category>A</reg:category>
+                        </reg:citation>
+                        <reg:citation id="cit_3146159" cited-phase="search" office="EP">
+                            <reg:patcit url="https://worldwide.espacenet.com/patent/search?q=pn%3DNL9400663&amp;called_by=EuropeanRegister">
+<reg:document-id>
+    <reg:country>NL</reg:country>
+    <reg:doc-number>9400663</reg:doc-number>
+</reg:document-id>
+<reg:text>(BOER BEHEER NIJMEGEN BV DE et al.)  [A]  1,3 * the whole document *</reg:text>
+                            </reg:patcit>
+                            <reg:category>A</reg:category>
+                        </reg:citation>
+                        <reg:citation id="cit_3146160" cited-phase="search" office="EP">
+                            <reg:patcit url="https://worldwide.espacenet.com/patent/search?q=pn%3DDE3546191&amp;called_by=EuropeanRegister">
+<reg:document-id>
+    <reg:country>DE</reg:country>
+    <reg:doc-number>3546191</reg:doc-number>
+</reg:document-id>
+<reg:text>(NETZSCH MASCHINENFABRIK et al.)  [A]  1-3,8 * the whole document *</reg:text>
+                            </reg:patcit>
+                            <reg:category>A</reg:category>
+                        </reg:citation>
+                    </reg:references-cited>
+                    <reg:opposition-data change-date="20031219" change-gazette-num="2004/06">
+                        <reg:opposition-not-filed>
+                            <reg:date>20031113</reg:date>
+                        </reg:opposition-not-filed>
+                    </reg:opposition-data>
+                    <reg:search-reports-information>
+                        <reg:search-report-information office="EP" search-type="national" declaration-of-no-search="not-determined" change-gazette-num="2000/20">
+                            <reg:search-report-publication>
+<reg:document-id lang="en">
+    <reg:country>EP</reg:country>
+    <reg:doc-number>1000000</reg:doc-number>
+    <reg:kind>A1</reg:kind>
+    <reg:date>20000517</reg:date>
+</reg:document-id>
+                            </reg:search-report-publication>
+                        </reg:search-report-information>
+                        <reg:search-report-information office="EP" search-type="national-supplementary" declaration-of-no-search="not-determined">
+                            <reg:date-search-report-mailed>
+<reg:date>20000309</reg:date>
+                            </reg:date-search-report-mailed>
+                        </reg:search-report-information>
+                    </reg:search-reports-information>
+                </reg:bibliographic-data>
+                <reg:procedural-data>
+                    <reg:procedural-step id="RENEWAL_3803378" procedure-step-phase="undefined">
+                        <reg:procedural-step-code>RFEE</reg:procedural-step-code>
+                        <reg:procedural-step-text step-text-type="STEP_DESCRIPTION">Renewal fee payment</reg:procedural-step-text>
+                        <reg:procedural-step-text step-text-type="YEAR">03</reg:procedural-step-text>
+                        <reg:procedural-step-date step-date-type="DATE_OF_PAYMENT">
+                            <reg:date>20011128</reg:date>
+                        </reg:procedural-step-date>
+                    </reg:procedural-step>
+                    <reg:procedural-step id="RENEWAL_3803379" procedure-step-phase="undefined">
+                        <reg:procedural-step-code>RFEE</reg:procedural-step-code>
+                        <reg:procedural-step-text step-text-type="STEP_DESCRIPTION">Renewal fee payment</reg:procedural-step-text>
+                        <reg:procedural-step-text step-text-type="YEAR">04</reg:procedural-step-text>
+                        <reg:procedural-step-date step-date-type="DATE_OF_PAYMENT">
+                            <reg:date>20021128</reg:date>
+                        </reg:procedural-step-date>
+                    </reg:procedural-step>
+                    <reg:procedural-step id="STEP_AGRA_108653" procedure-step-phase="examination">
+                        <reg:procedural-step-code>AGRA</reg:procedural-step-code>
+                        <reg:procedural-step-text step-text-type="STEP_DESCRIPTION">Announcement of grant (old EPC before 1 July 2002)</reg:procedural-step-text>
+                        <reg:procedural-step-text step-text-type="approval">yes</reg:procedural-step-text>
+                        <reg:procedural-step-date step-date-type="DATE_OF_DISPATCH">
+                            <reg:date>20020423</reg:date>
+                        </reg:procedural-step-date>
+                    </reg:procedural-step>
+                    <reg:procedural-step id="STEP_IGRA_701224" procedure-step-phase="examination">
+                        <reg:procedural-step-code>IGRA</reg:procedural-step-code>
+                        <reg:procedural-step-text step-text-type="STEP_DESCRIPTION">Intention to grant the patent</reg:procedural-step-text>
+                        <reg:procedural-step-date step-date-type="DATE_OF_DISPATCH">
+                            <reg:date>20020807</reg:date>
+                        </reg:procedural-step-date>
+                        <reg:procedural-step-date step-date-type="GRANT_FEE_PAID">
+                            <reg:date>20020824</reg:date>
+                        </reg:procedural-step-date>
+                        <reg:procedural-step-date step-date-type="PRINT_FEE_PAID">
+                            <reg:date>20020824</reg:date>
+                        </reg:procedural-step-date>
+                    </reg:procedural-step>
+                    <reg:procedural-step id="STEP_PROL_1137070" procedure-step-phase="examination">
+                        <reg:procedural-step-code>PROL</reg:procedural-step-code>
+                        <reg:procedural-step-text step-text-type="STEP_DESCRIPTION">Language of the procedure</reg:procedural-step-text>
+                        <reg:procedural-step-text step-text-type="procedure language">en</reg:procedural-step-text>
+                    </reg:procedural-step>
+                    <reg:procedural-step id="STEP_ISAT_1132463" procedure-step-phase="entry-regional-phase">
+                        <reg:procedural-step-code>ISAT</reg:procedural-step-code>
+                        <reg:procedural-step-text step-text-type="STEP_DESCRIPTION">International searching authority</reg:procedural-step-text>
+                        <reg:procedural-step-text step-text-type="searching authority"></reg:procedural-step-text>
+                    </reg:procedural-step>
+                </reg:procedural-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625165" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20140607</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOSDTIPA</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Deletion: Observations by third parties</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625166" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20130315</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2013/16</reg:gazette-num>
+                            <reg:date>20130417</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625167" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20130315</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009299LAPS</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Change - lapse in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2013/16</reg:gazette-num>
+                            <reg:date>20130417</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625168" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20111202</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOSNTIPA</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">New entry: Observations by third parties</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625169" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20080718</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009299FREP</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Change - representative</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2008/34</reg:gazette-num>
+                            <reg:date>20080820</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625170" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20080321</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2008/17</reg:gazette-num>
+                            <reg:date>20080423</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625171" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20060217</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2006/14</reg:gazette-num>
+                            <reg:date>20060405</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625172" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20041203</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2005/03</reg:gazette-num>
+                            <reg:date>20050119</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625173" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20040806</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2004/39</reg:gazette-num>
+                            <reg:date>20040922</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625174" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20040716</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2004/36</reg:gazette-num>
+                            <reg:date>20040901</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625175" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20031219</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009261</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">No opposition filed within time limit</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2004/06</reg:gazette-num>
+                            <reg:date>20040204</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625176" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20031212</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2004/05</reg:gazette-num>
+                            <reg:date>20040128</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625177" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20031121</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2004/02</reg:gazette-num>
+                            <reg:date>20040107</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625178" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20031003</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2003/47</reg:gazette-num>
+                            <reg:date>20031119</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625179" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20030926</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2003/46</reg:gazette-num>
+                            <reg:date>20031112</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625180" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20030905</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2003/43</reg:gazette-num>
+                            <reg:date>20031022</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625181" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20030822</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2003/41</reg:gazette-num>
+                            <reg:date>20031008</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625182" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20030815</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2003/40</reg:gazette-num>
+                            <reg:date>20031001</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625183" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20030620</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009250</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Lapse of the patent in a contracting state</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2003/32</reg:gazette-num>
+                            <reg:date>20030806</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625184" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20021228</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009210</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">(Expected) grant</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2003/07</reg:gazette-num>
+                            <reg:date>20030212</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625185" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20021206</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOS RFEE</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Renewal fee</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625186" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20020906</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOS IGRA</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Communication of intention to grant a patent</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625187" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20020802</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOS AGRA</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Communication of intention to grant</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625188" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20020802</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOS IGRA</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Communication of intention to grant a patent</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625189" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20020419</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009185</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">First examination report</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625190" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20020415</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOS AGRA</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Communication of intention to grant</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625191" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20011207</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOS RFEE</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Renewal fee</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625192" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20010208</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>EPIDOS EXPT</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Change - extension states</reg:event-text>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625193" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20001215</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009084</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Definitive list of designations</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2001/05</reg:gazette-num>
+                            <reg:date>20010131</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625194" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20001110</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009171</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Request for examination filed</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2000/52</reg:gazette-num>
+                            <reg:date>20001227</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625195" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20000526</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009199FREP</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Change - representative</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2000/28</reg:gazette-num>
+                            <reg:date>20000712</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+                <reg:events-data>
+                    <reg:dossier-event id="EVT_30625196" event-type="new">
+                        <reg:event-date>
+                            <reg:date>20000331</reg:date>
+                        </reg:event-date>
+                        <reg:event-code>0009012</reg:event-code>
+                        <reg:event-text event-text-type="DESCRIPTION">Publication in section I.1 EP Bulletin</reg:event-text>
+                        <reg:gazette-reference>
+                            <reg:gazette-num>2000/20</reg:gazette-num>
+                            <reg:date>20000517</reg:date>
+                        </reg:gazette-reference>
+                    </reg:dossier-event>
+                </reg:events-data>
+            </reg:register-document>
+        </reg:register-documents>
+    </ops:register-search>
+</ops:world-patent-data>

@@ -286,13 +286,61 @@ def test_ops_without_kind_returns_candidates(fixture_text, allowed):
     assert pages_requested(router) == []  # 추측해서 받지 않는다
 
 
-def test_ops_other_kind_is_no_data(fixture_text, allowed):
-    # EP1000000A1을 요청했는데 조회 결과에 B1만 있으면 B1로 바꿔 받지 않는다
-    router = ops_router(fixture_text)
+def test_ops_other_kind_returns_candidates(fixture_text, allowed):
+    # EP1000000A1을 요청했는데 조회 결과에 B1만 있으면 B1로 바꿔 받지 않고, 종류코드 없이 다시 본 후보를 돌려준다
+    router = Router()
+    router.on(is_auth, token_ok)
+    router.on(lambda q: "/epodoc/EP1000000/images" in q.url.path,
+              lambda q: httpx.Response(200, text=fixture_text("real_ops_images_epodoc.xml")))
+    router.on(is_images_query, lambda q: httpx.Response(200, text=fixture_text("real_ops_images.xml")))
     out = run(pdf_service(router, allowed).pdf_download("EP1000000A1"))
-    assert out["ok"] and out["data"] is None
-    assert NO_DATA_NOTE in out["notes"] and any("family" in n for n in out["notes"])
+    assert not out["ok"] and out["error"]["code"] == E.AMBIGUOUS_NUMBER
+    assert [c["number"] for c in out["error"]["candidates"]] == ["EP1000000B1", "EP1000000A1"]
     assert pages_requested(router) == []
+
+
+def test_ops_wrong_kind_returns_candidates(fixture_text, allowed):
+    # 없는 종류코드(A2) → 종류코드 없이 한 번 더 보고, 자동으로 고르지 않고 후보를 돌려준다
+    router = Router()
+    router.on(is_auth, token_ok)
+    router.on(lambda q: "/docdb/EP.1000000.A2/images" in q.url.path,
+              lambda q: httpx.Response(404, text=fixture_text("ops_fault_404.xml")))
+    router.on(lambda q: "/epodoc/EP1000000/images" in q.url.path,
+              lambda q: httpx.Response(200, text=fixture_text("real_ops_images_epodoc.xml")))
+    out = run(pdf_service(router, allowed).pdf_download("EP1000000A2"))
+    assert not out["ok"] and out["error"]["code"] == E.AMBIGUOUS_NUMBER
+    assert [c["number"] for c in out["error"]["candidates"]] == ["EP1000000B1", "EP1000000A1"]
+    assert "A2인 문헌(EP1000000A2)은 OPS에 원본이 없고" in out["error"]["message"]
+    assert pages_requested(router) == []
+
+
+def test_ops_jp_era_retry_downloads(fixture_text, allowed):
+    # 연호 없이 적은 JP 구번호(JP10123456A) → 자료 없음이면 연호 후보(JPH10123456A)로 받는다
+    router = Router()
+    router.on(is_auth, token_ok)
+    router.on(lambda q: "/docdb/JP.10123456.A/images" in q.url.path,
+              lambda q: httpx.Response(404, text=fixture_text("ops_fault_404.xml")))
+    router.on(lambda q: "/docdb/JP.H10123456.A/images" in q.url.path,
+              lambda q: httpx.Response(200, text=fixture_text("real_ops_images_jp_era.xml")))
+    router.on(is_page, lambda q: httpx.Response(200, content=make_pdf(1, 100 + int(q.url.params["Range"]))))
+    out = run(pdf_service(router, allowed).pdf_download("JP10123456A"))
+    assert out["ok"] and out["data"]["publicationNumber"] == "JPH10123456A"
+    assert out["data"]["path"].endswith("JPH10123456A.pdf") and out["data"]["pages"] == 4
+    assert out["query"]["retriedAs"] == "docdb:JP.H10123456.A"
+    assert any("연호를 붙인 JPH10123456A" in n for n in out["notes"])
+    assert pages_requested(router) == [1, 2, 3, 4]
+    assert all("/images/JP/H10123456/A/fullimage" in c.url.path for c in router.calls if is_page(c))
+
+
+def test_ops_jp_era_number_downloads(fixture_text, allowed):
+    # 연호를 붙여 적은 번호는 그대로 OPS docdb 'JP.H10123456.A'로 묻는다
+    router = Router()
+    router.on(is_auth, token_ok)
+    router.on(lambda q: "/docdb/JP.H10123456.A/images" in q.url.path,
+              lambda q: httpx.Response(200, text=fixture_text("real_ops_images_jp_era.xml")))
+    router.on(is_page, lambda q: httpx.Response(200, content=make_pdf(1, 100 + int(q.url.params["Range"]))))
+    out = run(pdf_service(router, allowed).pdf_download("JP H10-123456 A", label="D2"))
+    assert out["ok"] and out["data"]["path"].endswith("D2_JPH10123456A.pdf")
 
 
 def test_ops_not_found(fixture_text, allowed):
